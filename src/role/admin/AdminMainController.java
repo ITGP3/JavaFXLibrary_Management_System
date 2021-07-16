@@ -57,7 +57,7 @@ public class AdminMainController implements Initializable {
 
     @FXML
     void processMembers(MouseEvent event) {
-
+        loadWindow("../../member/memberMainUI.fxml","MEMBERS");
     }
 
     @FXML
@@ -67,7 +67,7 @@ public class AdminMainController implements Initializable {
 
     @FXML
     void processStaff(MouseEvent event) {
-
+        loadWindow("../../staff/staffMainUI.fxml","STAFF");
     }
 
     @FXML
