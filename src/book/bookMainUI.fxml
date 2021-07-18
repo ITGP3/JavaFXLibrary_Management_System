@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #c4c4c4#c4c4c4;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="book.BookMainController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #c4c4c4#c4c4c4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="book.BookMainController">
    <children>
       <Label alignment="CENTER" layoutY="-1.0" prefHeight="50.0" prefWidth="700.0" style="-fx-background-color: #d8f1f7#d8f1f7;" text="Book Section">
          <font>
@@ -37,7 +37,7 @@
       </TableView>
       <VBox layoutX="576.0" layoutY="107.0" prefHeight="393.0" prefWidth="122.0">
          <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #4a8ea9;" text="Add Book" textFill="WHITE">
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" text="Add Book">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
