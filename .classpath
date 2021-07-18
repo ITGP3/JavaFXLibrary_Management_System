@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="src/lib/fontawesomefx-8.2.jar"/>
 	<classpathentry kind="lib" path="src/lib/mysql-connector-java-8.0.25.jar"/>
+	<classpathentry kind="lib" path="src/lib/TrayNotification.jar"/>
 	<classpathentry kind="output" path="out/production/LibraryManagementSystem"/>
 </classpath>
