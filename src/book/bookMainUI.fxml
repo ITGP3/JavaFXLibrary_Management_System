@@ -5,102 +5,122 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #c4c4c4#c4c4c4;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="book.BookMainController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #FFC2AB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="book.BookMainController">
    <children>
-      <Label alignment="CENTER" layoutY="-1.0" prefHeight="50.0" prefWidth="700.0" style="-fx-background-color: #d8f1f7#d8f1f7;" text="Book Section">
+      <Label alignment="CENTER" layoutY="-1.0" prefHeight="50.0" prefWidth="700.0" style="-fx-background-color: #FFC2AB;" text="Book Section">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <FontAwesomeIcon glyphName="BOOK" layoutX="251.0" layoutY="33.0" size="25" />
       <TableView layoutY="115.0" prefHeight="371.0" prefWidth="566.0">
-        <columns>
-          <TableColumn prefWidth="51.0" text="C1" />
-          <TableColumn prefWidth="62.0" text="C2" />
-            <TableColumn prefWidth="51.0" text="C1" />
-            <TableColumn prefWidth="62.0" text="C2" />
-            <TableColumn prefWidth="51.0" text="C1" />
-            <TableColumn prefWidth="62.0" text="C2" />
-            <TableColumn prefWidth="51.0" text="C1" />
-            <TableColumn prefWidth="62.0" text="C2" />
-            <TableColumn prefWidth="112.0" text="C2" />
-        </columns>
+         <columns>
+            <TableColumn prefWidth="25.0" text="Id" />
+            <TableColumn prefWidth="124.0" text="Title" />
+            <TableColumn prefWidth="88.0" text="Author" />
+            <TableColumn prefWidth="67.0" text="Publisher" />
+            <TableColumn prefWidth="89.0" text="Avaliable" />
+            <TableColumn prefWidth="46.0" text="Shelf" />
+            <TableColumn prefWidth="69.0" text="Category" />
+            <TableColumn prefWidth="57.0" text="Status" />
+         </columns>
       </TableView>
       <VBox layoutX="576.0" layoutY="107.0" prefHeight="393.0" prefWidth="122.0">
          <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #4a8ea9;" text="Add Book" textFill="WHITE">
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Add">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
                <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/bookSection/newBook.png" />
+                        <Image url="@../image/bookSection/book-with-add-button.png" />
                      </image>
                   </ImageView>
                </graphic>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="30.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" text="Edit Book">
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="30.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Edit">
                <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/bookSection/newBook.png" />
+                        <Image url="@../image/bookSection/book-with-a-pencil-sign.png" />
                      </image>
                   </ImageView>
                </graphic>
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" text="View Book">
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="View">
                <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/bookSection/newBook.png" />
+                        <Image url="@../image/bookSection/text-book-opened-from-top-view.png" />
                      </image>
                   </ImageView>
                </graphic>
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" text="Refresh">
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Refresh">
                <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/bookSection/newBook.png" />
+                        <Image url="@../image/bookSection/phonebook.png" />
                      </image>
                   </ImageView>
                </graphic>
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="240.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" text="Delete Book">
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="240.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Delete">
                <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/bookSection/newBook.png" />
+                        <Image url="@../image/bookSection/book(1).png" />
                      </image>
                   </ImageView>
                </graphic>
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </Button>
          </children>
       </VBox>
-      <TextField layoutX="340.0" layoutY="66.0" prefHeight="33.0" prefWidth="226.0" promptText="Search By Book" />
-      <Button layoutX="576.0" layoutY="67.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="122.0" text="Search">
+      <TextField layoutX="340.0" layoutY="66.0" prefHeight="33.0" prefWidth="226.0" promptText="Search By Book">
+         <effect>
+            <InnerShadow />
+         </effect></TextField>
+      <Button layoutX="576.0" layoutY="67.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #FFC2AB;" text="Search">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -108,10 +128,17 @@
                </image>
             </ImageView>
          </graphic>
+         <effect>
+            <DropShadow />
+         </effect>
       </Button>
-      <ComboBox layoutX="176.0" layoutY="66.0" prefHeight="33.0" prefWidth="150.0" promptText="Book Column" />
+      <ComboBox layoutX="176.0" layoutY="66.0" prefHeight="33.0" prefWidth="150.0" promptText="Book Column" style="-fx-background-color: #FFC2AB;">
+         <effect>
+            <InnerShadow />
+         </effect></ComboBox>
       <Label alignment="CENTER" layoutX="1.0" layoutY="75.0" prefHeight="25.0" prefWidth="150.0" text="Login  Eamil" />
       <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="150.0" text="Welcome" />
       <Label alignment="CENTER" layoutY="488.0" prefHeight="11.0" prefWidth="700.0" text="Design By Icssc" />
+      <Separator layoutX="1.0" layoutY="49.0" prefWidth="700.0" style="-fx-background-color: #000000;" />
    </children>
 </AnchorPane>

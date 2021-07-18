@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="issueBook.IssueController">
+   <children>
+      <Label alignment="CENTER" prefHeight="50.0" prefWidth="600.0" text="Issue Book">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutY="110.0" prefHeight="128.0" prefWidth="600.0" style="-fx-background-color: #e7e7e7;">
+         <children>
+            <FontAwesomeIcon glyphName="BOOK" size="25">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <TextField fx:id="tfIssueBookId" onAction="#processIssueBookId" promptText="Enter Book ID">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextField>
+            <VBox alignment="CENTER" prefHeight="128.0" prefWidth="317.0">
+               <children>
+                  <Label fx:id="lblBookName" text="Book Name">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblBookAuthor" text="Author">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblBookShelf" text="Shelf">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblBookStatus" text="Status">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="50.0" right="50.0" />
+         </padding>
+      </HBox>
+      <Label layoutX="449.0" layoutY="50.0" prefHeight="17.0" prefWidth="82.0" text="Issue Record">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <FontAwesomeIcon glyphName="TABLE" layoutX="543.0" layoutY="71.0" onMouseClicked="#processIssueHistory" size="38" />
+      <HBox alignment="CENTER" layoutX="5.0" layoutY="258.0" prefHeight="128.0" prefWidth="600.0" style="-fx-background-color: #e7e7e7;">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/memberSection/id-card(1).png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </ImageView>
+            <TextField fx:id="tfIssueMemberId" onAction="#processIssueMemberId" promptText="Enter Member ID">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextField>
+            <VBox alignment="CENTER" prefHeight="128.0" prefWidth="317.0">
+               <children>
+                  <Label fx:id="lblMemberName" text="Member Name">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblMemberEmail" text="Email">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblMemberPhone" text="Phone">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="50.0" right="50.0" />
+         </padding>
+      </HBox>
+      <Button layoutX="275.0" layoutY="405.0" mnemonicParsing="false" onAction="#processIssue" prefHeight="29.0" prefWidth="82.0" text="Issue">
+         <graphic>
+            <FontAwesomeIcon glyphName="CALENDAR" size="20" />
+         </graphic>
+      </Button>
+      <Label fx:id="lblLoginEmail" alignment="CENTER" layoutX="12.0" layoutY="72.0" prefHeight="26.0" prefWidth="135.0" text="Login Email" />
+      <Label alignment="CENTER" layoutX="12.0" layoutY="47.0" prefHeight="25.0" prefWidth="135.0" text="Welcome">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

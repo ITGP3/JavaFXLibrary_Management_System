@@ -86,7 +86,7 @@
                <graphic>
                   <ImageView fitHeight="68.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/book%20(1).png" />
+                        <Image url="@../../image/book (1).png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -95,7 +95,7 @@
                <graphic>
                   <ImageView fitHeight="68.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/book%20(2).png" />
+                        <Image url="@../../image/book (2).png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -107,7 +107,7 @@
                <graphic>
                   <ImageView fitHeight="68.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/book%20(3).png" />
+                        <Image url="@../../image/book (3).png" />
                      </image>
                   </ImageView>
                </graphic>

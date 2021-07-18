@@ -15,10 +15,21 @@ public class DBConnection {
         return connection;
     }
 
-    public static DBConnection getInstance() {
-        if (handler == null) {
-            handler = new DBConnection();
+    Connection connection;
+    ResultSet resultSet;
+    PreparedStatement preparedStatement;
+    Statement statement;
+
+    public ResultSet executeQuery(String query){
+
+        try {
+            connection = DBConnection.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return handler;
+
+        return resultSet;
     }
 }

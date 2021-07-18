@@ -42,7 +42,7 @@ public class AdminMainController implements Initializable {
 
     @FXML
     void processIssueBook(MouseEvent event) {
-
+        loadWindow("../../issueBook/issueUI.fxml","ISSUE BOOK");
     }
 
     @FXML
