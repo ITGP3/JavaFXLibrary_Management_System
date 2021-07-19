@@ -1,125 +1,106 @@
-package book;
+/**
+ * @author ThiriNandarNyan
+ */
 
+package entity;
+
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Book {
 
-    private final SimpleStringProperty id;
-    private final SimpleStringProperty title;
-    private final SimpleStringProperty author;
-    private final SimpleStringProperty publisher;
-    private final SimpleBooleanProperty avaliable;
-    private final SimpleStringProperty shelf;
-    private final SimpleStringProperty category;
-    private final SimpleStringProperty status;
-
-
-    public Book(String id, String title, String author, String publisher, boolean avaliable, String shelf, String category, String status) {
-        this.id = new SimpleStringProperty(id);
-        this.title = new SimpleStringProperty(title);
-        this.author = new SimpleStringProperty(author);
-        this.publisher = new SimpleStringProperty(publisher);
-        this.avaliable = new SimpleBooleanProperty(avaliable);
-        this.shelf = new SimpleStringProperty(shelf);
-        this.category = new SimpleStringProperty(category);
-        this.status = new SimpleStringProperty(status);
-    }
-
-
-    public String getId() {
-        return id.get();
-    }
-
-    public SimpleStringProperty idProperty() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id.set(id);
-    }
-
-    public String getTitle() {
-        return title.get();
-    }
-
-    public SimpleStringProperty titleProperty() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title.set(title);
-    }
-
-    public String getAuthor() {
-        return author.get();
-    }
-
-    public SimpleStringProperty authorProperty() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author.set(author);
-    }
-
-    public String getPublisher() {
-        return publisher.get();
-    }
-
-    public SimpleStringProperty publisherProperty() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher.set(publisher);
-    }
-
-    public boolean isAvaliable() {
-        return avaliable.get();
-    }
-
-    public SimpleBooleanProperty avaliableProperty() {
-        return avaliable;
-    }
-
-    public void setAvaliable(boolean avaliable) {
-        this.avaliable.set(avaliable);
-    }
-
-    public String getShelf() {
-        return shelf.get();
-    }
-
-    public SimpleStringProperty shelfProperty() {
-        return shelf;
-    }
-
-    public void setShelf(String shelf) {
-        this.shelf.set(shelf);
-    }
-
-    public String getCategory() {
-        return category.get();
-    }
-
-    public SimpleStringProperty categoryProperty() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category.set(category);
-    }
-
-    public String getStatus() {
-        return status.get();
-    }
-
-    public SimpleStringProperty statusProperty() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status.set(status);
-    }
+	private StringProperty bookId;
+	private StringProperty bookTitle;
+	private StringProperty bookAuthor;
+	private StringProperty bookPublisher;
+	private BooleanProperty bookAvaliable;
+	private StringProperty bookShelf;
+	private StringProperty bookCategory;
+	private StringProperty bookStatus;
+	private StringProperty bookImageName;
+	
+	public Book(String bookId, String bookTitle, String bookAuthor, String bookPublisher, Boolean bookAvaliable,
+			String bookShelf, String bookCategory, String bookStatus, String bookImageName) {
+		super();
+		this.bookId = new SimpleStringProperty(bookId);
+		this.bookTitle = new SimpleStringProperty(bookTitle);
+		this.bookAuthor = new SimpleStringProperty(bookAuthor);
+		this.bookPublisher = new SimpleStringProperty(bookPublisher);
+		this.bookAvaliable = new SimpleBooleanProperty(bookAvaliable);
+		this.bookShelf = new SimpleStringProperty(bookShelf);
+		this.bookCategory = new SimpleStringProperty(bookCategory);
+		this.bookStatus = new SimpleStringProperty(bookStatus);
+		this.bookImageName = new SimpleStringProperty(bookImageName);
+	}
+	
+	public Book(String bookTitle, String bookAuthor, String bookPublisher, Boolean bookAvaliable, String bookShelf,
+			String bookCategory, String bookStatus, String bookImageName) {
+		super();
+		this.bookTitle = new SimpleStringProperty(bookTitle);
+		this.bookAuthor = new SimpleStringProperty(bookAuthor);
+		this.bookPublisher = new SimpleStringProperty(bookPublisher);
+		this.bookAvaliable = new SimpleBooleanProperty(bookAvaliable);
+		this.bookShelf = new SimpleStringProperty(bookShelf);
+		this.bookCategory = new SimpleStringProperty(bookCategory);
+		this.bookStatus = new SimpleStringProperty(bookStatus);
+		this.bookImageName = new SimpleStringProperty(bookImageName);
+	}
+	
+	public String getBookId() {
+		return bookId.get();
+	}
+	public void setBookId(String bookId) {
+		this.bookId = new SimpleStringProperty(bookId);
+	}
+	public String getBookTitle() {
+		return bookTitle.get();
+	}
+	public void setBookTitle(String bookTitle) {
+		this.bookTitle = new SimpleStringProperty(bookTitle);
+	}
+	public String getBookAuthor() {
+		return bookAuthor.get();
+	}
+	public void setBookAuthor(String bookAuthor) {
+		this.bookAuthor = new SimpleStringProperty(bookAuthor);
+	}
+	public String getBookPublisher() {
+		return bookPublisher.get();
+	}
+	public void setBookPublisher(String bookPublisher) {
+		this.bookPublisher = new SimpleStringProperty(bookPublisher);
+	}
+	public Boolean getBookAvaliable() {
+		return bookAvaliable.get();
+	}
+	public void setBookAvaliable(Boolean bookAvaliable) {
+		this.bookAvaliable = new SimpleBooleanProperty(bookAvaliable);
+	}
+	public String getBookShelf() {
+		return bookShelf.get();
+	}
+	public void setBookShelf(String bookShelf) {
+		this.bookShelf = new SimpleStringProperty(bookShelf);
+	}
+	public String getBookCategory() {
+		return bookCategory.get();
+	}
+	public void setBookCategory(String bookCategory) {
+		this.bookCategory = new SimpleStringProperty(bookCategory);
+	}
+	public String getBookStatus() {
+		return bookStatus.get();
+	}
+	public void setBookStatus(String bookStatus) {
+		this.bookStatus = new SimpleStringProperty(bookStatus);
+	}
+	public String getBookImageName() {
+		return bookImageName.get();
+	}
+	public void setBookImageName(String bookImageName) {
+		this.bookImageName = new SimpleStringProperty(bookImageName);
+	}
+	
 }

@@ -1,7 +1,6 @@
 package issueBook;
 
 import DBConnection.DBConnection;
-import book.Book;
 import entity.IssueBook;
 import entity.UserHolder;
 import javafx.beans.property.SimpleStringProperty;
