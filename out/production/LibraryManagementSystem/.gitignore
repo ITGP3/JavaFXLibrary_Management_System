@@ -1,11 +1,5 @@
-/image/
-/issueBook/
-/lib/
-/main/
 /member/
-/role/
-/staff/
-/DBConnection/
 /entity/
+/image/
 /utility/
-/book/
+/staff/

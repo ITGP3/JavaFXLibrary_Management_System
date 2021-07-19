@@ -21,27 +21,27 @@ public class Staff {
 			String staffPhone, String staffStatus, String staffDOB, String staffAddress) {
 		super();
 		this.staffId = new SimpleIntegerProperty(staffId);
-		this.staffFirstName = new SimpleStringProperty();
-		this.staffLastName = new SimpleStringProperty();
-		this.staffEmail = new SimpleStringProperty();
-		this.staffPassword = new SimpleStringProperty();
-		this.staffPhone = new SimpleStringProperty();
-		this.staffStatus = new SimpleStringProperty();
-		this.staffDOB = new SimpleStringProperty();
-		this.staffAddress = new SimpleStringProperty();
+		this.staffFirstName = new SimpleStringProperty(staffFirstName);
+		this.staffLastName = new SimpleStringProperty(staffLastName);
+		this.staffEmail = new SimpleStringProperty(staffEmail);
+		this.staffPassword = new SimpleStringProperty(staffPassword);
+		this.staffPhone = new SimpleStringProperty(staffPhone);
+		this.staffStatus = new SimpleStringProperty(staffStatus);
+		this.staffDOB = new SimpleStringProperty(staffDOB);
+		this.staffAddress = new SimpleStringProperty(staffAddress);
 	}
 
 	public Staff(String staffFirstName, String staffLastName, String staffEmail, String staffPassword,
 			String staffPhone, String staffStatus, String staffDOB, String staffAddress) {
 		super();
-		this.staffFirstName = new SimpleStringProperty();
-		this.staffLastName = new SimpleStringProperty();
-		this.staffEmail = new SimpleStringProperty();
-		this.staffPassword = new SimpleStringProperty();
-		this.staffPhone = new SimpleStringProperty();
-		this.staffStatus = new SimpleStringProperty();
-		this.staffDOB = new SimpleStringProperty();
-		this.staffAddress = new SimpleStringProperty();
+		this.staffFirstName = new SimpleStringProperty(staffFirstName);
+		this.staffLastName = new SimpleStringProperty(staffLastName);
+		this.staffEmail = new SimpleStringProperty(staffEmail);
+		this.staffPassword = new SimpleStringProperty(staffPassword);
+		this.staffPhone = new SimpleStringProperty(staffPhone);
+		this.staffStatus = new SimpleStringProperty(staffStatus);
+		this.staffDOB = new SimpleStringProperty(staffDOB);
+		this.staffAddress = new SimpleStringProperty(staffAddress);
 	}
 
 	public Integer getStaffId() {
