@@ -36,13 +36,22 @@ public class AdminMainController implements Initializable {
     }
 
     @FXML
-    void processBooks(MouseEvent event) {
-        loadWindow("../../book/bookMainUI.fxml","BOOKS");
+    void processBooks(MouseEvent event) throws IOException {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        Parent root = FXMLLoader.load(getClass().getResource("../../book/bookMainUI.fxml"));
+        stage.setTitle("BOOKS");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     @FXML
-    void processIssueBook(MouseEvent event) {
-        loadWindow("../../issueBook/issueUI.fxml","ISSUE BOOK");
+    void processIssueBook(MouseEvent event) throws IOException {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        Parent root = FXMLLoader.load(getClass().getResource("../../issueBook/issueUI.fxml"));
+        stage.setTitle("ISSUE BOOKS");
+        stage.setScene(new Scene(root));
+        stage.show();
+
     }
 
     @FXML
@@ -56,8 +65,13 @@ public class AdminMainController implements Initializable {
     }
 
     @FXML
-    void processMembers(MouseEvent event) {
-        loadWindow("../../member/memberMainUI.fxml","MEMBERS");
+    void processMembers(MouseEvent event) throws IOException {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        Parent root = FXMLLoader.load(getClass().getResource("../../member/memberMainUI.fxml"));
+        stage.setTitle("MEMBERS");
+        stage.setScene(new Scene(root));
+        stage.show();
+
     }
 
     @FXML
@@ -66,8 +80,13 @@ public class AdminMainController implements Initializable {
     }
 
     @FXML
-    void processStaff(MouseEvent event) {
-        loadWindow("../../staff/staffMainUI.fxml","STAFF");
+    void processStaff(MouseEvent event) throws IOException {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        Parent root = FXMLLoader.load(getClass().getResource("../../staff/staffMainUI.fxml"));
+        stage.setTitle("STAFF");
+        stage.setScene(new Scene(root));
+        stage.show();
+
     }
 
     @FXML

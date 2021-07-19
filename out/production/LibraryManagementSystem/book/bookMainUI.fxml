@@ -24,28 +24,18 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <FontAwesomeIcon glyphName="BOOK" layoutX="251.0" layoutY="33.0" size="25" />
+      <FontAwesomeIcon glyphName="USER" layoutX="251.0" layoutY="33.0" size="25" />
       <TableView layoutY="115.0" prefHeight="371.0" prefWidth="566.0">
-<<<<<<< HEAD
          <columns>
             <TableColumn prefWidth="25.0" text="Id" />
             <TableColumn prefWidth="124.0" text="Title" />
-=======
-        <columns>
-          <TableColumn prefWidth="25.0" text="Id" />
-          <TableColumn prefWidth="124.0" text="Title" />
->>>>>>> origin/master
             <TableColumn prefWidth="88.0" text="Author" />
             <TableColumn prefWidth="67.0" text="Publisher" />
             <TableColumn prefWidth="89.0" text="Avaliable" />
             <TableColumn prefWidth="46.0" text="Shelf" />
             <TableColumn prefWidth="69.0" text="Category" />
             <TableColumn prefWidth="57.0" text="Status" />
-<<<<<<< HEAD
          </columns>
-=======
-        </columns>
->>>>>>> origin/master
       </TableView>
       <VBox layoutX="576.0" layoutY="107.0" prefHeight="393.0" prefWidth="122.0">
          <children>
