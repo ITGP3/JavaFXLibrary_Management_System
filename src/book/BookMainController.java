@@ -115,8 +115,18 @@ public class BookMainController implements Initializable{
     }
 
     @FXML
-    void processView(MouseEvent event) {
+    void processView(MouseEvent event) throws IOException {
 
+Book book = bookTable.getSelectionModel().getSelectedItem();
+    	
+    	BookHolder bookHolder = BookHolder.getBookHolder();
+    	bookHolder.setBook(book);
+    	
+    	Stage primaryStage = new Stage();
+    	Parent root = FXMLLoader.load(getClass().getResource("ViewBookUI.fxml"));
+        primaryStage.setTitle("EDIT BOOK SECTION");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
     public void showAllBook(String sql) {

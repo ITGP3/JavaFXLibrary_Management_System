@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import entity.Book;
 import entity.BookHolder;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -56,6 +58,26 @@ public class EditBookController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		ObservableList<String> avaliableList = FXCollections.observableArrayList(
+				"True","False"
+				);
+		
+		ObservableList<String> shelfList = FXCollections.observableArrayList(
+				"shelf1","shelf2"
+				);
+		ObservableList<String> statusList = FXCollections.observableArrayList(
+				"Lose Book","Damage"
+				);
+		ObservableList<String> categoryList = FXCollections.observableArrayList(
+				"Fantasy","Romance","Horror","Comedy","Sci-Fi","Mystery","Thriller","Science Fiction"
+				);
+		
+		cobAvaliable.setItems(avaliableList);
+		cobShelf.setItems(shelfList);
+		cobStatus.setItems(statusList);
+		cobCategory.setItems(categoryList);
+		
 		
 		BookHolder bookHolder = BookHolder.getBookHolder();
 		Book book = bookHolder.getBook();
