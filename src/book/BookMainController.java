@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import entity.Book;
+import entity.BookHolder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -59,7 +60,7 @@ public class BookMainController implements Initializable{
     void processAdd(MouseEvent event) throws IOException {
 
     	Stage primaryStage = new Stage();
-    	Parent root = FXMLLoader.load(getClass().getResource("addBook/addBookUI.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getResource("AddBookUI.fxml"));
         primaryStage.setTitle("ADD BOOK SECTION");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -72,9 +73,18 @@ public class BookMainController implements Initializable{
     }
 
     @FXML
-    void processEdit(MouseEvent event) {
-
+    void processEdit(MouseEvent event) throws IOException {
     	
+    	Book book = bookTable.getSelectionModel().getSelectedItem();
+    	
+    	BookHolder bookHolder = BookHolder.getBookHolder();
+    	bookHolder.setBook(book);
+    	
+    	Stage primaryStage = new Stage();
+    	Parent root = FXMLLoader.load(getClass().getResource("editBook/EditBookUI.fxml"));
+        primaryStage.setTitle("ADD BOOK SECTION");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
     @FXML
