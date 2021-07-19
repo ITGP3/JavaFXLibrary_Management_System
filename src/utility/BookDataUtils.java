@@ -76,4 +76,15 @@ public class BookDataUtils {
 		return isSaveOk;
 	}
 
+	//Delete
+	public Boolean deleteBook(Book book) throws SQLException {
+		
+		connection = DBConnection.getConnection();
+		preStmt = connection.prepareStatement("delete from book where bookId = ?;");
+		
+		preStmt.setString(1, book.getBookId());
+		Boolean isDeleteOk = preStmt.execute();
+		connection.close();
+		return isDeleteOk;
+	}
 }

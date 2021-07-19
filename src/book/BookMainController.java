@@ -3,9 +3,11 @@
  */
 package book;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import entity.Book;
@@ -15,12 +17,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utility.BookDataUtils;
+import utility.MyAlert;
 
 public class BookMainController implements Initializable{
 
@@ -56,6 +60,8 @@ public class BookMainController implements Initializable{
     
     private BookDataUtils bookDataUtils = new BookDataUtils();
     
+    private MyAlert alert = new MyAlert();
+    
     @FXML
     void processAdd(MouseEvent event) throws IOException {
 
@@ -68,8 +74,23 @@ public class BookMainController implements Initializable{
     }
 
     @FXML
-    void processDelete(MouseEvent event) {
-
+    void processDelete(MouseEvent event) throws SQLException {
+    	
+    	Book book = bookTable.getSelectionModel().getSelectedItem();
+    	
+    	Optional<ButtonType> result = alert.getConfirmAlert("Confirmation Dialog", "Are u sure u want to delete?",  "This action will delete your selected item");
+    	
+    	if(result.get() == ButtonType.OK) {
+    		Boolean deleteOk = bookDataUtils.deleteBook(book);
+    		
+    		if(!deleteOk) {
+				
+				File deletedFile = new File("src/image/bookSection/"+book.getBookImageName());
+				deletedFile.delete();
+				
+				showAllBook("select * from book");
+			}
+    	}
     }
 
     @FXML
@@ -81,8 +102,8 @@ public class BookMainController implements Initializable{
     	bookHolder.setBook(book);
     	
     	Stage primaryStage = new Stage();
-    	Parent root = FXMLLoader.load(getClass().getResource("editBook/EditBookUI.fxml"));
-        primaryStage.setTitle("ADD BOOK SECTION");
+    	Parent root = FXMLLoader.load(getClass().getResource("EditBookUI.fxml"));
+        primaryStage.setTitle("EDIT BOOK SECTION");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
