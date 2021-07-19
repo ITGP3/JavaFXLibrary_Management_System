@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?> -->
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -25,7 +25,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <!-- <FontAwesomeIcon glyphName="BOOK" layoutX="251.0" layoutY="33.0" size="25" /> -->
+      <FontAwesomeIcon glyphName="BOOK" layoutX="251.0" layoutY="33.0" size="25" />
       <TableView fx:id="bookTable" layoutY="115.0" prefHeight="371.0" prefWidth="566.0">
         <columns>
           <TableColumn fx:id="bookId" prefWidth="25.0" text="Id" />
