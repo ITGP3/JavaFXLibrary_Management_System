@@ -1,6 +1,3 @@
-/**
- * @author ThiriNandarNyan
- */
 package book;
 
 import java.awt.image.BufferedImage;
