@@ -37,7 +37,7 @@ public class AddStaffController implements Initializable {
     private TextField tfEmail;
 
     @FXML
-    private TextField tfPassword;
+    private TextField pfPassword;
 
     @FXML
     private TextField tfPhone;
@@ -68,7 +68,7 @@ public class AddStaffController implements Initializable {
 		tfFirstName.clear();
 		tfLastName.clear();
 		tfEmail.clear();
-		tfPassword.clear();
+		pfPassword.clear();
 		tfPhone.clear();
 		tfAddress.clear();
 		cobStatus.setValue("Status");
@@ -81,7 +81,7 @@ public class AddStaffController implements Initializable {
 		String staffFirstName = tfFirstName.getText().trim();
 		String staffLastName = tfLastName.getText().trim();
 		String staffEmail = tfEmail.getText().trim();
-		String staffPassword = tfPassword.getText();
+		String staffPassword = pfPassword.getText();
 		String staffPhone = tfPhone.getText().trim();
 		String staffAddress = tfAddress.getText().trim();
 		String staffStatus = cobStatus.getValue();
@@ -100,7 +100,7 @@ public class AddStaffController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ObservableList<String> status = FXCollections.observableArrayList("Enable", "Disable");
+		ObservableList<String> status = FXCollections.observableArrayList("Active", "Inactive");
 
 		cobStatus.setItems(status);
 		

@@ -75,13 +75,12 @@ public class StaffDataUtils {
 		preStmt.setString(3, staff.getStaffEmail());
 		preStmt.setString(4, staff.getStaffPassword());
 		preStmt.setString(5, staff.getStaffPhone());
-		preStmt.setString(6, staff.getStaffAddress());		
-
+		preStmt.setString(6, staff.getStaffStatus());
+		
 		Date date = Date.valueOf(staff.getStaffDOB());
 		preStmt.setDate(7, date);
 		
-		preStmt.setString(8, staff.getStaffStatus());
-		
+		preStmt.setString(8, staff.getStaffAddress());				
 		
 		Boolean isSaveOk = preStmt.execute();
 		connection.close();
@@ -122,7 +121,6 @@ public class StaffDataUtils {
 		}
 		return columnLabelList;
 		
-	}
-	
+	}	
 	
 }

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -12,8 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="550.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="staff.AddStaffController">
+<AnchorPane prefHeight="600.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="staff.AddStaffController">
    <children>
       <Label alignment="CENTER" prefHeight="50.0" prefWidth="550.0" style="-fx-background-color: #FFC2AB;" text="Add Staff Section">
          <font>
@@ -85,7 +85,6 @@
             <TextField fx:id="tfFirstName" prefHeight="35.0" promptText="Enter Your First Name" GridPane.columnIndex="1" />
             <TextField fx:id="tfLastName" prefHeight="35.0" promptText="Enter Your Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="tfEmail" prefHeight="35.0" promptText="Enter Your Email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="tfPassword" prefHeight="35.0" promptText="Enter Your Password" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="tfPhone" prefHeight="35.0" promptText="Enter Your Phone" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="tfAddress" prefHeight="35.0" promptText="Enter Your Address" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <DatePicker fx:id="dpDOB" prefHeight="35.0" prefWidth="214.0" promptText="Please Choose Your DOB" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -106,6 +105,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <PasswordField fx:id="pfPassword" prefHeight="35.0" promptText="Enter Your password" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>
