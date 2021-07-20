@@ -87,6 +87,24 @@ public class BookDataUtils {
 		connection.close();
 		return isDeleteOk;
 	}
+
+	public boolean bookAlreadyIssued(Book book) throws SQLException {
+		connection = DBConnection.getConnection();
+		String query = "select count(*) from issue where bookId = ?";
+		preStmt = connection.prepareStatement(query);
+		preStmt.setString(1, book.getBookId());
+		resultSet = preStmt.executeQuery();
+		if (resultSet.next()){
+			int count = resultSet.getInt(1);
+			System.out.println(count);
+			return (count>0);
+		}
+
+		//Boolean isCheckOk = preparedStatement.execute();
+		//connection.close();
+		//return isCheckOk;
+		return false;
+	}
 	
 	
 	public ObservableList<String> getAllColumn() throws SQLException{

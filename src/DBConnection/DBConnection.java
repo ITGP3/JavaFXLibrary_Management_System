@@ -45,21 +45,5 @@ public class DBConnection {
         return resultSet;
     }
 
-    public boolean bookAlreadyIssued(Book book) throws SQLException {
-        connection = DBConnection.getConnection();
-        String query = "select count(*) from issue where bookId = ?";
-        preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setString(1, book.getBookId());
-        resultSet = preparedStatement.executeQuery();
-        if (resultSet.next()){
-            int count = resultSet.getInt(1);
-            System.out.println(count);
-            return (count>0);
-        }
 
-        //Boolean isCheckOk = preparedStatement.execute();
-        //connection.close();
-        //return isCheckOk;
-        return false;
-    }
 }

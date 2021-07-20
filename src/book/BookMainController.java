@@ -100,7 +100,7 @@ public class BookMainController implements Initializable{
             return;
         }
 
-        if(DBConnection.getInstance().bookAlreadyIssued(book)){
+        if(bookDataUtils.bookAlreadyIssued(book)){
             Alert alertIssue = new Alert(Alert.AlertType.ERROR);
             alertIssue.setTitle("Warning!!!");
             alertIssue.setHeaderText(null);
