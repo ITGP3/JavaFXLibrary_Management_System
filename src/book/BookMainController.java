@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import DBConnection.DBConnection;
 import entity.Book;
 import entity.BookHolder;
 import entity.UserHolder;
@@ -20,12 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -34,9 +30,9 @@ import utility.MyAlert;
 
 public class BookMainController implements Initializable{
 
-	@FXML
-	private Label lblLoginMail;
-	
+    @FXML
+    private Label lblLoginMail;
+
     @FXML
     private TableView<Book> bookTable;
 
@@ -66,61 +62,97 @@ public class BookMainController implements Initializable{
 
     @FXML
     private TableColumn<Book, String> bookImageName;
-    
+
     @FXML
     private TextField tfSearch;
 
     @FXML
     private ComboBox<String> cobBookCol;
-    
+
     private BookDataUtils bookDataUtils = new BookDataUtils();
-    
+
     private MyAlert alert = new MyAlert();
 
     ObservableList<Book> bookList = FXCollections.observableArrayList();
-    
+
     @FXML
     void processAdd(MouseEvent event) throws IOException {
 
-    	Stage primaryStage = new Stage();
-    	Parent root = FXMLLoader.load(getClass().getResource("AddBookUI.fxml"));
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("AddBookUI.fxml"));
         primaryStage.setTitle("ADD BOOK SECTION");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
-     
+
     }
 
     @FXML
     void processDelete(MouseEvent event) throws SQLException {
-    	
-    	Book book = bookTable.getSelectionModel().getSelectedItem();
-    	
-    	Optional<ButtonType> result = alert.getConfirmAlert("Confirmation Dialog", "Are u sure u want to delete?",  "This action will delete your selected item");
-    	
-    	if(result.get() == ButtonType.OK) {
-    		Boolean deleteOk = bookDataUtils.deleteBook(book);
-    		
-    		if(!deleteOk) {
-				
-				File deletedFile = new File("src/image/bookSection/"+book.getBookImageName());
-				deletedFile.delete();
 
-				showAllBook("select * from book");
-			}
-    	}
+        Book book = bookTable.getSelectionModel().getSelectedItem();
+        if (book == null){
+            Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+            alertIssue.setTitle("Warning!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Select Book to Delete");
+            alertIssue.showAndWait();
+            return;
+        }
+
+        if(DBConnection.getInstance().bookAlreadyIssued(book)){
+            Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+            alertIssue.setTitle("Warning!!!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Issue Book Can not delete");
+            alertIssue.showAndWait();
+            return;
+
+        }
+
+
+
+        Optional<ButtonType> result = alert.getConfirmAlert("Confirmation Dialog", "Are u sure u want to delete?",  "This action will delete your selected item");
+
+        if(result.get() == ButtonType.OK) {
+
+            Boolean deleteOk = bookDataUtils.deleteBook(book);
+
+
+            if(!deleteOk) {
+
+                File deletedFile = new File("src/image/bookSection/"+book.getBookImageName());
+                deletedFile.delete();
+
+
+                Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+                alertIssue.setTitle("Success!!!");
+                alertIssue.setHeaderText(null);
+                alertIssue.setContentText("Book Deleted");
+                alertIssue.showAndWait();
+
+                showAllBook("select * from book");
+            }
+        }
+        else {
+            Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+            alertIssue.setTitle("Fail!!!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Book Delete Fail");
+            alertIssue.showAndWait();
+        }
     }
 
     @FXML
     void processEdit(MouseEvent event) throws IOException {
-    	
-    	Book book = bookTable.getSelectionModel().getSelectedItem();
-    	
-    	BookHolder bookHolder = BookHolder.getBookHolder();
-    	bookHolder.setBook(book);
-    	
-    	Stage primaryStage = new Stage();
-    	Parent root = FXMLLoader.load(getClass().getResource("EditBookUI.fxml"));
+
+        Book book = bookTable.getSelectionModel().getSelectedItem();
+
+        BookHolder bookHolder = BookHolder.getBookHolder();
+        bookHolder.setBook(book);
+
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("EditBookUI.fxml"));
         primaryStage.setTitle("EDIT BOOK SECTION");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -129,69 +161,69 @@ public class BookMainController implements Initializable{
     @FXML
     void processRefresh(MouseEvent event) {
 
-    	cobBookCol.getSelectionModel().clearSelection();
-    	tfSearch.setText("");
-    	showAllBook("select * from book");
+        cobBookCol.getSelectionModel().clearSelection();
+        tfSearch.setText("");
+        showAllBook("select * from book");
     }
 
     @FXML
     void processSearch(MouseEvent event) {
-    	
-    	String column = cobBookCol.getValue();
-    	
-    	String query = tfSearch.getText().trim();
-    	
-    	showAllBook("select * from book where "+column+" ='"+query+"';");
+
+        String column = cobBookCol.getValue();
+
+        String query = tfSearch.getText().trim();
+
+        showAllBook("select * from book where "+column+" ='"+query+"';");
     }
-    
+
     @FXML
     void processView(MouseEvent event) throws IOException {
 
         Book book = bookTable.getSelectionModel().getSelectedItem();
-    	
-    	BookHolder bookHolder = BookHolder.getBookHolder();
-    	bookHolder.setBook(book);
-    	
-    	Stage primaryStage = new Stage();
-    	Parent root = FXMLLoader.load(getClass().getResource("ViewBookUI.fxml"));
+
+        BookHolder bookHolder = BookHolder.getBookHolder();
+        bookHolder.setBook(book);
+
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("ViewBookUI.fxml"));
         primaryStage.setTitle("VIEW BOOK SECTION");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
     public void showAllBook(String sql) {
-    	try {
-			bookTable.setItems(bookDataUtils.getAllBook(sql));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        try {
+            bookTable.setItems(bookDataUtils.getAllBook(sql));
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
-    
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
-		UserHolder userHolder = UserHolder.getUserHolder();
-		lblLoginMail.setText(userHolder.getEmail());
-		
-		bookId.setCellValueFactory(new PropertyValueFactory<>("bookId"));
-		bookTitle.setCellValueFactory(new PropertyValueFactory<>("bookTitle"));
-		bookAuthor.setCellValueFactory(new PropertyValueFactory<>("bookAuthor"));
-		bookPublisher.setCellValueFactory(new PropertyValueFactory<>("bookPublisher"));
-		bookAvaliable.setCellValueFactory(new PropertyValueFactory<>("bookAvaliable"));
-		bookShelf.setCellValueFactory(new PropertyValueFactory<>("bookShelf"));
-		bookCategory.setCellValueFactory(new PropertyValueFactory<>("bookCategory"));
-		bookStatus.setCellValueFactory(new PropertyValueFactory<>("bookStatus"));
-		bookImageName.setCellValueFactory(new PropertyValueFactory<>("bookImageName"));
-		
-		showAllBook("select * from book");
-		
-		try {
-			cobBookCol.setItems(bookDataUtils.getAllColumn());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        UserHolder userHolder = UserHolder.getUserHolder();
+        lblLoginMail.setText(userHolder.getEmail());
+
+        bookId.setCellValueFactory(new PropertyValueFactory<>("bookId"));
+        bookTitle.setCellValueFactory(new PropertyValueFactory<>("bookTitle"));
+        bookAuthor.setCellValueFactory(new PropertyValueFactory<>("bookAuthor"));
+        bookPublisher.setCellValueFactory(new PropertyValueFactory<>("bookPublisher"));
+        bookAvaliable.setCellValueFactory(new PropertyValueFactory<>("bookAvaliable"));
+        bookShelf.setCellValueFactory(new PropertyValueFactory<>("bookShelf"));
+        bookCategory.setCellValueFactory(new PropertyValueFactory<>("bookCategory"));
+        bookStatus.setCellValueFactory(new PropertyValueFactory<>("bookStatus"));
+        bookImageName.setCellValueFactory(new PropertyValueFactory<>("bookImageName"));
+
+        showAllBook("select * from book");
+
+        try {
+            cobBookCol.setItems(bookDataUtils.getAllColumn());
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
 }
