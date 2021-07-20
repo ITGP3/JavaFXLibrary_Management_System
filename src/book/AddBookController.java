@@ -113,9 +113,11 @@ public class AddBookController implements Initializable {
 		ObservableList<String> shelfList = FXCollections.observableArrayList(
 				"shelf1","shelf2","shelf3","shelf4","shelf5"
 				);
+		
 		ObservableList<String> statusList = FXCollections.observableArrayList(
 				"Good","Lose Book","Damage"
 				);
+		
 		ObservableList<String> categoryList = FXCollections.observableArrayList(
 				"Fantasy","Romance","Horror","Comedy","Sci-Fi","Mystery","Thriller","Science Fiction"
 				);

@@ -138,6 +138,7 @@ public class BookMainController implements Initializable{
     void processSearch(MouseEvent event) {
     	
     	String column = cobBookCol.getValue();
+    	
     	String query = tfSearch.getText().trim();
     	
     	showAllBook("select * from book where "+column+" ='"+query+"';");
