@@ -58,17 +58,16 @@ public class BookDataUtils {
 		preStmt = connection.prepareStatement("INSERT INTO `book` ("
 				+ "`bookId`,`bookTitle`, `bookAuthor`, `bookPublisher`, `bookAvaliable`, `bookShelf`, "
 				+ "`bookCategory`, `bookStatus`, `bookImageName`) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				+ "VALUES (?, ?, ?, ?, true, ?, ?, ?, ?)");
 		
 		preStmt.setString(1, book.getBookId());
 		preStmt.setString(2, book.getBookTitle());
 		preStmt.setString(3, book.getBookAuthor());
 		preStmt.setString(4, book.getBookPublisher());
-		preStmt.setBoolean(5, book.getBookAvaliable());
-		preStmt.setString(6, book.getBookShelf());
-		preStmt.setString(7, book.getBookCategory());
-		preStmt.setString(8, book.getBookStatus());
-		preStmt.setString(9, book.getBookImageName());
+		preStmt.setString(5, book.getBookShelf());
+		preStmt.setString(6, book.getBookCategory());
+		preStmt.setString(7, book.getBookStatus());
+		preStmt.setString(8, book.getBookImageName());
 		
 		Boolean isSaveOk = preStmt.execute();
 		

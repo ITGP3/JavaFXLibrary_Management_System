@@ -1,6 +1,7 @@
 package utility;
 
 import DBConnection.DBConnection;
+import entity.Book;
 import entity.IssueBook;
 
 import java.sql.*;
@@ -21,6 +22,19 @@ public class IssueBookUtility {
 
         preStmt.setString(1,issueBook.getBookId());
         preStmt.setString(2,issueBook.getMemberId());
+
+        boolean isInsertOk= preStmt.execute();
+        connection.close();
+        return  isInsertOk;
+    }
+
+    public boolean updateBookAvaliable(Book book) throws SQLException {
+        connection = DBConnection.getConnection();
+
+        String updateIssueQuery = "update library.book set bookAvaliable=false where bookId= ?;";
+        preStmt = connection.prepareStatement(updateIssueQuery);
+
+        preStmt.setString(1,book.getBookId());
 
         boolean isInsertOk= preStmt.execute();
         connection.close();

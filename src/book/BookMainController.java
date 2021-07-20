@@ -12,6 +12,8 @@ import java.util.ResourceBundle;
 
 import entity.Book;
 import entity.BookHolder;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -61,6 +63,8 @@ public class BookMainController implements Initializable{
     private BookDataUtils bookDataUtils = new BookDataUtils();
     
     private MyAlert alert = new MyAlert();
+
+    ObservableList<Book> bookList = FXCollections.observableArrayList();
     
     @FXML
     void processAdd(MouseEvent event) throws IOException {
@@ -70,6 +74,7 @@ public class BookMainController implements Initializable{
         primaryStage.setTitle("ADD BOOK SECTION");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
      
     }
 
@@ -87,7 +92,7 @@ public class BookMainController implements Initializable{
 				
 				File deletedFile = new File("src/image/bookSection/"+book.getBookImageName());
 				deletedFile.delete();
-				
+
 				showAllBook("select * from book");
 			}
     	}
@@ -117,7 +122,7 @@ public class BookMainController implements Initializable{
     @FXML
     void processView(MouseEvent event) throws IOException {
 
-Book book = bookTable.getSelectionModel().getSelectedItem();
+        Book book = bookTable.getSelectionModel().getSelectedItem();
     	
     	BookHolder bookHolder = BookHolder.getBookHolder();
     	bookHolder.setBook(book);

@@ -95,7 +95,7 @@ public class AddBookController implements Initializable {
     void processImage(MouseEvent event) {
 
     	FileChooser imageChooser = new FileChooser();
-    	imageChooser.setInitialDirectory(new File("c:\\"));
+    	imageChooser.setInitialDirectory(new File("/Users/sitminhtet/Downloads"));
     	imageChooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png","*.jpg","*.jpeg","*.ico"));
     	
     	File imageFile = imageChooser.showOpenDialog(null);
@@ -117,7 +117,7 @@ public class AddBookController implements Initializable {
 				"shelf1","shelf2"
 				);
 		ObservableList<String> statusList = FXCollections.observableArrayList(
-				"Lose Book","Damage"
+				"Good","Lose Book","Damage"
 				);
 		ObservableList<String> categoryList = FXCollections.observableArrayList(
 				"Fantasy","Romance","Horror","Comedy","Sci-Fi","Mystery","Thriller","Science Fiction"

@@ -47,6 +47,10 @@ public class Book {
 		this.bookStatus = new SimpleStringProperty(bookStatus);
 		this.bookImageName = new SimpleStringProperty(bookImageName);
 	}
+
+	public Book(String bookId){
+		this.bookId = new SimpleStringProperty(bookId);
+	}
 	
 	public String getBookId() {
 		return bookId.get();

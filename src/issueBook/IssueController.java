@@ -1,6 +1,7 @@
 package issueBook;
 
 import DBConnection.DBConnection;
+import entity.Book;
 import entity.IssueBook;
 import entity.UserHolder;
 import javafx.beans.property.SimpleStringProperty;
@@ -123,10 +124,11 @@ public class IssueController implements Initializable {
         if (issueButton.get()== ButtonType.OK) {
             IssueBook issueBook = new IssueBook(bookId, memberId);
 
-            String updateIssueQuery = "update library.book set bookAvaliable=false where bookId='"+bookId+"';";
-            System.out.println(updateIssueQuery);
+            Book book = new Book(bookId);
+            //String updateIssueQuery = "update library.book set bookAvaliable=false where bookId='"+bookId+"';";
+            //System.out.println(updateIssueQuery);
 
-            if (!issueBookUtility.saveIssueBook(issueBook)) {
+            if (!issueBookUtility.saveIssueBook(issueBook) && !issueBookUtility.updateBookAvaliable(book)) {
                 Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
                 alertIssue.setTitle("Success!!!");
                 alertIssue.setHeaderText(null);

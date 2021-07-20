@@ -48,7 +48,6 @@ public class EditBookController implements Initializable{
     @FXML
     void processEdit(ActionEvent event) {
 
-    	
     }
 
     @FXML

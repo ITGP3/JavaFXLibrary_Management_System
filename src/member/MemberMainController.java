@@ -90,6 +90,7 @@ public class MemberMainController implements Initializable{
     	Boolean isDeleteOk = memberUtility.deleMember(member.getMemberId());
     	
     	if(!isDeleteOk) {
+
     		System.out.println("Delete Ok");
     	}
 
