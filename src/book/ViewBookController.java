@@ -52,10 +52,6 @@ public class ViewBookController implements Initializable {
 
     	Stage primaryStage = (Stage)((Button)event.getSource()).getScene().getWindow();
 		primaryStage.hide();
-//    	Parent root = FXMLLoader.load(getClass().getResource("bookMainUI.fxml"));
-//        primaryStage.setTitle("BOOK MAIN SECTION");
-//        primaryStage.setScene(new Scene(root));
-//        primaryStage.show();
     }
     
 	@Override

@@ -88,6 +88,7 @@ public class BookDataUtils {
 		return isDeleteOk;
 	}
 	
+	
 	public ObservableList<String> getAllColumn() throws SQLException{
 		
 		ObservableList<String> columnList = FXCollections.observableArrayList();

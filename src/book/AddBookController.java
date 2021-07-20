@@ -84,7 +84,6 @@ public class AddBookController implements Initializable {
 			BufferedImage bufferedImage = SwingFXUtils.fromFXImage(this.bookImage.getImage(),null);
 			
 			ImageIO.write(bufferedImage,"jpg",imageFile);
-		
 			
 			Stage primaryStage = (Stage)((Button)event.getSource()).getScene().getWindow();
 			primaryStage.hide();
