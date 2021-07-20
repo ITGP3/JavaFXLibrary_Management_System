@@ -7,6 +7,7 @@ package utility;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -85,5 +86,26 @@ public class BookDataUtils {
 		Boolean isDeleteOk = preStmt.execute();
 		connection.close();
 		return isDeleteOk;
+	}
+	
+	public ObservableList<String> getAllColumn() throws SQLException{
+		
+		ObservableList<String> columnList = FXCollections.observableArrayList();
+		connection = DBConnection.getConnection();
+		statement = connection.createStatement();
+		
+		resultSet = statement.executeQuery("select * from book");
+		
+		ResultSetMetaData metaData = resultSet.getMetaData();
+		
+		Integer count = metaData.getColumnCount();
+		
+		for (int i = 1; i <= count; i++) {
+			columnList.add(metaData.getColumnLabel(i));
+		}
+		
+		connection.close();
+		return columnList;
+		
 	}
 }

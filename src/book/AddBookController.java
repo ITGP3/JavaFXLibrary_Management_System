@@ -45,7 +45,7 @@ public class AddBookController implements Initializable {
     private TextField tfPublisher;
 
     @FXML
-    private ComboBox<String> cobAvaliable;
+    private TextField tfAvaliable;
 
     @FXML
     private ComboBox<String> cobShelf;
@@ -67,7 +67,7 @@ public class AddBookController implements Initializable {
     	String bookTitle = tfTitle.getText().trim();
     	String bookAuthor = tfAuthor.getText().trim();
     	String bookPublisher = tfPublisher.getText().trim();
-    	Boolean bookAvaliable = Boolean.parseBoolean(cobAvaliable.getValue());
+    	Boolean bookAvaliable = Boolean.parseBoolean(tfAvaliable.getText());
     	String bookShelf = cobShelf.getValue();
     	String bookCategory = cobCategory.getValue();
     	String bookStatus = cobStatus.getValue();
@@ -95,7 +95,7 @@ public class AddBookController implements Initializable {
     void processImage(MouseEvent event) {
 
     	FileChooser imageChooser = new FileChooser();
-    	imageChooser.setInitialDirectory(new File("/Users/sitminhtet/Downloads"));
+    	imageChooser.setInitialDirectory(new File("c://"));
     	imageChooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png","*.jpg","*.jpeg","*.ico"));
     	
     	File imageFile = imageChooser.showOpenDialog(null);
@@ -109,9 +109,7 @@ public class AddBookController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		ObservableList<String> avaliableList = FXCollections.observableArrayList(
-				"True","False"
-				);
+		tfAvaliable.setText("True");
 		
 		ObservableList<String> shelfList = FXCollections.observableArrayList(
 				"shelf1","shelf2"
@@ -123,7 +121,7 @@ public class AddBookController implements Initializable {
 				"Fantasy","Romance","Horror","Comedy","Sci-Fi","Mystery","Thriller","Science Fiction"
 				);
 		
-		cobAvaliable.setItems(avaliableList);
+	
 		cobShelf.setItems(shelfList);
 		cobStatus.setItems(statusList);
 		cobCategory.setItems(categoryList);

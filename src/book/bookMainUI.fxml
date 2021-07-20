@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<!-- <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?> -->
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -25,7 +25,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <FontAwesomeIcon glyphName="BOOK" layoutX="251.0" layoutY="33.0" size="25" />
+      <!-- <FontAwesomeIcon glyphName="BOOK" layoutX="251.0" layoutY="33.0" size="25" /> -->
       <TableView fx:id="bookTable" layoutY="115.0" prefHeight="371.0" prefWidth="566.0">
         <columns>
           <TableColumn fx:id="bookId" prefWidth="25.0" text="Id" />
@@ -118,13 +118,13 @@
             </Button>
          </children>
       </VBox>
-      <TextField layoutX="340.0" layoutY="66.0" prefHeight="33.0" prefWidth="226.0" promptText="Search By Book">
+      <TextField fx:id="tfSearch" layoutX="340.0" layoutY="66.0" prefHeight="33.0" prefWidth="226.0" promptText="Search By Book">
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <Button layoutX="576.0" layoutY="67.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #FFC2AB;" text="Search">
+      <Button layoutX="576.0" layoutY="67.0" mnemonicParsing="false" onMouseClicked="#processSearch" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #FFC2AB;" text="Search">
          <graphic>
-            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="15.0" fitWidth="15.0" onMouseClicked="#processSearch" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/bookSection/search.png" />
                </image>
@@ -134,11 +134,11 @@
             <DropShadow />
          </effect>
       </Button>
-      <ComboBox layoutX="176.0" layoutY="66.0" prefHeight="33.0" prefWidth="150.0" promptText="Book Column" style="-fx-background-color: #FFC2AB;">
+      <ComboBox fx:id="cobBookCol" layoutX="176.0" layoutY="66.0" prefHeight="33.0" prefWidth="150.0" promptText="Book Column" style="-fx-background-color: #FFC2AB;">
          <effect>
             <InnerShadow />
          </effect></ComboBox>
-      <Label alignment="CENTER" layoutX="1.0" layoutY="75.0" prefHeight="25.0" prefWidth="150.0" text="Login  Eamil" />
+      <Label fx:id="lblLoginMail" alignment="CENTER" layoutX="1.0" layoutY="75.0" prefHeight="25.0" prefWidth="150.0" text="Login  Email" />
       <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="150.0" text="Welcome" />
       <Label alignment="CENTER" layoutY="488.0" prefHeight="11.0" prefWidth="700.0" text="Design By Icssc" />
       <Separator layoutX="1.0" layoutY="49.0" prefWidth="700.0" style="-fx-background-color: #000000;" />

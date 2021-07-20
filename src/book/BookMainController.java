@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 import entity.Book;
 import entity.BookHolder;
+import entity.UserHolder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,8 +21,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -30,6 +34,9 @@ import utility.MyAlert;
 
 public class BookMainController implements Initializable{
 
+	@FXML
+	private Label lblLoginMail;
+	
     @FXML
     private TableView<Book> bookTable;
 
@@ -59,6 +66,12 @@ public class BookMainController implements Initializable{
 
     @FXML
     private TableColumn<Book, String> bookImageName;
+    
+    @FXML
+    private TextField tfSearch;
+
+    @FXML
+    private ComboBox<String> cobBookCol;
     
     private BookDataUtils bookDataUtils = new BookDataUtils();
     
@@ -120,6 +133,15 @@ public class BookMainController implements Initializable{
     }
 
     @FXML
+    void processSearch(MouseEvent event) {
+    	
+    	String column = cobBookCol.getValue();
+    	String query = tfSearch.getText().trim();
+    	
+    	showAllBook("select * from book where "+column+" ='"+query+"';");
+    }
+    
+    @FXML
     void processView(MouseEvent event) throws IOException {
 
         Book book = bookTable.getSelectionModel().getSelectedItem();
@@ -129,7 +151,7 @@ public class BookMainController implements Initializable{
     	
     	Stage primaryStage = new Stage();
     	Parent root = FXMLLoader.load(getClass().getResource("ViewBookUI.fxml"));
-        primaryStage.setTitle("EDIT BOOK SECTION");
+        primaryStage.setTitle("VIEW BOOK SECTION");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
@@ -146,6 +168,9 @@ public class BookMainController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		UserHolder userHolder = UserHolder.getUserHolder();
+		lblLoginMail.setText(userHolder.getEmail());
+		
 		bookId.setCellValueFactory(new PropertyValueFactory<>("bookId"));
 		bookTitle.setCellValueFactory(new PropertyValueFactory<>("bookTitle"));
 		bookAuthor.setCellValueFactory(new PropertyValueFactory<>("bookAuthor"));
@@ -157,6 +182,13 @@ public class BookMainController implements Initializable{
 		bookImageName.setCellValueFactory(new PropertyValueFactory<>("bookImageName"));
 		
 		showAllBook("select * from book");
+		
+		try {
+			cobBookCol.setItems(bookDataUtils.getAllColumn());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
