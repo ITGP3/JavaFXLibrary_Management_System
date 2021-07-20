@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="550.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="staff.AddStaffController">
+   <children>
+      <Label alignment="CENTER" prefHeight="50.0" prefWidth="550.0" style="-fx-background-color: #FFC2AB;" text="Add Staff Section">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="240.0" layoutY="64.0" prefHeight="33.0" prefWidth="225.0" text="Fill All the Following Fields" textFill="#ee5b17">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="133.0" layoutY="97.0" prefHeight="473.0" prefWidth="318.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="114.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="204.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="First Name">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label text="Last Name" GridPane.rowIndex="1">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label text="Email" GridPane.rowIndex="2">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label text="Password" GridPane.rowIndex="3">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label text="Phone" GridPane.rowIndex="4">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label text="Address" GridPane.rowIndex="5">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label text="Date Of Birth" GridPane.rowIndex="6">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label text="Status" GridPane.rowIndex="7">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfFirstName" prefHeight="35.0" promptText="Enter Your First Name" GridPane.columnIndex="1" />
+            <TextField fx:id="tfLastName" prefHeight="35.0" promptText="Enter Your Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tfEmail" prefHeight="35.0" promptText="Enter Your Email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="tfPassword" prefHeight="35.0" promptText="Enter Your Password" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="tfPhone" prefHeight="35.0" promptText="Enter Your Phone" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="tfAddress" prefHeight="35.0" promptText="Enter Your Address" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <DatePicker fx:id="dpDOB" prefHeight="35.0" prefWidth="214.0" promptText="Please Choose Your DOB" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ComboBox fx:id="cobStatus" prefHeight="35.0" prefWidth="220.0" promptText="Status" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" onAction="#processSave" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #FFC2AB; -fx-background-radius: 10;" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="60.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#processClear" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #ee5b17; -fx-background-radius: 10;" text="Clear" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="140.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

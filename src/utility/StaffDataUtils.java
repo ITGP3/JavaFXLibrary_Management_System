@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -74,15 +75,54 @@ public class StaffDataUtils {
 		preStmt.setString(3, staff.getStaffEmail());
 		preStmt.setString(4, staff.getStaffPassword());
 		preStmt.setString(5, staff.getStaffPhone());
-		preStmt.setString(6, staff.getStaffAddress());
-		preStmt.setString(7, staff.getStaffStatus());
-		
+		preStmt.setString(6, staff.getStaffAddress());		
+
 		Date date = Date.valueOf(staff.getStaffDOB());
-		preStmt.setDate(8, date);
+		preStmt.setDate(7, date);
+		
+		preStmt.setString(8, staff.getStaffStatus());
+		
 		
 		Boolean isSaveOk = preStmt.execute();
 		connection.close();
 		return isSaveOk;
 	}
+	
+	// D delete
+	public Boolean deleteStaff(Integer staffId) throws SQLException {
+		connection = DBConnection.getConnection();
+
+		preStmt = connection.prepareStatement("delete from staff where staffId = ?;");
+
+		preStmt.setInt(1, staffId);
+
+		Boolean isDeleteOk = preStmt.execute();
+		connection.close();
+		return isDeleteOk;
+
+	}
+	
+	//getAllStaffColumnLabel
+	
+	public ObservableList<String> getAllColumnLabel() throws SQLException{
+		ObservableList<String> columnLabelList = FXCollections.observableArrayList();
+		
+		connection = DBConnection.getConnection();
+		
+		statement = connection.createStatement();
+		
+		resultSet = statement.executeQuery("select * from staff;");
+		
+		ResultSetMetaData metaData = resultSet.getMetaData();
+		
+		Integer count = metaData.getColumnCount();
+	
+		for(int x = 1; x <= count; x++) {
+			columnLabelList.add(metaData.getColumnLabel(x));
+		}
+		return columnLabelList;
+		
+	}
+	
 	
 }

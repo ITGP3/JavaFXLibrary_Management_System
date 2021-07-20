@@ -1,22 +1,35 @@
 package staff;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import entity.StaffHolder;
+import entity.UserHolder;
 import entity.Staff;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import utility.MyAlert;
+import utility.StaffDataUtils;
 
-public class StaffMainController implements Initializable {
+public class StaffMainController implements Initializable{
 
-	@FXML
+    @FXML
     private TableView<Staff> staffTable;
-	
+
     @FXML
     private TableColumn<Staff, Integer> staffId;
 
@@ -48,16 +61,35 @@ public class StaffMainController implements Initializable {
     private TextField tfSearch;
 
     @FXML
-    private ComboBox<?> cobColumn;
+    private ComboBox<String> cobColumn;
 
     @FXML
-    void processAdd(MouseEvent event) {
+    private Label lblLoginEmail;
+    
+    private final StaffDataUtils staffDataUtils = new StaffDataUtils();
 
-    }
+    private MyAlert alert = new MyAlert();
+    
+	@FXML
+	void processAdd(MouseEvent event) throws IOException {
+		Stage primaryStage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("AddStaffUI.fxml"));
+		primaryStage.setTitle("Add Staff Section");
+		primaryStage.setScene(new Scene(root));
+		primaryStage.show();
+	}
 
     @FXML
-    void processDelete(MouseEvent event) {
-
+    void processDelete(MouseEvent event) throws SQLException {
+    	Staff staff = staffTable.getSelectionModel().getSelectedItem();
+    	
+    	Boolean isDeleteOk = staffDataUtils.deleteStaff(staff.getStaffId());
+    	
+    	if(!isDeleteOk) {
+    		alert.getConfirmAlert("Confirmation Dialog", "Are you sure to delete?", "This action cannot be undone");
+    	
+    		showTable("select * from staff;");
+    	}
     }
 
     @FXML
@@ -67,22 +99,69 @@ public class StaffMainController implements Initializable {
 
     @FXML
     void processRefresh(MouseEvent event) {
-
+    	showTable("select * from staff;");
     }
 
     @FXML
     void processSearch(MouseEvent event) {
-
+    	String column = cobColumn.getValue();
+    	
+    	String query = tfSearch.getText().trim();
+    	
+    	showTable("select * from staff where " + column + " = '" + query + "';");
+    	
+    	cobColumn.setValue("Staff Column");
+    	tfSearch.clear();
     }
 
     @FXML
-    void processView(MouseEvent event) {
-
+    void processView(MouseEvent event) throws IOException {
+    	Staff staff = staffTable.getSelectionModel().getSelectedItem();
+		
+		StaffHolder staffHolder = StaffHolder.getStaffInstance();
+		
+		staffHolder.setStaff(staff);
+		
+		Stage primaryStage = new Stage();
+		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("ViewStaffUI.fxml"));
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("View Staff Section");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		
     }
 
+    public void showTable(String sql) {
+		try {
+			staffTable.setItems(staffDataUtils.getAllStaffs(sql));
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		lblLoginEmail.setText(UserHolder.getUserHolder().getEmail());
+		
+		staffId.setCellValueFactory(new PropertyValueFactory<>("staffId"));
+		staffFirstName.setCellValueFactory(new PropertyValueFactory<>("staffFirstName"));
+		staffLastName.setCellValueFactory(new PropertyValueFactory<>("staffLastName"));
+		staffEmail.setCellValueFactory(new PropertyValueFactory<>("staffEmail"));
+		staffPassword.setCellValueFactory(new PropertyValueFactory<>("staffPassword"));
+		staffPhone.setCellValueFactory(new PropertyValueFactory<>("staffPhone"));
+		staffAddress.setCellValueFactory(new PropertyValueFactory<>("staffAddress"));
+		staffStatus.setCellValueFactory(new PropertyValueFactory<>("staffStatus"));
+		staffDOB.setCellValueFactory(new PropertyValueFactory<>("staffDOB"));
+
+		try {
+			cobColumn.setItems(staffDataUtils.getAllColumnLabel());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		showTable("select * from staff;");
 	}
 
 }

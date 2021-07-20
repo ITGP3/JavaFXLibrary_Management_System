@@ -29,8 +29,8 @@
         <columns>
           <TableColumn fx:id="staffId" prefWidth="25.0" text="Id" />
           <TableColumn fx:id="staffFirstName" prefWidth="69.0" text="FirstName" />
-            <TableColumn fx:id="staffLastName" prefWidth="64.0" text="LastName" />
-            <TableColumn fx:id="staffEmail" prefWidth="102.0" text="Email" />
+            <TableColumn fx:id="staffLastName" prefWidth="70.0" text="LastName" />
+            <TableColumn fx:id="staffEmail" prefWidth="96.0" text="Email" />
             <TableColumn fx:id="staffPassword" prefWidth="60.0" text="Password" />
             <TableColumn fx:id="staffPhone" prefWidth="69.0" text="Phone" />
             <TableColumn fx:id="staffStatus" prefWidth="57.0" text="Status" />
@@ -45,7 +45,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processAdd" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/staffSection/add-user.png" />
                      </image>
@@ -57,7 +57,7 @@
             </Button>
             <Button contentDisplay="TOP" layoutX="10.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#processEdit" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Edit">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processEdit" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/staffSection/user.png" />
                      </image>
@@ -72,7 +72,7 @@
             </Button>
             <Button contentDisplay="TOP" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#processView" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="View">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processView" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/staffSection/user(1).png" />
                      </image>
@@ -87,7 +87,7 @@
             </Button>
             <Button contentDisplay="TOP" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#processRefresh" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Refresh">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processRefresh" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/staffSection/refresh-user-sign.png" />
                      </image>
@@ -102,7 +102,7 @@
             </Button>
             <Button contentDisplay="TOP" layoutX="10.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#processDelete" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Delete">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processDelete" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/staffSection/delete-user.png" />
                      </image>
@@ -121,7 +121,7 @@
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <Button layoutX="576.0" layoutY="67.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #FFC2AB;" text="Search">
+      <Button layoutX="576.0" layoutY="67.0" mnemonicParsing="false" onMouseClicked="#processSearch" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #FFC2AB;" text="Search">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="15.0" onMouseClicked="#processSearch" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -137,7 +137,7 @@
          <effect>
             <InnerShadow />
          </effect></ComboBox>
-      <Label alignment="CENTER" layoutX="1.0" layoutY="75.0" prefHeight="25.0" prefWidth="150.0" text="Login  Email" />
+      <Label fx:id="lblLoginEmail" alignment="CENTER" layoutX="1.0" layoutY="75.0" prefHeight="25.0" prefWidth="150.0" text="Login  Email" />
       <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="150.0" text="Welcome" />
       <Label alignment="CENTER" layoutY="488.0" prefHeight="11.0" prefWidth="700.0" text="Design By Icssc" />
       <Separator layoutX="1.0" layoutY="49.0" prefWidth="700.0" style="-fx-background-color: #000000;" />
