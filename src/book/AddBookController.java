@@ -111,7 +111,7 @@ public class AddBookController implements Initializable {
 		tfAvaliable.setText("True");
 		
 		ObservableList<String> shelfList = FXCollections.observableArrayList(
-				"shelf1","shelf2"
+				"shelf1","shelf2","shelf3","shelf4","shelf5"
 				);
 		ObservableList<String> statusList = FXCollections.observableArrayList(
 				"Good","Lose Book","Damage"

@@ -129,6 +129,8 @@ public class BookMainController implements Initializable{
     @FXML
     void processRefresh(MouseEvent event) {
 
+    	cobBookCol.getSelectionModel().clearSelection();
+    	tfSearch.setText("");
     	showAllBook("select * from book");
     }
 
