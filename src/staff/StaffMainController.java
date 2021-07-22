@@ -93,8 +93,18 @@ public class StaffMainController implements Initializable{
     }
 
     @FXML
-    void processEdit(MouseEvent event) {
+    void processEdit(MouseEvent event) throws IOException {
 
+		Staff staff = staffTable.getSelectionModel().getSelectedItem();
+		
+		StaffHolder staffHolder = StaffHolder.getStaffInstance();
+		staffHolder.setStaff(staff);
+        
+    	Stage primaryStage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("EditStaffUI.fxml"));
+		primaryStage.setTitle("Edit Staff Section");
+		primaryStage.setScene(new Scene(root));
+		primaryStage.show();
     }
 
     @FXML

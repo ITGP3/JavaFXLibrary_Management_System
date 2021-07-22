@@ -87,6 +87,42 @@ public class StaffDataUtils {
 		return isSaveOk;
 	}
 	
+	//U update
+	public Boolean updateStaff(Staff staff) throws SQLException {
+		connection = DBConnection.getConnection();
+
+		preStmt = connection.prepareStatement("UPDATE `staff` SET `staffFirstName` = ?,"
+				+ " `staffLastName` = ?,"
+				+ " `staffEmail` = ?,"
+				+ " `staffPassword` = ?,"
+				+ " `staffPhone` = ?,"
+				+ " `staffStatus` = ?,"
+				+ " `staffDOB` = ?,"
+				+ " `staffAddress` = ? WHERE (`staffId` = ?);"  
+				);
+
+		preStmt.setString(1, staff.getStaffFirstName());
+		preStmt.setString(2, staff.getStaffLastName());
+		preStmt.setString(3, staff.getStaffEmail());
+		preStmt.setString(4, staff.getStaffPassword());
+		preStmt.setString(5, staff.getStaffPhone());
+		preStmt.setString(6, staff.getStaffStatus());		
+
+		Date date = Date.valueOf(staff.getStaffDOB());
+		preStmt.setDate(7, date);
+		
+		preStmt.setString(8, staff.getStaffAddress());
+
+		preStmt.setInt(9, staff.getStaffId());
+
+		boolean isUpdateOk = preStmt.execute();
+
+		connection.close();
+
+		return isUpdateOk;
+
+	}
+	
 	// D delete
 	public Boolean deleteStaff(Integer staffId) throws SQLException {
 		connection = DBConnection.getConnection();
