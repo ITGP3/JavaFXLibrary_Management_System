@@ -94,7 +94,7 @@ public class AddBookController implements Initializable {
     void processImage(MouseEvent event) {
 
     	FileChooser imageChooser = new FileChooser();
-    	imageChooser.setInitialDirectory(new File("/Users/sitminhtet/"));
+    	imageChooser.setInitialDirectory(new File("c://"));
     	imageChooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png","*.jpg","*.jpeg","*.ico"));
     	
     	File imageFile = imageChooser.showOpenDialog(null);
@@ -108,7 +108,7 @@ public class AddBookController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		tfAvaliable.setText("True");
+		tfAvaliable.setText("true");
 		
 		ObservableList<String> shelfList = FXCollections.observableArrayList(
 				"shelf1","shelf2","shelf3","shelf4","shelf5"

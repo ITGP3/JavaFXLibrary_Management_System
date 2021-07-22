@@ -54,9 +54,9 @@
             <ComboBox fx:id="cobStatus" prefHeight="31.0" prefWidth="211.0" promptText="Choose Status" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <ComboBox fx:id="cobCategory" prefHeight="31.0" prefWidth="210.0" promptText="Choose Category" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" onAction="#processEdit" prefHeight="45.0" prefWidth="72.0" style="-fx-background-color: #FFC2AB;" text="EDIT" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <ComboBox fx:id="cobAvaliable" prefHeight="31.0" prefWidth="200.0" promptText="Choose Avaliable" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label prefHeight="29.0" prefWidth="95.0" text="Book ID" />
-            <TextField fx:id="tfId" prefHeight="29.0" prefWidth="175.0" promptText="Enter ID" GridPane.columnIndex="1" />
+            <TextField fx:id="tfId" editable="false" prefHeight="29.0" prefWidth="175.0" promptText="Enter ID" GridPane.columnIndex="1" />
+            <TextField fx:id="tfAvaliable" editable="false" prefHeight="29.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

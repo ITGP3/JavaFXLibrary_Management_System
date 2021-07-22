@@ -1,6 +1,3 @@
-/**
- * @author ThiriNandarNyan
- */
 package book;
 
 import java.io.File;
@@ -202,7 +199,7 @@ public class BookMainController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+    
         UserHolder userHolder = UserHolder.getUserHolder();
         lblLoginMail.setText(userHolder.getEmail());
 

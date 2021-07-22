@@ -1,7 +1,3 @@
-/**
- * @author ThiriNandarNyan
- */
-
 package utility;
 
 import java.sql.Connection;
@@ -76,6 +72,30 @@ public class BookDataUtils {
 		return isSaveOk;
 	}
 
+	public Boolean updateBook(Book book) throws SQLException {
+		
+		connection = DBConnection.getConnection();
+		preStmt = connection.prepareStatement("UPDATE `book` SET "
+				+ "`bookTitle` = ?, `bookAuthor` = ?, `bookPublisher` = ?,`bookAvaliable` = ?,"
+				+ " `bookShelf` = ?, `bookCategory` = ?, `bookStatus` = ?, `bookImageName` = ?"
+				+ " WHERE (`bookId` = ?);");
+		
+		
+		preStmt.setString(1, book.getBookTitle());
+		preStmt.setString(2, book.getBookAuthor());
+		preStmt.setString(3, book.getBookPublisher());
+		preStmt.setBoolean(4, book.getBookAvaliable());
+		preStmt.setString(5, book.getBookShelf());
+		preStmt.setString(6, book.getBookCategory());
+		preStmt.setString(7, book.getBookStatus());
+		preStmt.setString(8, book.getBookImageName());
+		preStmt.setString(9, book.getBookId());
+		
+		Boolean isUpdateOk = preStmt.execute();
+		connection.close();
+		return isUpdateOk;
+	}
+	
 	//Delete
 	public Boolean deleteBook(Book book) throws SQLException {
 		
