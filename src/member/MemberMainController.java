@@ -3,31 +3,30 @@ package member;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import entity.Member;
 import entity.MemberHolder;
 import entity.UserHolder;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utility.MemberUtility;
-/**
- * 
- * @author Win Pa Pa Aung
- *
- */
+import utility.MyAlert;
 
 public class MemberMainController implements Initializable{
 
@@ -45,7 +44,7 @@ public class MemberMainController implements Initializable{
 
     @FXML
     private TableColumn<Member, String> memberPhone;
-    
+
     @FXML
     private TableColumn<Member, String> memberAddress;
 
@@ -53,15 +52,16 @@ public class MemberMainController implements Initializable{
     private TableColumn<Member, String> memberFee;
 
     @FXML
-    private TextField tfSearchMember;
+    private Label lblEmail;
 
     @FXML
-    private ComboBox<String> cobMemberCoulmn;
+    private ComboBox<String> cobMemberColumn;
 
     @FXML
-    private Label lblLoginEmail;
+    private TextField tfSearch;
     
-    private final MemberUtility memberUtility = new MemberUtility();
+private final MemberUtility memberUtility = new MemberUtility();
+private MyAlert alert = new MyAlert();
     
     public void showTable(String sql) {
     	try {
@@ -73,77 +73,98 @@ public class MemberMainController implements Initializable{
     }
 
     @FXML
-    void processAdd(ActionEvent event) throws IOException {
-    	Stage adminStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        adminStage.hide();
-        Parent adminRoot = FXMLLoader.load(getClass().getResource("addMember/AddMemberUI.fxml"));
-        adminStage.setTitle("Member Add Session");
-        adminStage.setScene(new Scene(adminRoot));
-        adminStage.show();
+    void processAdd(MouseEvent event) throws IOException {
+    	Stage primaryStage = new Stage();
+    	Parent root = FXMLLoader.load(getClass().getResource("addMember/AddMemberUI.fxml"));
+        primaryStage.setTitle("Add Member Section");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
     }
 
     @FXML
-    void processDelete(ActionEvent event) throws SQLException {
-    	
+    void processDelete(MouseEvent event) throws SQLException {
     	Member member = memberTable.getSelectionModel().getSelectedItem();
     	
+    	if (member == null){
+            Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+            alertIssue.setTitle("Warning!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Select Member to Delete");
+            alertIssue.showAndWait();
+            return;
+        }
+    	if(memberUtility.memberAlreadyIssue(member)){
+            Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+            alertIssue.setTitle("Warning!!!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Issue Member Can not delete");
+            alertIssue.showAndWait();
+            return;
+
+        }
+    	 Optional<ButtonType> result = alert.getConfirmAlert("Confirmation Dialog", "Are u sure u want to delete?",  "This action will delete.");
+
+    	 if(result.get() == ButtonType.OK) {
     	Boolean isDeleteOk = memberUtility.deleMember(member.getMemberId());
     	
     	if(!isDeleteOk) {
 
     		System.out.println("Delete Ok");
+    		showTable("select * from member;");
     	}
+    	 }
+    }
+
+    @FXML
+    void processEdit(MouseEvent event) throws IOException {
+    	Member member = memberTable.getSelectionModel().getSelectedItem();
+    	
+    	MemberHolder memberHolder = MemberHolder.getMemberInstance();
+    	memberHolder.setMember(member);
+    	Stage primaryStage = new Stage();
+    	Parent root = FXMLLoader.load(getClass().getResource("editMember/EditMemberUI.fxml"));
+        primaryStage.setTitle("Edit Member Section");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
 
     }
 
     @FXML
-    void processEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void processRefresh(ActionEvent event) {
+    void processRefresh(MouseEvent event) {
     	showTable("select * from member;");
     }
 
     @FXML
-    void processSearch(ActionEvent event) {
-    	
-    	String column = cobMemberCoulmn.getValue();
-    	String search = tfSearchMember.getText().trim();
+    void processSearch(MouseEvent event) {
+    	String column = cobMemberColumn.getValue();
+    	String search = tfSearch.getText();
     	showTable("select * from member where "+column+" = '"+search+"';");
 
     }
 
     @FXML
-    void processView(ActionEvent event) throws IOException {
-    	
-    	
-    	
+    void processView(MouseEvent event) throws IOException {
     	Member member = memberTable.getSelectionModel().getSelectedItem();
     	
     	MemberHolder memberHolder = MemberHolder.getMemberInstance();
     	memberHolder.setMember(member);
     	
-    	Stage adminStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        adminStage.hide();
-        Parent adminRoot = FXMLLoader.load(getClass().getResource("viewMember/ViewMember.fxml"));
-        adminStage.setTitle("Member View Session");
-        adminStage.setScene(new Scene(adminRoot));
-        adminStage.show();
-    	
-    	
-    	
+    	Stage primaryStage = new Stage();
+    	Parent root = FXMLLoader.load(getClass().getResource("viewMember/ViewMember.fxml"));
+        primaryStage.setTitle("View Member Section");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
     }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
-		lblLoginEmail.setText(UserHolder.getUserHolder().getEmail());
+		lblEmail.setText(UserHolder.getUserHolder().getEmail());
 		
 		try {
-			cobMemberCoulmn.setItems(memberUtility.getAllColumn());
+			cobMemberColumn.setItems(memberUtility.getAllColumn());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -158,6 +179,7 @@ public class MemberMainController implements Initializable{
 		memberFee.setCellValueFactory(new PropertyValueFactory<>("memberFee"));
 		
 		showTable("select * from member;");
+		
 	}
 
 }

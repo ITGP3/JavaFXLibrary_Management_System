@@ -67,11 +67,42 @@ public class MemberUtility {
 			return isDeleteOk;
 	    	
 	    }
+	    //Update
+	    public Boolean updateMember(Member member) throws SQLException {
+	    	connection = DBConnection.getConnection();
+	    	preStmt = connection.prepareStatement("UPDATE `member` SET "
+	    			+ "`memberName` = ?, `memberEmail` = ?, "
+	    			+ "`memberPhone` = ?, `memberAddress` = ?,"
+	    			+ " `memberFee` = ? WHERE (`memberId` = ?);");
+	    	 preStmt.setString(1, member.getMemberName());
+	    	  preStmt.setString(2, member.getMemberEmail());
+	    	  preStmt.setString(3, member.getMemberPhone());
+	    	  preStmt.setString(4, member.getMemberAddress());
+	    	  preStmt.setString(5, member.getMemberFee());
+	    	  preStmt.setString(6, member.getMemberId());
+	    	  
+	    	  Boolean isUpdateOk = preStmt.execute();
+	  		connection.close();
+	  		return isUpdateOk;
+	    	
+	    }
+	    //alreadexitsissue
+	    public boolean memberAlreadyIssue(Member member) throws SQLException {
+	    	connection = DBConnection.getConnection();
+	    	String query = "select count(*) from issue where memberId = ?";
+			preStmt = connection.prepareStatement(query);
+			preStmt.setString(1, member.getMemberId());
+			rs = preStmt.executeQuery();
+			if (rs.next()){
+				int count = rs.getInt(1);
+				System.out.println(count);
+				return (count>0);
+			}
+			return false;
+	    }
 	    
 	    //getallcolumnfrommembertable
-	    
-	    
-	    public ObservableList<String> getAllColumn() throws SQLException{
+	  public ObservableList<String> getAllColumn() throws SQLException{
 	    	ObservableList<String> columnList = FXCollections.observableArrayList();
 	    	
 	    	connection = DBConnection.getConnection();

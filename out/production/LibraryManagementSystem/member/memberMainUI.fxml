@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -17,256 +16,112 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #FFC2AB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="member.MemberMainController">
-
-    <children>
-        <Label alignment="CENTER" layoutY="-1.0" prefHeight="50.0" prefWidth="700.0" style="-fx-background-color: #FFC2AB;" text="Member Section">
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Label>
-        <TableView layoutY="115.0" prefHeight="371.0" prefWidth="566.0">
-            <columns>
-                <TableColumn prefWidth="25.0" text="Id" />
-                <TableColumn prefWidth="146.0" text="Name" />
-                <TableColumn prefWidth="183.0" text="Email" />
-                <TableColumn prefWidth="81.0" text="Phone" />
-                <TableColumn prefWidth="130.0" text="Password" />
-            </columns>
-        </TableView>
-        <VBox layoutX="576.0" layoutY="107.0" prefHeight="393.0" prefWidth="122.0">
-            <children>
-                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Add">
-                    <VBox.margin>
-                        <Insets top="5.0" />
-                    </VBox.margin>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../image/memberSection/add-business-card-symbol.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <effect>
-                        <InnerShadow />
-                    </effect>
-                </Button>
-                <Button contentDisplay="TOP" layoutX="10.0" layoutY="30.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Edit">
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../image/memberSection/edit.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <VBox.margin>
-                        <Insets top="5.0" />
-                    </VBox.margin>
-                    <effect>
-                        <InnerShadow />
-                    </effect>
-                </Button>
-                <Button contentDisplay="TOP" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="View">
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../image/memberSection/id-card(2).png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <VBox.margin>
-                        <Insets top="5.0" />
-                    </VBox.margin>
-                    <effect>
-                        <InnerShadow />
-                    </effect>
-                </Button>
-                <Button contentDisplay="TOP" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Refresh">
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../image/memberSection/file.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <VBox.margin>
-                        <Insets top="5.0" />
-                    </VBox.margin>
-                    <effect>
-                        <InnerShadow />
-                    </effect>
-                </Button>
-                <Button contentDisplay="TOP" layoutX="10.0" layoutY="240.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Delete">
-                    <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../image/memberSection/cancel.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <VBox.margin>
-                        <Insets top="5.0" />
-                    </VBox.margin>
-                    <effect>
-                        <InnerShadow />
-                    </effect>
-                </Button>
-            </children>
-        </VBox>
-        <TextField layoutX="340.0" layoutY="66.0" prefHeight="33.0" prefWidth="226.0" promptText="Search By Member">
-            <effect>
-                <InnerShadow />
-            </effect></TextField>
-        <Button layoutX="576.0" layoutY="67.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #FFC2AB;" text="Search">
-            <graphic>
-                <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../image/bookSection/search.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-            <effect>
-                <DropShadow />
-            </effect>
-        </Button>
-        <ComboBox layoutX="176.0" layoutY="66.0" prefHeight="33.0" prefWidth="150.0" promptText="Member Column" style="-fx-background-color: #FFC2AB;">
-            <effect>
-                <InnerShadow />
-            </effect></ComboBox>
-        <Label alignment="CENTER" layoutX="1.0" layoutY="75.0" prefHeight="25.0" prefWidth="150.0" text="Login  Eamil" />
-        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="150.0" text="Welcome" />
-        <Label alignment="CENTER" layoutY="488.0" prefHeight="11.0" prefWidth="700.0" text="Design By Icssc" />
-        <Separator layoutX="1.0" layoutY="49.0" prefWidth="700.0" style="-fx-background-color: #000000;" />
-        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="221.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../image/memberSection/id-card(1).png" />
-            </image>
-        </ImageView>
-    </children>
-
    <children>
-      <Label alignment="CENTER" layoutY="-1.0" prefHeight="50.0" prefWidth="700.0" style="-fx-background-color: #FFC2AB;" text="Member Section">
+      <Label alignment="CENTER" layoutY="6.0" prefHeight="50.0" prefWidth="700.0" text="Member Session">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="memberTable" layoutY="115.0" prefHeight="371.0" prefWidth="566.0">
+      <TableView fx:id="memberTable" layoutY="108.0" prefHeight="371.0" prefWidth="566.0">
         <columns>
-          <TableColumn fx:id="memberId" prefWidth="59.0" text="Id" />
-          <TableColumn fx:id="memberName" prefWidth="128.0" text="Name" />
-            <TableColumn fx:id="memberEmail" prefWidth="85.0" text="Email" />
-            <TableColumn fx:id="memberPhone" prefWidth="61.0" text="Phone" />
-            <TableColumn fx:id="memberAddress" prefWidth="88.0" text="Member Address" />
-            <TableColumn fx:id="memberFee" prefWidth="147.0" text="Member Fee" />
+          <TableColumn fx:id="memberId" prefWidth="37.0" text="ID" />
+          <TableColumn fx:id="memberName" prefWidth="106.0" text="Name" />
+            <TableColumn fx:id="memberEmail" prefWidth="106.0" text="Email" />
+            <TableColumn fx:id="memberPhone" prefWidth="86.0" text="Phone" />
+            <TableColumn fx:id="memberAddress" prefWidth="106.0" text="Address" />
+            <TableColumn fx:id="memberFee" prefWidth="124.0" text="Fee" />
         </columns>
       </TableView>
-      <VBox layoutX="576.0" layoutY="107.0" prefHeight="393.0" prefWidth="122.0">
-         <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#processAdd" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Add">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/memberSection/add-business-card-symbol.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <effect>
-                  <InnerShadow />
-               </effect>
-            </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="30.0" mnemonicParsing="false" onAction="#processEdit" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Edit">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/memberSection/edit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-               <effect>
-                  <InnerShadow />
-               </effect>
-            </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#processView" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="View">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/memberSection/id-card(2).png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-               <effect>
-                  <InnerShadow />
-               </effect>
-            </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" onAction="#processRefresh" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Refresh">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/memberSection/file.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-               <effect>
-                  <InnerShadow />
-               </effect>
-            </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="240.0" mnemonicParsing="false" onAction="#processDelete" prefHeight="70.0" prefWidth="123.0" style="-fx-background-color: #FFC2AB;" text="Delete">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/memberSection/cancel.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-               <effect>
-                  <InnerShadow />
-               </effect>
-            </Button>
-         </children>
-      </VBox>
-      <TextField fx:id="tfSearchMember" layoutX="340.0" layoutY="66.0" prefHeight="33.0" prefWidth="226.0" promptText="Search By Member">
+      <Label layoutX="43.0" layoutY="56.0" text="Welcome" />
+      <Label fx:id="lblEmail" alignment="CENTER" layoutX="34.0" layoutY="80.0" prefHeight="17.0" prefWidth="62.0" text="Login Mail" />
+      <ComboBox fx:id="cobMemberColumn" layoutX="179.0" layoutY="64.0" prefHeight="33.0" prefWidth="150.0" promptText="Member column">
          <effect>
             <InnerShadow />
-         </effect></TextField>
-      <Button layoutX="576.0" layoutY="67.0" mnemonicParsing="false" onAction="#processSearch" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #FFC2AB;" text="Search">
+         </effect>
+      </ComboBox>
+      <TextField fx:id="tfSearch" layoutX="377.0" layoutY="64.0" prefHeight="33.0" prefWidth="126.0" promptText="Search by member">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </TextField>
+      <Button layoutX="545.0" layoutY="64.0" mnemonicParsing="false" onMouseClicked="#processSearch" prefHeight="33.0" prefWidth="122.0" text="Search">
          <graphic>
-            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="15.0" fitWidth="15.0" onMouseClicked="#processSearch" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/bookSection/search.png" />
                </image>
             </ImageView>
          </graphic>
          <effect>
-            <DropShadow />
+            <InnerShadow />
          </effect>
       </Button>
-      <ComboBox fx:id="cobMemberCoulmn" layoutX="176.0" layoutY="66.0" prefHeight="33.0" prefWidth="150.0" promptText="Member Column" style="-fx-background-color: #FFC2AB;">
+      <VBox layoutX="572.0" layoutY="108.0" prefHeight="393.0" prefWidth="122.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#processAdd" prefHeight="70.0" prefWidth="123.0" text="Add">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processAdd" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/memberSection/add-business-card-symbol.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#processEdit" prefHeight="70.0" prefWidth="123.0" text="Edit">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processEdit" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/memberSection/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#processView" prefHeight="70.0" prefWidth="123.0" text="View">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processView" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/memberSection/id-card(2).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#processRefresh" prefHeight="70.0" prefWidth="123.0" text="Refresh">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processRefresh" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/memberSection/file.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#processDelete" prefHeight="70.0" prefWidth="123.0" text="Delete">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processDelete" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/memberSection/cancel.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <Label alignment="CENTER" layoutY="478.0" prefHeight="11.0" prefWidth="700.0" text="Design Issc">
          <effect>
-            <InnerShadow />
-         </effect></ComboBox>
-      <Label fx:id="lblLoginEmail" alignment="BOTTOM_CENTER" layoutX="20.0" layoutY="88.0" prefHeight="25.0" prefWidth="150.0" />
-      <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="150.0" text="Welcome" />
-      <Label alignment="CENTER" layoutY="488.0" prefHeight="11.0" prefWidth="700.0" text="Design By Icssc" />
-      <Separator layoutX="1.0" layoutY="49.0" prefWidth="700.0" style="-fx-background-color: #000000;" />
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="221.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/memberSection/id-card(1).png" />
-         </image>
-      </ImageView>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Separator layoutY="55.0" prefWidth="700.0" style="-fx-background-color: #000000;" />
    </children>
-
 </AnchorPane>
