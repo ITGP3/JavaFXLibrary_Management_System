@@ -6,6 +6,12 @@ import entity.IssueBook;
 
 import java.sql.*;
 
+/**
+ *
+ * @author Sit Min Htet
+ *
+ */
+
 public class IssueBookUtility {
 
     private Connection connection;
@@ -40,6 +46,21 @@ public class IssueBookUtility {
         connection.close();
         return  isInsertOk;
     }
+
+    public boolean updateIssueBook(IssueBook issueBook) throws SQLException {
+        connection = DBConnection.getConnection();
+
+        String issueQuery = "update issue set issueTime = CURRENT_TIMESTAMP , renewCount= renewCount+1 where bookId = ?";
+        preStmt = connection.prepareStatement(issueQuery);
+
+        preStmt.setString(1,issueBook.getBookId());
+
+
+        boolean isInsertOk= preStmt.execute();
+        connection.close();
+        return  isInsertOk;
+    }
+
 
 }
 

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="submissionBook.SubmissionBookController">
+   <children>
+      <Label alignment="CENTER" layoutY="-1.0" prefHeight="40.0" prefWidth="600.0" text="Submission Book">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="bookId" layoutX="211.0" layoutY="68.0" onAction="#processBookId" prefHeight="26.0" prefWidth="175.0" promptText="Enter Book ID" />
+      <FontAwesomeIcon glyphName="BOOK" layoutX="174.0" layoutY="90.0" size="25" />
+      <HBox layoutX="14.0" layoutY="115.0" prefHeight="214.0" prefWidth="574.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="175.0" prefWidth="180.0" style="-fx-background-color: #e7e7e7;">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/memberSection/id-card(1).png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label fx:id="lblMemberName" text="Member Name">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblMemberEmail" text="Mamber Email">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblMemberPhone" text="Member Phone">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="175.0" prefWidth="180.0" style="-fx-background-color: #e7e7e7;">
+               <children>
+                  <FontAwesomeIcon glyphName="BOOK" size="20">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </FontAwesomeIcon>
+                  <Label fx:id="lblBookName" text="Book Name">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblBookShelf" text="Book Shelf">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblBookCategory" text="Book Category">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="190.0" layoutY="10.0" prefHeight="175.0" prefWidth="180.0" style="-fx-background-color: #e7e7e7;">
+               <children>
+                  <FontAwesomeIcon glyphName="CALENDAR" size="20">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </FontAwesomeIcon>
+                  <Label fx:id="lblIssueDate" text="Issue Date">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblNoOfDays" text="No: of Days">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label disable="true" visible="false">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <Button layoutX="244.0" layoutY="353.0" mnemonicParsing="false" onAction="#processSubmission" prefHeight="33.0" prefWidth="109.0" text="Submission">
+         <graphic>
+            <FontAwesomeIcon glyphName="CHECK" size="20" />
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

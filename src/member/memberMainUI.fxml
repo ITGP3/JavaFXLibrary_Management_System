@@ -23,14 +23,14 @@
          </font>
       </Label>
       <TableView fx:id="memberTable" layoutY="108.0" prefHeight="371.0" prefWidth="566.0">
-        <columns>
-          <TableColumn fx:id="memberId" prefWidth="37.0" text="ID" />
-          <TableColumn fx:id="memberName" prefWidth="106.0" text="Name" />
+         <columns>
+            <TableColumn fx:id="memberId" prefWidth="37.0" text="ID" />
+            <TableColumn fx:id="memberName" prefWidth="106.0" text="Name" />
             <TableColumn fx:id="memberEmail" prefWidth="106.0" text="Email" />
             <TableColumn fx:id="memberPhone" prefWidth="86.0" text="Phone" />
             <TableColumn fx:id="memberAddress" prefWidth="106.0" text="Address" />
             <TableColumn fx:id="memberFee" prefWidth="124.0" text="Fee" />
-        </columns>
+         </columns>
       </TableView>
       <Label layoutX="43.0" layoutY="56.0" text="Welcome" />
       <Label fx:id="lblEmail" alignment="CENTER" layoutX="34.0" layoutY="80.0" prefHeight="17.0" prefWidth="62.0" text="Login Mail" />

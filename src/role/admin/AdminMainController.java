@@ -75,8 +75,12 @@ public class AdminMainController implements Initializable {
     }
 
     @FXML
-    void processRenewBook(MouseEvent event) {
-
+    void processRenewBook(MouseEvent event) throws IOException {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        Parent root = FXMLLoader.load(getClass().getResource("../../renewBook/renewBookUI.fxml"));
+        stage.setTitle("RENEW");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     @FXML
@@ -90,8 +94,12 @@ public class AdminMainController implements Initializable {
     }
 
     @FXML
-    void processSubmissionBook(MouseEvent event) {
-
+    void processSubmissionBook(MouseEvent event) throws IOException {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        Parent root = FXMLLoader.load(getClass().getResource("../../submissionBook/submissionBookUI.fxml"));
+        stage.setTitle("SUBMISSION");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     @Override

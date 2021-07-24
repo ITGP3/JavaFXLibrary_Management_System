@@ -53,6 +53,17 @@ public class IssueController implements Initializable {
     @FXML
     private Label lblLoginEmail;
 
+    @FXML
+    private Label lblMemberAddress;
+
+    @FXML
+    private Label lblNoBook;
+
+    @FXML
+    private Label lblNoMember;
+
+
+
     private final IssueBookUtility issueBookUtility = new IssueBookUtility();
     private final DBConnection dbConnection = new DBConnection();
 
@@ -75,7 +86,8 @@ public class IssueController implements Initializable {
         }
 
         if (!isSearchOK){
-            lblBookName.setText("No Such Book Avaliable!!");
+            lblNoBook.setText("No Such Book Avaliable!!");
+            lblBookName.setText("");
             lblBookAuthor.setText("");
             lblBookShelf.setText("");
             lblBookStatus.setText("");
@@ -94,18 +106,23 @@ public class IssueController implements Initializable {
             String name = resultSet.getString("memberName");
             String email = resultSet.getString("memberEmail");
             String phone = resultSet.getString("memberPhone");
+            String address = resultSet.getString("memberAddress");
 
             lblMemberName.setText(name);
             lblMemberEmail.setText(email);
             lblMemberPhone.setText(phone);
+            lblMemberAddress.setText(address);
+
 
             isSearchOK = true;
         }
 
         if (!isSearchOK){
-            lblMemberName.setText("No Such Member is not Register!!!");
+            lblNoMember.setText("No Such Member is Register!!!");
+            lblMemberName.setText("");
             lblMemberEmail.setText("");
             lblMemberPhone.setText("");
+            lblMemberAddress.setText("");
         }
     }
 

@@ -24,6 +24,10 @@ public class IssueBook {
         this.memberId = new SimpleStringProperty(memberId);
     }
 
+    public IssueBook(String bookId) {
+        this.bookId = new SimpleStringProperty(bookId);
+    }
+
     public String getBookId() {
         return bookId.get();
     }

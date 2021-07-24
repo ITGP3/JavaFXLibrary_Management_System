@@ -161,7 +161,7 @@ private MyAlert alert = new MyAlert();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		lblEmail.setText(UserHolder.getUserHolder().getEmail());
+        lblEmail.setText(UserHolder.getUserHolder().getEmail());
 		
 		try {
 			cobMemberColumn.setItems(memberUtility.getAllColumn());
