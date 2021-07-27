@@ -16,6 +16,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ *
+ * @author Sit Min Htet
+ *
+ */
+
 public class AdminMainController implements Initializable {
 
     @FXML

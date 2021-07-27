@@ -21,6 +21,13 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+
+/**
+ *
+ * @author Sit Min Htet
+ *
+ */
+
 public class IssueController implements Initializable {
 
     @FXML
