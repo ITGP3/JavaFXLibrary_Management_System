@@ -19,7 +19,10 @@ import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -66,6 +69,16 @@ public class EditBookController implements Initializable{
     
     private final BookDataUtils bookDataUtils = new BookDataUtils();
 
+    
+    @FXML
+    void processBack(MouseEvent event) throws IOException {
+    	Stage adminStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        adminStage.hide();
+        Parent root = FXMLLoader.load(getClass().getResource("bookMainUI.fxml"));
+        adminStage.setScene(new Scene(root));
+        adminStage.show();
+    }
+    
     @FXML
     void processEdit(ActionEvent event) throws SQLException, IOException {
 

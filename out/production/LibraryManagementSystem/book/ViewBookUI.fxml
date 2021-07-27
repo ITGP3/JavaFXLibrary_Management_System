@@ -3,6 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,9 +14,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="book.ViewBookController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="book.ViewBookController">
    <children>
-      <Label alignment="CENTER" layoutX="1.0" prefHeight="50.0" prefWidth="700.0" style="-fx-background-color: #FFC2AB;" text="View Book Section">
+      <Label alignment="CENTER" layoutX="1.0" prefHeight="50.0" prefWidth="700.0" text="View Book Section">
          <font>
             <Font size="24.0" />
          </font>
@@ -22,7 +25,7 @@
          <image>
             <Image url="@../image/bookSection/addimg.png" />
          </image></ImageView>
-      <GridPane layoutX="318.0" layoutY="86.0" prefHeight="377.0" prefWidth="294.0">
+      <GridPane layoutX="262.0" layoutY="86.0" prefHeight="377.0" prefWidth="337.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.0" minWidth="10.0" prefWidth="194.0" />
@@ -55,12 +58,31 @@
             <Label fx:id="lblCategory" alignment="CENTER" prefHeight="29.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Label fx:id="lblStatus" alignment="CENTER" prefHeight="29.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Label fx:id="lblId" alignment="CENTER" prefHeight="29.0" prefWidth="193.0" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" onAction="#processBack" prefHeight="45.0" prefWidth="72.0" style="-fx-background-color: #FFC2AB;" text="BACK" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#processBack" prefHeight="60.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
                <GridPane.margin>
-                  <Insets left="70.0" />
+                  <Insets left="130.0" />
                </GridPane.margin>
             </Button>
+            <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processBack" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <image>
+                  <Image url="@../image/memberSection/undo%20(1).png" />
+               </image>
+               <GridPane.margin>
+                  <Insets bottom="13.0" left="155.0" />
+               </GridPane.margin>
+            </ImageView>
          </children>
       </GridPane>
+      <Separator layoutX="1.0" layoutY="50.0" prefWidth="700.0">
+         <effect>
+            <Shadow color="WHITE" height="0.0" radius="0.0" width="0.0" />
+         </effect>
+      </Separator>
    </children>
 </AnchorPane>

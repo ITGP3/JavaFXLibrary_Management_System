@@ -5,18 +5,17 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
-
 import javax.imageio.ImageIO;
-
 import entity.Book;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -26,6 +25,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 import utility.BookDataUtils;
+import utility.MyAlert;
 
 public class AddBookController implements Initializable {
 
@@ -59,9 +59,32 @@ public class AddBookController implements Initializable {
     private String imageName;
     
     private BookDataUtils bookDataUtil = new BookDataUtils();
+    private MyAlert alert = new MyAlert();
+    
+    @FXML
+    void processClear(MouseEvent event) {
+    	Optional<ButtonType> result = alert.getConfirmAlert("Confirmation Dialog", "Are u sure u want to clear all field?", "This action will clear all data from all fields.");
+		
+		if(result.get() == ButtonType.OK) {
+			clearAllField();
+		}
+    }
+
+	public void clearAllField() {
+		tfId.clear();
+		tfTitle.clear();
+		tfAuthor.clear();
+		tfPublisher.clear();
+		tfAvaliable.clear();
+		cobShelf.setValue("Choose Shelf No");
+		cobStatus.setValue("Choose Status");
+		cobCategory.setValue("Choose Category");
+		bookImage.setImage(new Image(getClass().getResourceAsStream("src/image/bookSection/addimg.png")));
+		
+	}
 
     @FXML
-    void processAdd(ActionEvent event) throws SQLException, IOException {
+    void processAdd(MouseEvent event) throws SQLException, IOException {
 
     	String bookId = tfId.getText().trim();
     	String bookTitle = tfTitle.getText().trim();

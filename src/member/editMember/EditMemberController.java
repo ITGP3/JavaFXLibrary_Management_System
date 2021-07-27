@@ -1,5 +1,6 @@
 package member.editMember;
 
+import java.io.IOException;
 import java.net.URL;
 
 import java.sql.SQLException;
@@ -10,10 +11,15 @@ import entity.MemberHolder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import utility.MemberUtility;
 import utility.MyAlert;
 /**
@@ -44,6 +50,15 @@ public class EditMemberController implements Initializable{
     
     private final MemberUtility memberUtility = new MemberUtility();
     private MyAlert alert = new MyAlert();
+    
+    @FXML
+    void processBack(MouseEvent event) throws IOException {
+    	Stage adminStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        adminStage.hide();
+        Parent root = FXMLLoader.load(getClass().getResource("../memberMainUI.fxml"));
+        adminStage.setScene(new Scene(root));
+        adminStage.show();
+    }
     
 
     @FXML

@@ -9,42 +9,38 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #FFC2AB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="member.MemberMainController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="member.MemberMainController">
    <children>
-      <Label alignment="CENTER" layoutY="6.0" prefHeight="50.0" prefWidth="700.0" text="Member Session">
+      <Label alignment="CENTER" prefHeight="50.0" prefWidth="700.0" text="Member Session">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="memberTable" layoutY="108.0" prefHeight="371.0" prefWidth="566.0">
+      <TableView fx:id="memberTable" layoutX="4.0" layoutY="108.0" prefHeight="371.0" prefWidth="562.0">
          <columns>
-            <TableColumn fx:id="memberId" prefWidth="37.0" text="ID" />
-            <TableColumn fx:id="memberName" prefWidth="106.0" text="Name" />
-            <TableColumn fx:id="memberEmail" prefWidth="106.0" text="Email" />
-            <TableColumn fx:id="memberPhone" prefWidth="86.0" text="Phone" />
-            <TableColumn fx:id="memberAddress" prefWidth="106.0" text="Address" />
-            <TableColumn fx:id="memberFee" prefWidth="124.0" text="Fee" />
+            <TableColumn fx:id="memberId" prefWidth="37.0" style="-fx-background-color: #FFEAA3;" text="ID" />
+            <TableColumn fx:id="memberName" prefWidth="106.0" style="-fx-background-color: #F3DF9B;" text="Name" />
+            <TableColumn fx:id="memberEmail" prefWidth="106.0" style="-fx-background-color: #FFEAA3;" text="Email" />
+            <TableColumn fx:id="memberPhone" prefWidth="86.0" style="-fx-background-color: #F3DF9B;" text="Phone" />
+            <TableColumn fx:id="memberAddress" prefWidth="106.0" style="-fx-background-color: #FFEAA3;" text="Address" />
+            <TableColumn fx:id="memberFee" prefWidth="124.0" style="-fx-background-color: #F3DF9B;" text="Fee" />
          </columns>
+         <effect>
+            <InnerShadow />
+         </effect>
       </TableView>
       <Label layoutX="43.0" layoutY="56.0" text="Welcome" />
       <Label fx:id="lblEmail" alignment="CENTER" layoutX="34.0" layoutY="80.0" prefHeight="17.0" prefWidth="62.0" text="Login Mail" />
-      <ComboBox fx:id="cobMemberColumn" layoutX="179.0" layoutY="64.0" prefHeight="33.0" prefWidth="150.0" promptText="Member column">
-         <effect>
-            <InnerShadow />
-         </effect>
-      </ComboBox>
-      <TextField fx:id="tfSearch" layoutX="377.0" layoutY="64.0" prefHeight="33.0" prefWidth="126.0" promptText="Search by member">
-         <effect>
-            <InnerShadow />
-         </effect>
-      </TextField>
-      <Button layoutX="545.0" layoutY="64.0" mnemonicParsing="false" onMouseClicked="#processSearch" prefHeight="33.0" prefWidth="122.0" text="Search">
+      <ComboBox fx:id="cobMemberColumn" layoutX="250.0" layoutY="65.0" prefHeight="31.0" prefWidth="141.0" promptText="Member column" style="-fx-background-color: #FFFFFF;" />
+      <TextField fx:id="tfSearch" layoutX="391.0" layoutY="64.0" prefHeight="33.0" prefWidth="175.0" promptText="Search by member" />
+      <Button layoutX="572.0" layoutY="64.0" mnemonicParsing="false" onMouseClicked="#processSearch" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="Search">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="15.0" onMouseClicked="#processSearch" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -56,9 +52,9 @@
             <InnerShadow />
          </effect>
       </Button>
-      <VBox layoutX="572.0" layoutY="108.0" prefHeight="393.0" prefWidth="122.0" spacing="10.0">
+      <VBox layoutX="572.0" layoutY="108.0" prefHeight="393.0" prefWidth="122.0" spacing="11.0">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#processAdd" prefHeight="70.0" prefWidth="123.0" text="Add">
+            <Button mnemonicParsing="false" onMouseClicked="#processAdd" prefHeight="65.0" prefWidth="122.0" style="-fx-background-color: #FFFFFF;" text="Add">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processAdd" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +66,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#processEdit" prefHeight="70.0" prefWidth="123.0" text="Edit">
+            <Button mnemonicParsing="false" onMouseClicked="#processEdit" prefHeight="65.0" prefWidth="122.0" style="-fx-background-color: #FFFFFF;" text="Edit">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processEdit" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -82,7 +78,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#processView" prefHeight="70.0" prefWidth="123.0" text="View">
+            <Button mnemonicParsing="false" onMouseClicked="#processView" prefHeight="65.0" prefWidth="123.0" style="-fx-background-color: #FFFFFF;" text="View">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processView" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -94,7 +90,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#processRefresh" prefHeight="70.0" prefWidth="123.0" text="Refresh">
+            <Button mnemonicParsing="false" onMouseClicked="#processRefresh" prefHeight="65.0" prefWidth="123.0" style="-fx-background-color: #FFFFFF;" text="Refresh">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processRefresh" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -106,7 +102,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#processDelete" prefHeight="70.0" prefWidth="123.0" text="Delete">
+            <Button mnemonicParsing="false" onMouseClicked="#processDelete" prefHeight="65.0" prefWidth="123.0" style="-fx-background-color: #FFFFFF;" text="Delete">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processDelete" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -114,6 +110,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
          </children>
       </VBox>
@@ -122,6 +121,14 @@
             <DropShadow />
          </effect>
       </Label>
-      <Separator layoutY="55.0" prefWidth="700.0" style="-fx-background-color: #000000;" />
+      <Separator layoutY="49.0" prefWidth="700.0">
+         <effect>
+            <Shadow height="0.0" radius="0.0" width="0.0" />
+         </effect></Separator>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="228.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/memberSection/id-card(1).png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

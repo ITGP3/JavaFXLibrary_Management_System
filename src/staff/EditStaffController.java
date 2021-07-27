@@ -1,21 +1,26 @@
 package staff;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
 import entity.Staff;
 import entity.StaffHolder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import utility.MyAlert;
 import utility.StaffDataUtils;
 
@@ -57,9 +62,17 @@ public class EditStaffController implements Initializable {
     
     private Integer staffUpdateId;
     
+    @FXML
+    void processBack(MouseEvent event) throws IOException {
+    	Stage adminStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        adminStage.hide();
+        Parent root = FXMLLoader.load(getClass().getResource("staffMainUI.fxml"));
+        adminStage.setScene(new Scene(root));
+        adminStage.show();
+    }
 
     @FXML
-    void processEdit(ActionEvent event) throws SQLException {
+    void processSave(MouseEvent event) throws SQLException {
     	String staffFirstName = tfFirstName.getText().trim();
 		String staffLastName = tfLastName.getText().trim();
 		String staffEmail = tfEmail.getText().trim();

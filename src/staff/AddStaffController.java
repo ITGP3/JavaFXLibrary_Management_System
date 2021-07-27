@@ -5,17 +5,16 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import entity.Staff;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import utility.MyAlert;
 import utility.StaffDataUtils;
 
@@ -56,7 +55,7 @@ public class AddStaffController implements Initializable {
     private final StaffDataUtils staffDataUtils = new StaffDataUtils();
     
     @FXML
-    void processClear(ActionEvent event) {
+    void processClear(MouseEvent event) {
     	Optional<ButtonType> result = alert.getConfirmAlert("Confirmation Dialog", "Are u sure u want to clear all field?", "This action will clear all data from all fields.");
 		
 		if(result.get() == ButtonType.OK) {
@@ -76,7 +75,7 @@ public class AddStaffController implements Initializable {
 	}
     
 	@FXML
-	void processSave(ActionEvent event) throws SQLException {
+	void processSave(MouseEvent event) throws SQLException {
 		
 		String staffFirstName = tfFirstName.getText().trim();
 		String staffLastName = tfLastName.getText().trim();

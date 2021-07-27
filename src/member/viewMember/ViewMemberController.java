@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import entity.Member;
 import entity.MemberHolder;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 /**
  * 
@@ -42,13 +42,12 @@ public class ViewMemberController implements Initializable {
     private Label lblFee;
 
     @FXML
-    void processBack(ActionEvent event) throws IOException {
+    void processBack(MouseEvent event) throws IOException {
     	Stage adminStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         adminStage.hide();
-        Parent adminRoot = FXMLLoader.load(getClass().getResource("../memberMainUI.fxml"));
-        adminStage.setScene(new Scene(adminRoot));
+        Parent root = FXMLLoader.load(getClass().getResource("../memberMainUI.fxml"));
+        adminStage.setScene(new Scene(root));
         adminStage.show();
-
     }
 
 	@Override
