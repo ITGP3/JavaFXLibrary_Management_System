@@ -4,7 +4,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="issueBook.IssueController">
+<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #e9d595;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="issueBook.IssueController">
    <children>
       <Label alignment="CENTER" prefHeight="38.0" prefWidth="600.0" text="Issue Book">
          <font>
@@ -27,13 +30,13 @@
          </font>
       </Label>
       <FontAwesomeIcon glyphName="TABLE" layoutX="543.0" layoutY="71.0" onMouseClicked="#processIssueHistory" size="38" />
-      <Button layoutX="259.0" layoutY="407.0" mnemonicParsing="false" onAction="#processIssue" prefHeight="29.0" prefWidth="82.0" text="Issue">
+      <Button layoutX="259.0" layoutY="398.0" mnemonicParsing="false" onAction="#processIssue" prefHeight="38.0" prefWidth="82.0" text="Issue">
          <graphic>
             <FontAwesomeIcon glyphName="CALENDAR" size="20" />
          </graphic>
       </Button>
-      <Label fx:id="lblLoginEmail" alignment="CENTER" layoutX="12.0" layoutY="46.0" prefHeight="26.0" prefWidth="135.0" text="Login Email" />
-      <Label alignment="CENTER" layoutX="12.0" layoutY="26.0" prefHeight="25.0" prefWidth="135.0" text="Welcome">
+      <Label fx:id="lblLoginEmail" alignment="CENTER" layoutX="12.0" layoutY="63.0" prefHeight="26.0" prefWidth="135.0" text="Login Email" />
+      <Label alignment="CENTER" layoutX="12.0" layoutY="38.0" prefHeight="25.0" prefWidth="135.0" text="Welcome">
          <font>
             <Font size="18.0" />
          </font>
@@ -42,7 +45,7 @@
       <TextField fx:id="tfIssueMemberId" layoutX="369.0" layoutY="111.0" onAction="#processIssueMemberId" promptText="Enter Member ID" />
       <HBox layoutX="14.0" layoutY="166.0" prefHeight="219.0" prefWidth="574.0">
          <children>
-            <GridPane prefHeight="220.0" prefWidth="250.0" style="-fx-background-color: #e7e7e7;">
+            <GridPane prefHeight="220.0" prefWidth="250.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 10;">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="96.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="154.0" minWidth="10.0" prefWidth="154.0" />
@@ -99,7 +102,7 @@
                   <Insets left="20.0" />
                </HBox.margin>
             </GridPane>
-            <GridPane layoutX="40.0" layoutY="10.0" prefHeight="220.0" prefWidth="250.0" style="-fx-background-color: #e7e7e7;">
+            <GridPane layoutX="40.0" layoutY="10.0" prefHeight="220.0" prefWidth="250.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 10;">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="111.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
@@ -161,10 +164,20 @@
       <FontAwesomeIcon glyphName="BOOK" layoutX="53.0" layoutY="134.0" size="25" text="" />
       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="335.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../JavaFXLibrary_Management_System1/src/image/memberSection/id-card(1).png" />
+            <Image url="@../image/memberSection/id-card(1).png" />
          </image>
       </ImageView>
       <Label fx:id="lblNoBook" alignment="CENTER" layoutX="53.0" layoutY="149.0" prefHeight="17.0" prefWidth="202.0" />
       <Label fx:id="lblNoMember" alignment="CENTER" layoutX="341.0" layoutY="149.0" prefHeight="17.0" prefWidth="202.0" />
+      <Label alignment="CENTER" layoutY="451.0" prefWidth="600.0" text="Design By Icssc">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Separator layoutY="37.0" prefWidth="600.0">
+         <effect>
+            <Shadow height="1.0" radius="0.0" width="0.0" />
+         </effect>
+      </Separator>
    </children>
 </AnchorPane>

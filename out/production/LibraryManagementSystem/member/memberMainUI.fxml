@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="member.MemberMainController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="member.MemberMainController">
    <children>
       <Label alignment="CENTER" prefHeight="50.0" prefWidth="700.0" text="Member Session">
          <font>
@@ -37,7 +37,7 @@
          </effect>
       </TableView>
       <Label layoutX="43.0" layoutY="56.0" text="Welcome" />
-      <Label fx:id="lblEmail" alignment="CENTER" layoutX="34.0" layoutY="80.0" prefHeight="17.0" prefWidth="62.0" text="Login Mail" />
+      <Label fx:id="lblEmail" alignment="CENTER" layoutX="3.0" layoutY="80.0" prefHeight="17.0" prefWidth="129.0" text="Login Mail" />
       <ComboBox fx:id="cobMemberColumn" layoutX="250.0" layoutY="65.0" prefHeight="31.0" prefWidth="141.0" promptText="Member column" style="-fx-background-color: #FFFFFF;" />
       <TextField fx:id="tfSearch" layoutX="391.0" layoutY="64.0" prefHeight="33.0" prefWidth="175.0" promptText="Search by member" />
       <Button layoutX="572.0" layoutY="64.0" mnemonicParsing="false" onMouseClicked="#processSearch" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="Search">
