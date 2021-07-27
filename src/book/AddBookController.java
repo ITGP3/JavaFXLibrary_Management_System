@@ -102,6 +102,8 @@ public class AddBookController implements Initializable {
     	Boolean isSaveOk = bookDataUtil.saveBook(book);
     	if(!isSaveOk) {
 			
+    		alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Book to DB");
+    		
 			File imageFile = new File("src/image/bookSection/"+imageName);
 			
 			BufferedImage bufferedImage = SwingFXUtils.fromFXImage(this.bookImage.getImage(),null);

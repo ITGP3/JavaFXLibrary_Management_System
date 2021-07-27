@@ -23,11 +23,11 @@
              <Font size="24.0" />
          </font>
       </Label>
-      <ImageView fx:id="bookImage" fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="175.0" onMouseClicked="#processImage" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bookImage" fitHeight="150.0" fitWidth="200.0" layoutX="52.0" layoutY="175.0" onMouseClicked="#processImage" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/bookSection/addimg.png" />
          </image></ImageView>
-      <GridPane layoutX="309.0" layoutY="75.0" prefHeight="395.0" prefWidth="339.0">
+      <GridPane layoutX="296.0" layoutY="74.0" prefHeight="395.0" prefWidth="339.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="125.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="175.0" />
