@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import DBConnection.DBConnection;
 import entity.Book;
 import entity.BookHolder;
 import entity.UserHolder;
@@ -16,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -148,7 +148,8 @@ public class BookMainController implements Initializable{
         BookHolder bookHolder = BookHolder.getBookHolder();
         bookHolder.setBook(book);
 
-        Stage primaryStage = new Stage();
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        primaryStage.hide();
         Parent root = FXMLLoader.load(getClass().getResource("EditBookUI.fxml"));
         primaryStage.setTitle("EDIT BOOK SECTION");
         primaryStage.setScene(new Scene(root));

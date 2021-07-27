@@ -17,13 +17,12 @@ import entity.BookHolder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -33,6 +32,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 import utility.BookDataUtils;
+import utility.MyAlert;
 
 public class EditBookController implements Initializable{
 
@@ -68,11 +68,13 @@ public class EditBookController implements Initializable{
     private String imageName;
     
     private final BookDataUtils bookDataUtils = new BookDataUtils();
+    
+    private MyAlert alert = new MyAlert();
 
     
     @FXML
     void processBack(MouseEvent event) throws IOException {
-    	Stage adminStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+    	Stage adminStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         adminStage.hide();
         Parent root = FXMLLoader.load(getClass().getResource("bookMainUI.fxml"));
         adminStage.setScene(new Scene(root));
@@ -80,7 +82,7 @@ public class EditBookController implements Initializable{
     }
     
     @FXML
-    void processEdit(ActionEvent event) throws SQLException, IOException {
+    void processEdit(MouseEvent event) throws SQLException, IOException {
 
     	String bookId = tfId.getText();
     	String bookTitle = tfTitle.getText().trim();
@@ -103,6 +105,8 @@ public class EditBookController implements Initializable{
     	Boolean updateOk = bookDataUtils.updateBook(book);
     	
     	if(!updateOk) {
+    		alert.getConfirmAlert("Information Dialog", "Successfully Updated!", "Updated Book to DB");
+    		
     		File deletedImg = new File("src/image/bookSection/"+this.oldImagename);
 			
 			deletedImg.delete();
@@ -113,7 +117,7 @@ public class EditBookController implements Initializable{
 			
 			ImageIO.write(bufferedImage,"jpg",imageFile);
 			
-			Stage primaryStage = (Stage)((Button)event.getSource()).getScene().getWindow();
+			Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			primaryStage.hide();
     	}
     	

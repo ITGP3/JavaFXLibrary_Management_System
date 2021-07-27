@@ -9,13 +9,13 @@ import java.util.ResourceBundle;
 
 import entity.Book;
 import entity.BookHolder;
-import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ViewBookController implements Initializable {
@@ -48,9 +48,9 @@ public class ViewBookController implements Initializable {
     private Label lblStatus;
 
     @FXML
-    void processBack(ActionEvent event) throws IOException {
+    void processBack(MouseEvent event) throws IOException {
 
-    	Stage primaryStage = (Stage)((Button)event.getSource()).getScene().getWindow();
+    	Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		primaryStage.hide();
     }
     
