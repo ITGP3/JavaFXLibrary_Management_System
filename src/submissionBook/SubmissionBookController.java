@@ -79,10 +79,10 @@ public class SubmissionBookController implements Initializable {
         String query = "select issue.bookId, issue.memberId, issue.issueTime, issue.renewCount, " +
                 "member.memberName, member.memberEmail, member.memberPhone, " +
                 "book.bookTitle, book.bookShelf, book.bookCategory " +
-        "from ((issue "+
+                "from ((issue "+
                 "INNER JOIN member ON issue.memberId = member.memberId) "+
-        "INNER JOIN book ON issue.bookId = book.bookId) "+
-        "where issue.bookId = '"+id+"' ;";
+                "INNER JOIN book ON issue.bookId = book.bookId) "+
+                "where issue.bookId = '"+id+"' ;";
 
 
         /*

@@ -74,13 +74,14 @@ public class RenewBookController {
             lblMemberName.setText(resultSet.getString("issueTime"));
         }
          */
+        String query = "select issue.bookId, issue.memberId, issue.issueTime, issue.renewCount, " +
+                "member.memberName, member.memberEmail, member.memberPhone, " +
+                "book.bookTitle, book.bookShelf, book.bookCategory " +
+                "from ((issue "+
+                "INNER JOIN member ON issue.memberId = member.memberId) "+
+                "INNER JOIN book ON issue.bookId = book.bookId) "+
+                "where issue.bookId = '"+id+"';";
 
-        /*
-        SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
-        FROM ((Orders
-                INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
-        INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
-         */
 
         String searchQuery = "select issue.bookId, issue.memberId, issue.issueTime, issue.renewCount, " +
                 "member.memberName, member.memberEmail, member.memberPhone, " +
