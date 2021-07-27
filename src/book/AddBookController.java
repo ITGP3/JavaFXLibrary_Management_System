@@ -14,7 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -76,9 +76,9 @@ public class AddBookController implements Initializable {
 		tfAuthor.clear();
 		tfPublisher.clear();
 		tfAvaliable.clear();
-		cobShelf.setValue("Choose Shelf No");
-		cobStatus.setValue("Choose Status");
-		cobCategory.setValue("Choose Category");
+		cobShelf.getSelectionModel().clearSelection();
+		cobStatus.getSelectionModel().clearSelection();
+		cobCategory.getSelectionModel().clearSelection();
 		bookImage.setImage(new Image(getClass().getResourceAsStream("src/image/bookSection/addimg.png")));
 		
 	}
@@ -108,7 +108,7 @@ public class AddBookController implements Initializable {
 			
 			ImageIO.write(bufferedImage,"jpg",imageFile);
 			
-			Stage primaryStage = (Stage)((Button)event.getSource()).getScene().getWindow();
+			Stage primaryStage =  (Stage) ((Node)event.getSource()).getScene().getWindow();
 			primaryStage.hide();
 		}
     }
