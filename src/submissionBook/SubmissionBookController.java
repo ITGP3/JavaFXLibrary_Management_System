@@ -75,13 +75,17 @@ public class SubmissionBookController implements Initializable {
         }
          */
 
-        /*
-        SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
-        FROM ((Orders
-                INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
-        INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
-         */
 
+        String query = "select issue.bookId, issue.memberId, issue.issueTime, issue.renewCount, " +
+                "member.memberName, member.memberEmail, member.memberPhone, " +
+                "book.bookTitle, book.bookShelf, book.bookCategory " +
+        "from ((issue "+
+                "INNER JOIN member ON issue.memberId = member.memberId) "+
+        "INNER JOIN book ON issue.bookId = book.bookId) "+
+        "where issue.bookId = '"+id+"' ;";
+
+
+        /*
         String searchQuery = "select issue.bookId, issue.memberId, issue.issueTime, issue.renewCount, " +
                 "member.memberName, member.memberEmail, member.memberPhone, " +
                 "book.bookTitle, book.bookShelf, book.bookCategory " +
@@ -91,7 +95,8 @@ public class SubmissionBookController implements Initializable {
                 "left join book " +
                 "on issue.bookId = book.bookId " +
                 "where issue.bookId = '"+id+"' ;";
-        ResultSet resultSet = dbConnection.executeQuery(searchQuery);
+         */
+        ResultSet resultSet = dbConnection.executeQuery(query);
 
         if (resultSet.next()){
             lblMemberName.setText(resultSet.getString("memberName"));
