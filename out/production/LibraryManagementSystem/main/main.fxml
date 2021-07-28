@@ -17,10 +17,13 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainController">
     <children>
         <Label alignment="CENTER" layoutY="273.0" prefHeight="26.0" prefWidth="350.0" text="Design By Icssc" textFill="#927c2d" />
-        <Label alignment="CENTER" layoutX="1.0" prefHeight="50.0" prefWidth="350.0" text="Library" textFill="WHITE">
+        <Label alignment="CENTER" layoutX="1.0" prefHeight="50.0" prefWidth="350.0" text="Library">
             <font>
                 <Font size="36.0" />
             </font>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
         </Label>
       <GridPane layoutX="43.0" layoutY="85.0" prefHeight="176.0" prefWidth="267.0">
          <columnConstraints>
@@ -78,5 +81,10 @@
       </GridPane>
       <Label fx:id="lblFailStatus" layoutX="104.0" layoutY="61.0" prefHeight="17.0" prefWidth="182.0" text="Label" visible="false" />
       <ImageView fitHeight="70.0" fitWidth="88.0" layoutX="32.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="79.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/bank.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
