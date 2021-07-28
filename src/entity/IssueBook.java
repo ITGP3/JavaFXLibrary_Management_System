@@ -19,6 +19,13 @@ public class IssueBook {
         this.renewDate = new SimpleStringProperty(renewDate);
     }
 
+    public IssueBook(String bookId, String memberId, String issueTime, Integer renewCount) {
+        this.bookId = new SimpleStringProperty(bookId);
+        this.memberId = new SimpleStringProperty(memberId);
+        this.issueTime = new SimpleStringProperty(issueTime);
+        this.renewCount = new SimpleIntegerProperty(renewCount);
+    }
+
     public IssueBook(String bookId, String memberId) {
         this.bookId = new SimpleStringProperty(bookId);
         this.memberId = new SimpleStringProperty(memberId);

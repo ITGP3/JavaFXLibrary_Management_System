@@ -11,6 +11,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="staff.StaffMainController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="staff.StaffMainController">
    <children>
       <Label alignment="CENTER" layoutY="-1.0" prefHeight="50.0" prefWidth="700.0" text="Staff Section">
          <font>
@@ -39,7 +40,7 @@
             <TableColumn fx:id="staffAddress" prefWidth="71.0" text="Address" />
         </columns>
          <effect>
-            <DropShadow />
+            <SepiaTone />
          </effect>
       </TableView>
       <VBox layoutX="576.0" layoutY="115.0" prefHeight="371.0" prefWidth="122.0" spacing="11.0">

@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="member.MemberMainController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="member.MemberMainController">
    <children>
       <Label alignment="CENTER" prefHeight="50.0" prefWidth="700.0" text="Member Session">
          <font>
@@ -33,7 +34,10 @@
             <TableColumn fx:id="memberFee" prefWidth="124.0" text="Fee" />
          </columns>
          <effect>
-            <DropShadow />
+            <DropShadow>
+               <input>
+                  <SepiaTone />
+               </input></DropShadow>
          </effect>
       </TableView>
       <Label layoutX="43.0" layoutY="56.0" text="Welcome" />

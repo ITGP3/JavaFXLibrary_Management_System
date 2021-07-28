@@ -10,13 +10,14 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="role.staff.StaffBookController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="role.staff.StaffBookController">
    <children>
       <Label alignment="CENTER" layoutY="-1.0" prefHeight="50.0" prefWidth="700.0" text="Book Section">
          <font>
@@ -37,7 +38,7 @@
             <TableColumn fx:id="bookImageName" prefWidth="78.0" text="ImageName" />
          </columns>
          <effect>
-            <DropShadow />
+            <SepiaTone />
          </effect>
       </TableView>
       <TextField fx:id="tfSearch" layoutX="316.0" layoutY="67.0" prefHeight="33.0" prefWidth="158.0" promptText="Search By Book" />

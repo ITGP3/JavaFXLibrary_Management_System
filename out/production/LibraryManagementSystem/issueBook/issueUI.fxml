@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -24,25 +25,34 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="449.0" layoutY="50.0" prefHeight="17.0" prefWidth="82.0" text="Issue Record">
+      <Label layoutX="461.0" layoutY="54.0" prefHeight="17.0" prefWidth="82.0" text="Issue Record">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <FontAwesomeIcon glyphName="TABLE" layoutX="543.0" layoutY="71.0" onMouseClicked="#processIssueHistory" size="38" />
-      <Button layoutX="259.0" layoutY="398.0" mnemonicParsing="false" onAction="#processIssue" prefHeight="38.0" prefWidth="82.0" text="Issue">
+      <FontAwesomeIcon glyphName="TABLE" layoutX="543.0" layoutY="76.0" onMouseClicked="#processIssueHistory" size="38" />
+      <Button layoutX="479.0" layoutY="400.0" mnemonicParsing="false" onAction="#processIssue" prefHeight="38.0" prefWidth="82.0" text="Issue">
          <graphic>
             <FontAwesomeIcon glyphName="CALENDAR" size="20" />
          </graphic>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
       <Label fx:id="lblLoginEmail" alignment="CENTER" layoutX="12.0" layoutY="63.0" prefHeight="26.0" prefWidth="135.0" text="Login Email" />
-      <Label alignment="CENTER" layoutX="12.0" layoutY="38.0" prefHeight="25.0" prefWidth="135.0" text="Welcome">
+      <Label alignment="CENTER" layoutX="12.0" layoutY="42.0" prefHeight="25.0" prefWidth="135.0" text="Welcome">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfIssueBookId" layoutX="88.0" layoutY="111.0" onAction="#processIssueBookId" promptText="Enter Book ID" />
-      <TextField fx:id="tfIssueMemberId" layoutX="369.0" layoutY="111.0" onAction="#processIssueMemberId" promptText="Enter Member ID" />
+      <TextField fx:id="tfIssueBookId" layoutX="88.0" layoutY="111.0" onAction="#processIssueBookId" prefHeight="35.0" promptText="Enter Book ID" style="-fx-background-radius: 5;">
+         <effect>
+            <InnerShadow />
+         </effect></TextField>
+      <TextField fx:id="tfIssueMemberId" layoutX="369.0" layoutY="111.0" onAction="#processIssueMemberId" prefHeight="35.0" promptText="Enter Member ID" style="-fx-background-radius: 5;">
+         <effect>
+            <InnerShadow />
+         </effect></TextField>
       <HBox layoutX="14.0" layoutY="166.0" prefHeight="219.0" prefWidth="574.0">
          <children>
             <GridPane prefHeight="220.0" prefWidth="250.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 10;">
@@ -101,6 +111,9 @@
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </GridPane>
             <GridPane layoutX="40.0" layoutY="10.0" prefHeight="220.0" prefWidth="250.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 10;">
                <columnConstraints>
@@ -158,11 +171,14 @@
                <HBox.margin>
                   <Insets left="35.0" />
                </HBox.margin>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </GridPane>
          </children>
       </HBox>
-      <FontAwesomeIcon glyphName="BOOK" layoutX="53.0" layoutY="134.0" size="25" text="" />
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="335.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+      <FontAwesomeIcon glyphName="BOOK" layoutX="53.0" layoutY="139.0" size="25" text="" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="335.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/memberSection/id-card(1).png" />
          </image>

@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="issueBook.issueTable.IssueTableController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="issueBook.issueTable.IssueTableController">
+   <children>
+      <TableView fx:id="issueBookTable" prefHeight="380.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="bookId" prefWidth="137.0" text="Book ID" />
+          <TableColumn fx:id="memberId" prefWidth="155.0" text="Member ID" />
+            <TableColumn fx:id="issueDate" prefWidth="208.0" text="Issue Date" />
+            <TableColumn fx:id="renewCount" prefWidth="98.0" text="Renew Count" />
+        </columns>
+         <effect>
+            <SepiaTone />
+         </effect>
+      </TableView>
+      <Label alignment="CENTER" layoutX="-1.0" layoutY="386.0" prefWidth="600.0" text="Design By Icssc">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+   </children>
 </AnchorPane>

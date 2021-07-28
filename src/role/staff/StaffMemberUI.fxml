@@ -10,13 +10,14 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="role.staff.StaffMemberController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="role.staff.StaffMemberController">
    <children>
       <Label alignment="CENTER" layoutY="-1.0" prefHeight="50.0" prefWidth="700.0" text="Member Section">
          <font>
@@ -26,7 +27,7 @@
       <!-- <FontAwesomeIcon glyphName="BOOK" layoutX="251.0" layoutY="33.0" size="25" /> -->
       <TableView fx:id="memberTable" layoutX="5.0" layoutY="115.0" prefHeight="371.0" prefWidth="691.0">
          <effect>
-            <DropShadow />
+            <SepiaTone />
          </effect>
          <columns>
             <TableColumn fx:id="memberId" prefWidth="41.0" text="ID" />

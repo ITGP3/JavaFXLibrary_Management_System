@@ -3,6 +3,8 @@ package utility;
 import DBConnection.DBConnection;
 import entity.Book;
 import entity.IssueBook;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 
@@ -18,6 +20,30 @@ public class IssueBookUtility {
     private Statement stmt;
     private PreparedStatement preStmt;
     private ResultSet rs;
+
+    public ObservableList<IssueBook> getAllIssueBook(String sql) throws SQLException{
+
+        ObservableList<IssueBook> issueBooks = FXCollections.observableArrayList();
+
+        connection = DBConnection.getConnection();
+        stmt = connection.createStatement();
+        rs = stmt.executeQuery(sql);
+
+        while(rs.next()) {
+            issueBooks.add(
+                    new IssueBook(
+                            rs.getString("bookId"),
+                            rs.getString("memberId"),
+                            rs.getString("issueTime"),
+                            rs.getInt("renewCount")
+
+                    )
+            );
+        }
+
+        connection.close();
+        return issueBooks;
+    }
 
 
     public boolean saveIssueBook(IssueBook issueBook) throws SQLException {
