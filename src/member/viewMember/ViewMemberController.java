@@ -9,6 +9,7 @@ import entity.MemberHolder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -43,16 +44,13 @@ public class ViewMemberController implements Initializable {
 
     @FXML
     void processBack(MouseEvent event) throws IOException {
-    	Stage adminStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+    	Stage adminStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         adminStage.hide();
-        Parent root = FXMLLoader.load(getClass().getResource("../memberMainUI.fxml"));
-        adminStage.setScene(new Scene(root));
-        adminStage.show();
     }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		
 		MemberHolder memberHolder = MemberHolder.getMemberInstance();
 		Member member = memberHolder.getMember();
 				

@@ -31,11 +31,23 @@
          </image>
       </ImageView>
       <Label layoutX="428.0" layoutY="56.0" onMouseClicked="#processLogout" prefHeight="17.0" prefWidth="44.0" text="Logout" />
-      <HBox layoutX="4.0" layoutY="116.0" prefHeight="120.0" prefWidth="492.0" spacing="20.0" style="-fx-background-color: F3DF9B;">
+      <HBox alignment="CENTER" layoutX="4.0" layoutY="116.0" prefHeight="120.0" prefWidth="492.0" spacing="20.0" style="-fx-background-color: F3DF9B;">
          <padding>
             <Insets left="3.0" right="3.0" />
          </padding>
          <children>
+            <Button contentDisplay="TOP" layoutX="20.0" mnemonicParsing="false" onMouseClicked="#processMembers" prefHeight="120.0" prefWidth="120.0" style="-fx-background-color: #FFEAA3;" text="Members">
+               <graphic>
+                  <ImageView fitHeight="68.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/member.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
             <Button contentDisplay="TOP" layoutX="33.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#processBooks" prefHeight="120.0" prefWidth="120.0" style="-fx-background-color: #FFEAA3;" text="Books">
                <graphic>
                   <ImageView fitHeight="68.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
@@ -45,7 +57,7 @@
                   </ImageView>
                </graphic>
                <HBox.margin>
-                  <Insets left="94.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
             <Button contentDisplay="TOP" layoutX="153.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#processIssueBook" prefHeight="120.0" prefWidth="120.0" style="-fx-background-color: #FFEAA3;" text="Issue Book">
@@ -57,7 +69,7 @@
                   </ImageView>
                </graphic>
                <HBox.margin>
-                  <Insets left="30.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
          </children>

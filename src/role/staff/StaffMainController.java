@@ -35,7 +35,24 @@ public class StaffMainController implements Initializable{
     }
     
     @FXML
-    void processBooks(MouseEvent event) {
+    void processMembers(MouseEvent event) throws IOException {
+
+    	Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("StaffMemberUI.fxml"));
+        primaryStage.setTitle("MEMBER SECTION");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    	
+    }
+    
+    @FXML
+    void processBooks(MouseEvent event) throws IOException {
+    	
+    	 Stage primaryStage = new Stage();
+         Parent root = FXMLLoader.load(getClass().getResource("StaffBookUI.fxml"));
+         primaryStage.setTitle("BOOK SECTION");
+         primaryStage.setScene(new Scene(root));
+         primaryStage.show();
 
     }
 

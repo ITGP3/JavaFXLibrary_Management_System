@@ -28,18 +28,18 @@
       <FontAwesomeIcon glyphName="USER" layoutX="251.0" layoutY="33.0" size="25" />
       <TableView fx:id="staffTable" layoutX="4.0" layoutY="115.0" prefHeight="371.0" prefWidth="562.0">
         <columns>
-          <TableColumn fx:id="staffId" prefWidth="25.0" style="-fx-background-color: #FFEAA3;" text="Id" />
-          <TableColumn fx:id="staffFirstName" prefWidth="69.0" style="-fx-background-color: #F3DF9B;" text="FirstName" />
-            <TableColumn fx:id="staffLastName" prefWidth="70.0" style="-fx-background-color: #FFEAA3;" text="LastName" />
-            <TableColumn fx:id="staffEmail" prefWidth="96.0" style="-fx-background-color: #F3DF9B;" text="Email" />
-            <TableColumn fx:id="staffPassword" prefWidth="60.0" style="-fx-background-color: #FFEAA3;" text="Password" />
-            <TableColumn fx:id="staffPhone" prefWidth="69.0" style="-fx-background-color: #F3DF9B;" text="Phone" />
-            <TableColumn fx:id="staffStatus" prefWidth="57.0" style="-fx-background-color: #FFEAA3;" text="Status" />
-            <TableColumn fx:id="staffDOB" prefWidth="43.0" style="-fx-background-color: #F3DF9B;" text="DOB" />
-            <TableColumn fx:id="staffAddress" prefWidth="76.0" style="-fx-background-color: #FFEAA3;" text="Address" />
+          <TableColumn fx:id="staffId" prefWidth="25.0" text="Id" />
+          <TableColumn fx:id="staffFirstName" prefWidth="69.0" text="FirstName" />
+            <TableColumn fx:id="staffLastName" prefWidth="70.0" text="LastName" />
+            <TableColumn fx:id="staffEmail" prefWidth="96.0" text="Email" />
+            <TableColumn fx:id="staffPassword" prefWidth="60.0" text="Password" />
+            <TableColumn fx:id="staffPhone" prefWidth="69.0" text="Phone" />
+            <TableColumn fx:id="staffStatus" prefWidth="57.0" text="Status" />
+            <TableColumn fx:id="staffDOB" prefWidth="43.0" text="DOB" />
+            <TableColumn fx:id="staffAddress" prefWidth="71.0" text="Address" />
         </columns>
          <effect>
-            <InnerShadow />
+            <DropShadow />
          </effect>
       </TableView>
       <VBox layoutX="576.0" layoutY="115.0" prefHeight="371.0" prefWidth="122.0" spacing="11.0">

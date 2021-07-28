@@ -60,8 +60,8 @@ public class MemberMainController implements Initializable{
     @FXML
     private TextField tfSearch;
     
-private final MemberUtility memberUtility = new MemberUtility();
-private MyAlert alert = new MyAlert();
+    private final MemberUtility memberUtility = new MemberUtility();
+    private MyAlert alert = new MyAlert();
     
     public void showTable(String sql) {
     	try {

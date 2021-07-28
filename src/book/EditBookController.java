@@ -82,7 +82,7 @@ public class EditBookController implements Initializable{
     }
     
     @FXML
-    void processEdit(MouseEvent event) throws SQLException, IOException {
+    void processSave(MouseEvent event) throws SQLException, IOException {
 
     	String bookId = tfId.getText();
     	String bookTitle = tfTitle.getText().trim();
@@ -119,6 +119,9 @@ public class EditBookController implements Initializable{
 			
 			Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			primaryStage.hide();
+			Parent root = FXMLLoader.load(getClass().getResource("bookMainUI.fxml"));
+	        primaryStage.setScene(new Scene(root));
+	        primaryStage.show();
     	}
     	
     }

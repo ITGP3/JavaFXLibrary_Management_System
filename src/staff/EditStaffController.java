@@ -10,11 +10,8 @@ import entity.StaffHolder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
@@ -26,7 +23,7 @@ import utility.StaffDataUtils;
 
 /**
  * 
- * @author Thin Yanant Zaw
+ * @author ThinYanantZaw
  *
  */
 
@@ -64,15 +61,15 @@ public class EditStaffController implements Initializable {
     
     @FXML
     void processBack(MouseEvent event) throws IOException {
-    	Stage adminStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+    	
+    	Stage adminStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         adminStage.hide();
-        Parent root = FXMLLoader.load(getClass().getResource("staffMainUI.fxml"));
-        adminStage.setScene(new Scene(root));
-        adminStage.show();
+        
     }
 
     @FXML
     void processSave(MouseEvent event) throws SQLException {
+    	
     	String staffFirstName = tfFirstName.getText().trim();
 		String staffLastName = tfLastName.getText().trim();
 		String staffEmail = tfEmail.getText().trim();
@@ -88,12 +85,15 @@ public class EditStaffController implements Initializable {
 		
 		if(!isUpdateOk) {
 			alert.getConfirmAlert("Information Dialog", "Successfully Updated!", "Update Staff to DB");
+			Stage adminStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	        adminStage.hide();
 			
 		}
     }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		ObservableList<String> status = FXCollections.observableArrayList("Active", "Inactive");
 
 		cobStatus.setItems(status);

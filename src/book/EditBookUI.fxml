@@ -68,7 +68,7 @@
                   <Insets left="70.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#processEdit" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: #FFFFFF;" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#processSave" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: #FFFFFF;" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <effect>
                   <DropShadow />
                </effect>
@@ -84,7 +84,7 @@
                   <Insets bottom="10.0" left="235.0" />
                </GridPane.margin>
             </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processEdit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#processSave" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <image>
                   <Image url="@../image/bookSection/book-with-add-button.png" />
                </image>

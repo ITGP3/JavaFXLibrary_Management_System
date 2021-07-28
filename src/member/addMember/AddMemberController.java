@@ -60,7 +60,7 @@ public class AddMemberController implements Initializable{
 		tfMemberEmail.clear();
 		tfMemberPhone.clear();
 		tfMemberAddress.clear();
-		cobMemberFee.setValue("");
+		cobMemberFee.setValue("Fee");
 		
 	}
 
@@ -79,14 +79,14 @@ public class AddMemberController implements Initializable{
     	if(!isSaveOk) {
     		alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Member to DB");
 			
-    		System.out.println("Save OK");
+    		clearAllField();
     	}
     	
     }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		
 		ObservableList<String> fee = FXCollections.observableArrayList("5000","10000","15000","20000","25000","30000");
 		cobMemberFee.setItems(fee);
 	}
