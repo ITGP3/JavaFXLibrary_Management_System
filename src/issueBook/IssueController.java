@@ -4,8 +4,10 @@ import DBConnection.DBConnection;
 import entity.Book;
 import entity.IssueBook;
 import entity.UserHolder;
+import javafx.animation.FadeTransition;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,8 +19,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import utility.IssueBookUtility;
 
 import java.io.IOException;
@@ -76,7 +81,8 @@ public class IssueController implements Initializable {
     @FXML
     private Label lblNoMember;
 
-
+    @FXML
+    private AnchorPane rootPane;
 
     private final IssueBookUtility issueBookUtility = new IssueBookUtility();
     private final DBConnection dbConnection = new DBConnection();
@@ -184,11 +190,7 @@ public class IssueController implements Initializable {
 
     @FXML
     void processIssueHistory(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("issueTable/issueTableUI.fxml"));
-        stage.setTitle("ISSUE HISTORY");
-        stage.setScene(new Scene(root));
-        stage.show();
+        makeFade();
     }
 
 
@@ -196,4 +198,29 @@ public class IssueController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         lblLoginEmail.setText(UserHolder.getUserHolder().getEmail());
     }
+
+    private void makeFade(){
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(1000));
+        fadeTransition.setNode(rootPane);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.setOnFinished((ActionEvent event)->{
+            try {
+                issueHistory();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        fadeTransition.play();
+    }
+
+    public void issueHistory() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("issueTable/issueTableUI.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        stage.setTitle("ISSUE HISTORY");
+        stage.setScene(scene);
+    }
+
 }
