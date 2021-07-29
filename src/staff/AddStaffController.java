@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -84,16 +85,31 @@ public class AddStaffController implements Initializable {
 		String staffPhone = tfPhone.getText().trim();
 		String staffAddress = tfAddress.getText().trim();
 		String staffStatus = cobStatus.getValue();
-		String staffDOB = dpDOB.getValue().toString();
-		
-		Staff staff = new Staff(staffFirstName, staffLastName, staffEmail, staffPassword, staffPhone, staffStatus, staffDOB, staffAddress);
+		String staffDOB = dpDOB.getValue().toString();		
 	
-		Boolean isSaveOk = staffDataUtils.saveStaff(staff);
+		Staff staff = new Staff(staffFirstName, staffLastName, staffEmail, staffPassword, staffPhone, staffStatus, staffDOB, staffAddress);
 		
-		if(!isSaveOk) {
-			alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Staff to DB");
+		Optional<ButtonType> result = alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Staff to DB");
+		
+		if (result.get() == ButtonType.OK) {
 			
-			clearAllField();
+			Boolean isSaveOk = staffDataUtils.saveStaff(staff);
+			
+			if (!isSaveOk) {
+				Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+                alertIssue.setTitle("Success!!!");
+                alertIssue.setHeaderText(null);
+                alertIssue.setContentText("Staff Saved");
+                alertIssue.showAndWait();
+                
+				clearAllField();
+			}
+		} else {
+			Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+            alertIssue.setTitle("Fail!!!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Staff Save Fail");
+            alertIssue.showAndWait();
 		}
 	}
 

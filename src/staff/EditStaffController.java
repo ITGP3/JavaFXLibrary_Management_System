@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import entity.Staff;
 import entity.StaffHolder;
@@ -12,6 +13,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
@@ -81,13 +84,28 @@ public class EditStaffController implements Initializable {
 		
 		Staff staffUpdated = new Staff(this.staffUpdateId, staffFirstName, staffLastName, staffEmail, staffPassword, staffPhone, staffStatus, staffDOB, staffAddress);
 		
-		Boolean isUpdateOk = staffDataUtils.updateStaff(staffUpdated);
+		Optional<ButtonType> result = alert.getConfirmAlert("Information Dialog", "Successfully Updated!", "Update Staff to DB");
 		
-		if(!isUpdateOk) {
-			alert.getConfirmAlert("Information Dialog", "Successfully Updated!", "Update Staff to DB");
-			Stage adminStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-	        adminStage.hide();
+		if (result.get() == ButtonType.OK) {
+			Boolean isUpdateOk = staffDataUtils.updateStaff(staffUpdated);
 			
+			if (!isUpdateOk) {
+				Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+                alertIssue.setTitle("Success!!!");
+                alertIssue.setHeaderText(null);
+                alertIssue.setContentText("Staff Updated!");
+                alertIssue.showAndWait();
+                
+				Stage adminStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				adminStage.hide();
+
+			}
+		} else {
+			Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+            alertIssue.setTitle("Fail!!!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Staff Update Fail!");
+            alertIssue.showAndWait();
 		}
     }
 

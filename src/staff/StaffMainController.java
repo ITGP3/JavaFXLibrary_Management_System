@@ -3,6 +3,7 @@ package staff;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import entity.StaffHolder;
@@ -13,6 +14,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -79,23 +82,59 @@ public class StaffMainController implements Initializable{
 		primaryStage.show();
 	}
 
-    @FXML
-    void processDelete(MouseEvent event) throws SQLException {
-    	Staff staff = staffTable.getSelectionModel().getSelectedItem();
-    	
-    	Boolean isDeleteOk = staffDataUtils.deleteStaff(staff.getStaffId());
-    	
-    	if(!isDeleteOk) {
-    		alert.getConfirmAlert("Confirmation Dialog", "Are you sure to delete?", "This action cannot be undone");
-    	
-    		showTable("select * from staff;");
-    	}
-    }
+	@FXML
+	void processDelete(MouseEvent event) throws SQLException {
+		Staff staff = staffTable.getSelectionModel().getSelectedItem();
+
+		if (staff == null){
+            Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+            alertIssue.setTitle("Warning!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Select Staff to Delete");
+            alertIssue.showAndWait();
+            return;
+        }
+		
+		
+		Optional<ButtonType> result = alert.getConfirmAlert("Confirmation Dialog", "Are you sure to delete?",
+				"This action cannot be undone");
+
+		if (result.get() == ButtonType.OK) {
+			
+			Boolean isDeleteOk = staffDataUtils.deleteStaff(staff.getStaffId());
+			
+			if (!isDeleteOk) {
+				Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+                alertIssue.setTitle("Success!!!");
+                alertIssue.setHeaderText(null);
+                alertIssue.setContentText("Staff Deleted!");
+                alertIssue.showAndWait();
+                
+				showTable("select * from staff;");
+			}
+		} else {
+			Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+            alertIssue.setTitle("Fail!!!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Staff Delete Fail!");
+            alertIssue.showAndWait();
+
+		}
+	}
 
     @FXML
     void processEdit(MouseEvent event) throws IOException {
 
 		Staff staff = staffTable.getSelectionModel().getSelectedItem();
+		
+		if (staff == null){
+            Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+            alertIssue.setTitle("Warning!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Select Staff to Update");
+            alertIssue.showAndWait();
+            return;
+        }
 		
 		StaffHolder staffHolder = StaffHolder.getStaffInstance();
 		staffHolder.setStaff(staff);
@@ -127,7 +166,16 @@ public class StaffMainController implements Initializable{
     @FXML
     void processView(MouseEvent event) throws IOException {
     	Staff staff = staffTable.getSelectionModel().getSelectedItem();
-		
+    	
+    	if (staff == null){
+            Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+            alertIssue.setTitle("Warning!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Select Staff to View");
+            alertIssue.showAndWait();
+            return;
+        }
+    	
 		StaffHolder staffHolder = StaffHolder.getStaffInstance();
 		
 		staffHolder.setStaff(staff);
