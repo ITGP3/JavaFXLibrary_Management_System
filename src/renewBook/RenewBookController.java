@@ -103,13 +103,15 @@ public class RenewBookController {
             lblBookShelf.setText(resultSet.getString("bookShelf"));
             lblBookCategory.setText(resultSet.getString("bookCategory"));
 
+           
             Timestamp timestamp =resultSet.getTimestamp("issueTime");
             Date date = new Date(timestamp.getTime());
-            lblIssueDate.setText(date.toString());
+            lblIssueDate.setText(timestamp.toString());
 
             Long time = System.currentTimeMillis() - timestamp.getTime();
             Long day = TimeUnit.DAYS.convert(time,TimeUnit.MILLISECONDS);
             lblNoOfDays.setText(day.toString()+" day(s)");
+            
 
 
             Timestamp timestamp2 = new Timestamp(System.currentTimeMillis());
