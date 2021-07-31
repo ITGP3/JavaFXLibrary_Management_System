@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="role.staff.StaffMemberController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="role.staff.StaffMemberController">
    <children>
       <Label alignment="CENTER" layoutY="-1.0" prefHeight="50.0" prefWidth="700.0" text="Member Section">
          <font>
@@ -31,11 +31,12 @@
          </effect>
          <columns>
             <TableColumn fx:id="memberId" prefWidth="41.0" text="ID" />
-            <TableColumn fx:id="memberName" prefWidth="154.0" text="Name" />
-            <TableColumn fx:id="memberEmail" prefWidth="103.0" text="Email" />
-            <TableColumn fx:id="memberPhone" prefWidth="133.0" text="Phone" />
-            <TableColumn fx:id="memberAddress" prefWidth="144.0" text="Address" />
-            <TableColumn fx:id="memberFee" prefWidth="114.0" text="Fee" />
+            <TableColumn fx:id="memberName" prefWidth="124.0" text="Name" />
+            <TableColumn fx:id="memberEmail" prefWidth="151.0" text="Email" />
+            <TableColumn fx:id="memberPhone" prefWidth="103.0" text="Phone" />
+            <TableColumn fx:id="memberAddress" prefWidth="121.0" text="Address" />
+            <TableColumn fx:id="memberFee" prefWidth="76.0" text="Fee" />
+            <TableColumn fx:id="memberDOB" prefWidth="74.0" text="DOB" />
          </columns>
       </TableView>
       <TextField fx:id="tfSearch" layoutX="334.0" layoutY="67.0" prefHeight="33.0" prefWidth="158.0" promptText="Search By Member" />

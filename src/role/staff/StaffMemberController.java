@@ -51,6 +51,9 @@ public class StaffMemberController implements Initializable{
 
     @FXML
     private TableColumn<Member, String> memberFee;
+    
+    @FXML
+    private TableColumn<Member, String> memberDOB;
 
     @FXML
     private TextField tfSearch;
@@ -125,6 +128,7 @@ public class StaffMemberController implements Initializable{
 		memberPhone.setCellValueFactory(new PropertyValueFactory<>("memberPhone"));
 		memberAddress.setCellValueFactory(new PropertyValueFactory<>("memberAddress"));
 		memberFee.setCellValueFactory(new PropertyValueFactory<>("memberFee"));
+		memberDOB.setCellValueFactory(new PropertyValueFactory<>("memberDOB"));
 		
 		showTable("select * from member;");
 		

@@ -62,7 +62,7 @@ public class MainController implements Initializable {
             if (role.equals("staff")){
                 Stage memberStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 memberStage.hide();
-                Parent memberRoot = FXMLLoader.load(getClass().getResource("../role/staff/staffMainUI.fxml"));
+                Parent memberRoot = FXMLLoader.load(getClass().getResource("../role/staff/StaffMainUI.fxml"));
                 memberStage.setTitle("Staff Main");
                 memberStage.setScene(new Scene(memberRoot));
                 memberStage.show();

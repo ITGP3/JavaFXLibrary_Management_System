@@ -1,7 +1,3 @@
-/DBConnection/
-/book/
-/entity/
-/issueBook/
 /main/
 /member/
 /renewBook/
@@ -9,4 +5,3 @@
 /staff/
 /submissionBook/
 /utility/
-/image/
