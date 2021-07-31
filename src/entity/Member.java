@@ -16,9 +16,10 @@ public class Member {
 	private  StringProperty memberPhone;
 	private StringProperty memberAddress;
 	private  StringProperty memberFee;
+	private StringProperty memberDOB;
 	
 
-	public Member(String memberId, String memberName, String memberEmail, String memberPhone, String memberAddress, String memberFee)
+	public Member(String memberId, String memberName, String memberEmail, String memberPhone, String memberAddress, String memberFee,String memberDOB)
 	{
 		super();
 		this.memberId = new SimpleStringProperty(memberId);
@@ -27,15 +28,17 @@ public class Member {
 		this.memberPhone = new SimpleStringProperty(memberPhone);
 		this.memberAddress = new SimpleStringProperty(memberAddress);
 		this.memberFee = new SimpleStringProperty(memberFee);
+		this.memberDOB = new SimpleStringProperty(memberDOB);
 	}
 	public Member(String memberName, String memberEmail, String memberPhone,
-			String memberAddress, String memberFee) {
+			String memberAddress, String memberFee,String memberDOB) {
 		super();
 		this.memberName = new SimpleStringProperty(memberName);
 		this.memberEmail = new SimpleStringProperty(memberEmail);
 		this.memberPhone = new SimpleStringProperty(memberPhone);
 		this.memberAddress = new SimpleStringProperty(memberAddress);
 		this.memberFee = new SimpleStringProperty(memberFee);
+		this.memberDOB = new SimpleStringProperty(memberDOB);
 	}
 	
 	
@@ -89,5 +92,17 @@ public class Member {
 	public String getMemberFee() {
 		return memberFee.get();
 	}
+	public void setMemberFee(String memberFee) {
+		this.memberFee = new SimpleStringProperty(memberFee);
+	}
+	
+	public String getMemberDOB() {
+		return memberDOB.get();
+	}
+	
+	public void setMemberDOB(String memberDOB) {
+		this.memberDOB = new SimpleStringProperty(memberDOB);;
+	}
+	
 	
 }

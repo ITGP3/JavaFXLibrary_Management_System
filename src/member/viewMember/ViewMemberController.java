@@ -41,6 +41,9 @@ public class ViewMemberController implements Initializable {
 
     @FXML
     private Label lblFee;
+    
+    @FXML
+    private Label lblDOB;
 
     @FXML
     void processBack(MouseEvent event) throws IOException {
@@ -61,6 +64,7 @@ public class ViewMemberController implements Initializable {
 		lblPhone.setText(member.getMemberPhone());
 		lblAddress.setText(member.getMemberAddress());
 		lblFee.setText(member.getMemberFee());
+		lblDOB.setText(member.getMemberDOB());
 	}
 
 }

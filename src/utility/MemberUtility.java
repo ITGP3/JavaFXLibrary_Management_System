@@ -1,6 +1,7 @@
 package utility;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -31,7 +32,9 @@ public class MemberUtility {
 	    	rs = stmt.executeQuery(Sql);
 	    	
 	    	while(rs.next()) {
-	    		memberlist.add(new Member(rs.getString("memberId"),rs.getString("memberName"),rs.getString("memberEmail"),rs.getString("memberPhone"),rs.getString("memberAddress"),rs.getString("memberFee")));
+	    		memberlist.add(new Member(rs.getString("memberId"),rs.getString("memberName"),
+	    				rs.getString("memberEmail"),rs.getString("memberPhone"),
+	    				rs.getString("memberAddress"),rs.getString("memberFee"),rs.getDate("memberDOB").toString()));
 	    	}
 	    	
 	    	connection.close();
@@ -43,8 +46,8 @@ public class MemberUtility {
 	    public Boolean saveMember(Member member) throws SQLException {
 	    	
 	    	  connection = DBConnection.getConnection();
-	    	  preStmt = connection.prepareStatement("INSERT INTO `member` (`memberId`, `memberName`, `memberEmail`, `memberPhone`, `memberAddress`, `memberFee`) "
-	    	  		+ "VALUES (?, ?, ?, ?, ?, ?);");
+	    	  preStmt = connection.prepareStatement("INSERT INTO `member` (`memberId`, `memberName`, `memberEmail`, `memberPhone`, `memberAddress`, `memberFee`, `memberDOB`) "
+	    	  		+ "VALUES (?, ?, ?, ?, ?, ?, ?);");
 	    	  
 	    	  preStmt.setString(1, member.getMemberId());
 	    	  preStmt.setString(2, member.getMemberName());
@@ -52,6 +55,9 @@ public class MemberUtility {
 	    	  preStmt.setString(4, member.getMemberPhone());
 	    	  preStmt.setString(5, member.getMemberAddress());
 	    	  preStmt.setString(6, member.getMemberFee());
+	    	  Date date = Date.valueOf(member.getMemberDOB());
+	    	  preStmt.setDate(7, date);
+
 	    	  
 	    	  Boolean isSaveOk = preStmt.execute();
 	    	  connection.close();
@@ -73,13 +79,17 @@ public class MemberUtility {
 	    	preStmt = connection.prepareStatement("UPDATE `member` SET "
 	    			+ "`memberName` = ?, `memberEmail` = ?, "
 	    			+ "`memberPhone` = ?, `memberAddress` = ?,"
-	    			+ " `memberFee` = ? WHERE (`memberId` = ?);");
+	    			+ " `memberFee` = ?,  `memberDOB` = ? "
+	    			+ "WHERE (`memberId` = ?);");
 	    	 preStmt.setString(1, member.getMemberName());
 	    	  preStmt.setString(2, member.getMemberEmail());
 	    	  preStmt.setString(3, member.getMemberPhone());
 	    	  preStmt.setString(4, member.getMemberAddress());
 	    	  preStmt.setString(5, member.getMemberFee());
-	    	  preStmt.setString(6, member.getMemberId());
+	    	 
+	    	  Date date = Date.valueOf(member.getMemberDOB());
+	    	  preStmt.setDate(6, date);
+	    	  preStmt.setString(7, member.getMemberId());
 	    	  
 	    	  Boolean isUpdateOk = preStmt.execute();
 	  		connection.close();
@@ -113,24 +123,7 @@ public class MemberUtility {
 	    	for(int x = 1; x<=count; x++) {
 	    		columnList.add(metaData.getColumnLabel(x));
 	    	}
-	    	
-	    	
-	    	
-			return columnList;
-	    	
-	    	
-	    	
-	    	
-	    }
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
+	    	return columnList;
+}
 	    
 }

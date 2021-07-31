@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="member.MemberMainController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="member.MemberMainController">
    <children>
       <Label alignment="CENTER" prefHeight="50.0" prefWidth="700.0" text="Member Session">
          <font>
@@ -27,11 +27,12 @@
       <TableView fx:id="memberTable" layoutX="4.0" layoutY="108.0" prefHeight="371.0" prefWidth="562.0">
          <columns>
             <TableColumn fx:id="memberId" prefWidth="37.0" text="ID" />
-            <TableColumn fx:id="memberName" prefWidth="106.0" text="Name" />
-            <TableColumn fx:id="memberEmail" prefWidth="106.0" text="Email" />
-            <TableColumn fx:id="memberPhone" prefWidth="86.0" text="Phone" />
-            <TableColumn fx:id="memberAddress" prefWidth="106.0" text="Address" />
-            <TableColumn fx:id="memberFee" prefWidth="124.0" text="Fee" />
+            <TableColumn fx:id="memberName" prefWidth="88.0" text="Name" />
+            <TableColumn fx:id="memberEmail" prefWidth="102.0" text="Email" />
+            <TableColumn fx:id="memberPhone" prefWidth="92.0" text="Phone" />
+            <TableColumn fx:id="memberAddress" prefWidth="81.0" text="Address" />
+            <TableColumn fx:id="memberFee" prefWidth="86.0" text="Fee" />
+            <TableColumn fx:id="memberDOB" prefWidth="75.0" text="DOB" />
          </columns>
          <effect>
             <DropShadow>
@@ -120,7 +121,7 @@
             </Button>
          </children>
       </VBox>
-      <Label alignment="CENTER" layoutY="487.0" prefHeight="11.0" prefWidth="700.0" text="Design By Icssc">
+      <Label alignment="CENTER" layoutY="478.0" prefHeight="11.0" prefWidth="700.0" text="Design Issc">
          <effect>
             <DropShadow />
          </effect>
