@@ -50,6 +50,9 @@ public class MemberMainController implements Initializable{
 
     @FXML
     private TableColumn<Member, String> memberFee;
+    
+   @FXML
+   private TableColumn<Member, String> memberDOB;
 
     @FXML
     private Label lblEmail;
@@ -119,6 +122,14 @@ public class MemberMainController implements Initializable{
     @FXML
     void processEdit(MouseEvent event) throws IOException {
     	Member member = memberTable.getSelectionModel().getSelectedItem();
+    	if (member == null){
+            Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+            alertIssue.setTitle("Warning!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Select Member to Edit");
+            alertIssue.showAndWait();
+            return;
+        }
     	
     	MemberHolder memberHolder = MemberHolder.getMemberInstance();
     	memberHolder.setMember(member);
@@ -146,6 +157,15 @@ public class MemberMainController implements Initializable{
     @FXML
     void processView(MouseEvent event) throws IOException {
     	Member member = memberTable.getSelectionModel().getSelectedItem();
+    	
+    	if (member == null){
+            Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+            alertIssue.setTitle("Warning!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Select Member to View");
+            alertIssue.showAndWait();
+            return;
+        }
     	
     	MemberHolder memberHolder = MemberHolder.getMemberInstance();
     	memberHolder.setMember(member);
@@ -177,6 +197,7 @@ public class MemberMainController implements Initializable{
 		memberPhone.setCellValueFactory(new PropertyValueFactory<>("memberPhone"));
 		memberAddress.setCellValueFactory(new PropertyValueFactory<>("memberAddress"));
 		memberFee.setCellValueFactory(new PropertyValueFactory<>("memberFee"));
+		memberDOB.setCellValueFactory(new PropertyValueFactory<>("memberDOB"));
 		
 		showTable("select * from member;");
 		

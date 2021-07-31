@@ -2,6 +2,7 @@ package member.addMember;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import entity.Member;
@@ -9,8 +10,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import utility.MemberUtility;
@@ -41,6 +44,9 @@ public class AddMemberController implements Initializable{
     @FXML
     private ComboBox<String> cobMemberFee;
     
+    @FXML
+    private DatePicker dpDOB;
+    
     private final MemberUtility memberUtility = new MemberUtility();
     private MyAlert alert = new MyAlert();
    
@@ -61,6 +67,7 @@ public class AddMemberController implements Initializable{
 		tfMemberPhone.clear();
 		tfMemberAddress.clear();
 		cobMemberFee.setValue("Fee");
+		dpDOB.setValue(LocalDate.now());
 		
 	}
 
@@ -73,17 +80,31 @@ public class AddMemberController implements Initializable{
     	String memberPhone = tfMemberPhone.getText().trim();
     	String memberAddress = tfMemberAddress.getText().trim();
     	String memberFee = cobMemberFee.getValue();
+    	String memberDOB = dpDOB.getValue().toString();
     	
-        Member member = new Member(memberId, memberName, memberEmail, memberPhone, memberAddress, memberFee);	
+        Member member = new Member(memberId, memberName, memberEmail, memberPhone, memberAddress, memberFee, memberDOB);
+       
+        Optional<ButtonType> result = alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Member to DB");
+		if(result.get() == ButtonType.OK)
+		{
         Boolean isSaveOk = memberUtility.saveMember(member);
     	if(!isSaveOk) {
-    		alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Member to DB");
-			
-    		clearAllField();
+    		Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+            alertIssue.setTitle("Success!!!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Member Saved");
+            alertIssue.showAndWait();
+            
+			clearAllField();
     	}
-    	
+      } else {
+			Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+            alertIssue.setTitle("Fail!!!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Member Save Fail");
+            alertIssue.showAndWait();
+		}
     }
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		

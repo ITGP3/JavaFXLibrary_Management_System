@@ -3,6 +3,7 @@ package member.editMember;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import entity.Member;
 import entity.MemberHolder;
@@ -12,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -43,6 +45,9 @@ public class EditMemberController implements Initializable{
     @FXML
     private ComboBox<String> cobMemberFee;
     
+    @FXML
+    private DatePicker tfMemberDOB;
+    
     private final MemberUtility memberUtility = new MemberUtility();
     private MyAlert alert = new MyAlert();
     
@@ -65,8 +70,9 @@ public class EditMemberController implements Initializable{
     	String memberPhone = tfMemberPhone.getText().trim();
     	String memberAddress = tfAddress.getText().trim();
     	String memberFee = cobMemberFee.getValue();
+    	String memberDOB = tfMemberDOB.getValue().toString();
     	
-    	Member member = new Member(memberId, memberName, memberEmail, memberPhone, memberAddress, memberFee);
+    	Member member = new Member(memberId, memberName, memberEmail, memberPhone, memberAddress, memberFee, memberDOB);
     	Boolean isUpdateOk = memberUtility.updateMember(member);
     	
     	if(!isUpdateOk) {
@@ -94,6 +100,7 @@ public class EditMemberController implements Initializable{
 		tfMemberPhone.setText(member.getMemberPhone());
 		tfAddress.setText(member.getMemberAddress());
 		cobMemberFee.setValue(member.getMemberFee());
+		tfMemberDOB.setValue(LocalDate.parse(member.getMemberDOB()));
 		
 	}
 
