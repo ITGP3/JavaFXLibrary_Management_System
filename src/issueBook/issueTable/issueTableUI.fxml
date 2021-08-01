@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="issueBook.issueTable.IssueTableController">
+<AnchorPane fx:id="rootPane" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #E9D595;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="issueBook.issueTable.IssueTableController">
     <children>
         <TableView fx:id="issueBookTable" layoutY="53.0" prefHeight="365.0" prefWidth="600.0">
             <columns>
@@ -32,7 +32,7 @@
             <font>
                 <Font size="24.0" />
             </font></Label>
-        <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="14.0" layoutY="6.0" onMouseClicked="#backIssuePage" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="14.0" layoutY="6.0" onMouseClicked="#backPage" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../image/back-arrow.png" />
             </image>

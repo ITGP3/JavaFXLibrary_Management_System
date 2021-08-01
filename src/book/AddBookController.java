@@ -95,10 +95,9 @@ public class AddBookController implements Initializable {
     	String bookCategory = cobCategory.getValue();
     	String bookStatus = cobStatus.getValue();
     	
-    	int index = this.imageName.indexOf(".");
-		imageName = this.imageName.substring(0,index)+".jpg";
+    	
 
-		if (bookId.isEmpty()||bookTitle.isEmpty()||bookAuthor.isEmpty()||bookPublisher.isEmpty()||bookShelf.isEmpty()||bookCategory.isEmpty()||bookStatus.isEmpty()){
+		if (bookId.isEmpty()||bookTitle.isEmpty()||bookAuthor.isEmpty()||bookPublisher.isEmpty()||bookShelf.isEmpty()||bookCategory.isEmpty()||bookStatus.isEmpty()||imageName.isEmpty()){
 			Alert alertIssue = new Alert(Alert.AlertType.ERROR);
 			alertIssue.setTitle("Fail!!!");
 			alertIssue.setHeaderText(null);
@@ -106,6 +105,9 @@ public class AddBookController implements Initializable {
 			alertIssue.showAndWait();
 		}
 		else {
+			int index = this.imageName.indexOf(".");
+			imageName = this.imageName.substring(0,index)+".jpg";
+			
 			Book book = new Book(bookId,bookTitle, bookAuthor, bookPublisher, bookAvaliable, bookShelf, bookCategory, bookStatus, imageName);
 			Boolean isSaveOk = bookDataUtil.saveBook(book);
 			if(!isSaveOk) {

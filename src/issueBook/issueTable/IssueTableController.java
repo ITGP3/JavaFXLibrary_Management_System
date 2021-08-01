@@ -55,13 +55,10 @@ public class IssueTableController implements Initializable {
     private final IssueBookUtility issueBookUtility = new IssueBookUtility();
 
     @FXML
-    void backIssuePage(MouseEvent event) throws IOException {
+    void backPage(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.hide();
-        Parent root = FXMLLoader.load(getClass().getResource("../issueUI.fxml"));
-        stage.setTitle("ISSUE BOOKS");
-        stage.setScene(new Scene(root));
-        stage.show();
+        
     }
 
     @Override

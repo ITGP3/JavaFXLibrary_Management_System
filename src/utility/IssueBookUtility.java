@@ -74,9 +74,10 @@ public class IssueBookUtility {
     }
 
     public boolean updateIssueBook(IssueBook issueBook) throws SQLException {
+    	
         connection = DBConnection.getConnection();
 
-        String issueQuery = "update issue set issueTime = CURRENT_TIMESTAMP , renewCount= renewCount+1 where bookId = ?";
+        String issueQuery = "update issue set issueTime = CURRENT_TIMESTAMP , renewCount = renewCount+1 where bookId = ?";
         preStmt = connection.prepareStatement(issueQuery);
 
         preStmt.setString(1,issueBook.getBookId());

@@ -2,15 +2,24 @@ package role.staff;
 
 import DBConnection.DBConnection;
 import entity.IssueBook;
+import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import utility.IssueBookUtility;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -49,6 +58,9 @@ public class RenewBookController {
 
     @FXML
     private Label lblRenewDay;
+    
+    @FXML
+    private AnchorPane rootPane;
 
 
     private DBConnection dbConnection = new DBConnection();
@@ -156,5 +168,36 @@ public class RenewBookController {
             return;
         }
 
+    }
+    
+    @FXML
+    void processIssueHistory(MouseEvent event) throws IOException {
+        makeFade();
+    }
+    
+    private void makeFade(){
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(1000));
+        fadeTransition.setNode(rootPane);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        
+        fadeTransition.setOnFinished((ActionEvent event)->{
+            try {
+                issueHistory();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        fadeTransition.play();
+        
+    }
+
+    public void issueHistory() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("StaffIssueTable.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        stage.setTitle("ISSUE HISTORY");
+        stage.setScene(scene);
     }
 }

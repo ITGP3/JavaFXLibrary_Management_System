@@ -16,13 +16,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e9d595;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renewBook.RenewBookController">
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e9d595;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renewBook.RenewBookController">
    <children>
       <Label alignment="CENTER" layoutY="-1.0" prefHeight="40.0" prefWidth="600.0" text="Renew Book">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
+      <Label layoutX="455.0" layoutY="70.0" prefHeight="17.0" prefWidth="82.0" text="Issue Record">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <FontAwesomeIcon glyphName="TABLE" layoutX="537.0" layoutY="94.0" onMouseClicked="#processIssueHistory" size="38" />
       <TextField fx:id="bookId" layoutX="212.0" layoutY="64.0" onAction="#processBookId" prefHeight="35.0" prefWidth="175.0" promptText="Enter Book ID" style="-fx-background-radius: 5;">
          <effect>
             <InnerShadow />

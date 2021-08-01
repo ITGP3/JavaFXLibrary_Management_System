@@ -85,10 +85,8 @@ public class AddStaffController implements Initializable {
 		String staffPhone = tfPhone.getText().trim();
 		String staffAddress = tfAddress.getText().trim();
 		String staffStatus = cobStatus.getValue();
-		String staffDOB = dpDOB.getValue().toString();
-
-
-		if (staffFirstName.isEmpty()||staffLastName.isEmpty()||staffEmail.isEmpty()||staffPassword.isEmpty()||staffPhone.isEmpty()||staffAddress.isEmpty()||staffStatus.isEmpty()||staffDOB.isEmpty()){
+		
+		if (staffFirstName.isEmpty()||staffLastName.isEmpty()||staffEmail.isEmpty()||staffPassword.isEmpty()||staffPhone.isEmpty()||staffAddress.isEmpty()||staffStatus.isEmpty()||dpDOB.getValue().toString().isEmpty()){
 			Alert alertIssue = new Alert(Alert.AlertType.ERROR);
 			alertIssue.setTitle("Fail!!!");
 			alertIssue.setHeaderText(null);
@@ -96,6 +94,8 @@ public class AddStaffController implements Initializable {
 			alertIssue.showAndWait();
 		}
 		else {
+			
+			String staffDOB = dpDOB.getValue().toString();
 			Staff staff = new Staff(staffFirstName, staffLastName, staffEmail, staffPassword, staffPhone, staffStatus, staffDOB, staffAddress);
 
 			Optional<ButtonType> result = alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Staff to DB");
