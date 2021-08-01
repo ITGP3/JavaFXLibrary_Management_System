@@ -74,7 +74,7 @@
             </Label>
             <TextField fx:id="tfMemberAddress" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <ComboBox fx:id="cobMemberFee" prefHeight="25.0" prefWidth="338.0" promptText="Fee" style="-fx-background-color: #FFFFFF;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="165.0" text="Member DOB" GridPane.rowIndex="6">
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="165.0" text="Date" GridPane.rowIndex="6">
                <font>
                   <Font size="15.0" />
                </font>

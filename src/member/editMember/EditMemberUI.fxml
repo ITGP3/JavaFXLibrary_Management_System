@@ -132,7 +132,7 @@
                   <Insets bottom="10.0" left="100.0" />
                </GridPane.margin>
             </ImageView>
-            <Label prefHeight="17.0" prefWidth="200.0" text="MemberDOB" GridPane.rowIndex="6">
+            <Label prefHeight="17.0" prefWidth="200.0" text="Date" GridPane.rowIndex="6">
                <font>
                   <Font size="15.0" />
                </font>
