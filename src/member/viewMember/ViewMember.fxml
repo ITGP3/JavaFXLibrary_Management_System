@@ -95,7 +95,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label prefHeight="21.0" prefWidth="151.0" text="Member DOB" GridPane.rowIndex="6">
+            <Label prefHeight="21.0" prefWidth="151.0" text="Date" GridPane.rowIndex="6">
                <font>
                   <Font size="15.0" />
                </font>

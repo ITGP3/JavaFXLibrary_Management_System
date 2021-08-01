@@ -53,7 +53,7 @@ public class MemberMainController implements Initializable{
     private TableColumn<Member, String> memberFee;
     
    @FXML
-   private TableColumn<Member, String> memberDOB;
+   private TableColumn<Member, String> memberDate;
 
     @FXML
     private Label lblEmail;
@@ -203,7 +203,7 @@ public class MemberMainController implements Initializable{
 		memberPhone.setCellValueFactory(new PropertyValueFactory<>("memberPhone"));
 		memberAddress.setCellValueFactory(new PropertyValueFactory<>("memberAddress"));
 		memberFee.setCellValueFactory(new PropertyValueFactory<>("memberFee"));
-		memberDOB.setCellValueFactory(new PropertyValueFactory<>("memberDOB"));
+		memberDate.setCellValueFactory(new PropertyValueFactory<>("memberDOB"));
 		
 		showTable("select * from member;");
 		
