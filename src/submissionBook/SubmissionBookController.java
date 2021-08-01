@@ -196,7 +196,7 @@ public class SubmissionBookController{
     }
 
     public void issueHistory() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../issueBook/issueTable/issueTableUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("issueTable/issueTableUI.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) rootPane.getScene().getWindow();
         stage.setTitle("ISSUE HISTORY");

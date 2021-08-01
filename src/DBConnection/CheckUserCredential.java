@@ -13,11 +13,11 @@ public class CheckUserCredential {
 
     boolean isLoginOk = false;
 
-    public boolean isUserValid(String email,String password,String role,String loginType) throws SQLException {
+    public boolean isUserValid(String email,String password,String role,String loginType, String status) throws SQLException {
         connection = DBConnection.getConnection();
         statement = connection.createStatement();
         String query = "select "+role+loginType+","+role+"password from "+role+
-                " where "+role+loginType+" = '"+email+"' and "+role+"password = '"+password+"' ;";
+                " where "+role+loginType+" = '"+email+"' and "+role+status+"='Active' and "+role+"password = '"+password+"' ;";
         resultSet = statement.executeQuery(query);
 
         if (resultSet.next()){

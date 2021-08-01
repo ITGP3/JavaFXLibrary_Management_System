@@ -45,9 +45,9 @@ public class MainController implements Initializable {
         String password = tfPassword.getText();
         String role = cob.getSelectionModel().getSelectedItem().toString().toLowerCase();
         String loginType = "Email";
-        //String status = "Active";
+        String status = "Status";
 
-        if (checkUserCredential.isUserValid(email,password,role,loginType)){
+        if (checkUserCredential.isUserValid(email,password,role,loginType,status)){
 
             UserHolder userHolder = UserHolder.getUserHolder();
             userHolder.setEmail(email);
@@ -70,7 +70,7 @@ public class MainController implements Initializable {
             }
         }
         else {
-            lblFailStatus.setText("Invalid Email or Password or Role");
+            lblFailStatus.setText("Invalid Email or Password ");
             lblFailStatus.setTextFill(Paint.valueOf("Red"));
             lblFailStatus.setVisible(true);
         }

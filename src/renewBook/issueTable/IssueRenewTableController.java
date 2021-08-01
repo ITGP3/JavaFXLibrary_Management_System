@@ -1,4 +1,4 @@
-package issueBook.issueTable;
+package renewBook.issueTable;
 
 
 /**
@@ -9,15 +9,12 @@ package issueBook.issueTable;
 
 import entity.IssueBook;
 import javafx.animation.FadeTransition;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -32,7 +29,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class IssueTableController implements Initializable {
+public class IssueRenewTableController implements Initializable {
 
     @FXML
     private AnchorPane rootPane;
@@ -55,16 +52,15 @@ public class IssueTableController implements Initializable {
     private final IssueBookUtility issueBookUtility = new IssueBookUtility();
 
     @FXML
-    void backPage(MouseEvent event) throws IOException {
+    void backRenewPage(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.hide();
-        Parent root = FXMLLoader.load(getClass().getResource("../issueUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../renewBookUI.fxml"));
         stage.setTitle("ISSUE BOOKS");
         stage.setScene(new Scene(root));
         stage.show();
         
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -90,7 +86,6 @@ public class IssueTableController implements Initializable {
         fadeTransition.setToValue(1);
         fadeTransition.play();
     }
-
 
 
 }
