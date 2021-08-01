@@ -121,7 +121,7 @@ public class SubmissionBookController{
 
             Timestamp timestamp =resultSet.getTimestamp("issueTime");
             Date date = new Date(timestamp.getTime());
-            lblIssueDate.setText(date.toString());
+            lblIssueDate.setText(timestamp.toString());
 
             Long time = System.currentTimeMillis() - timestamp.getTime();
             Long day = TimeUnit.DAYS.convert(time,TimeUnit.MILLISECONDS);
