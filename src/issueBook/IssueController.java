@@ -168,21 +168,32 @@ public class IssueController implements Initializable {
             IssueBook issueBook = new IssueBook(bookId, memberId);
 
             Book book = new Book(bookId);
-            //String updateIssueQuery = "update library.book set bookAvaliable=false where bookId='"+bookId+"';";
-            //System.out.println(updateIssueQuery);
+            String issueQuery = "update library.book set bookAvaliable=false where bookId='"+bookId+"';";
+            ResultSet resultSet = dbConnection.executeQuery(issueQuery);
+            if (resultSet.next()){
 
-            if (!issueBookUtility.saveIssueBook(issueBook) && !issueBookUtility.updateBookAvaliable(book)) {
-                Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
-                alertIssue.setTitle("Success!!!");
-                alertIssue.setHeaderText(null);
-                alertIssue.setContentText("Book Issue Complete");
-                alertIssue.showAndWait();
-            } else {
                 Alert alertIssue = new Alert(Alert.AlertType.ERROR);
                 alertIssue.setTitle("Fail!!!");
                 alertIssue.setHeaderText(null);
-                alertIssue.setContentText("Issue Operation Fail!");
+                alertIssue.setContentText("Book is already Issued");
                 alertIssue.showAndWait();
+
+
+            }
+            else {
+                if (!issueBookUtility.saveIssueBook(issueBook) && !issueBookUtility.updateBookAvaliable(book)) {
+                    Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+                    alertIssue.setTitle("Success!!!");
+                    alertIssue.setHeaderText(null);
+                    alertIssue.setContentText("Book Issue Complete");
+                    alertIssue.showAndWait();
+                } else {
+                    Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+                    alertIssue.setTitle("Fail!!!");
+                    alertIssue.setHeaderText(null);
+                    alertIssue.setContentText("Issue Operation Fail!");
+                    alertIssue.showAndWait();
+                }
             }
 
         }else {
