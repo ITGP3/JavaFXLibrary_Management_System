@@ -75,11 +75,10 @@ public class AddBookController implements Initializable {
 		tfTitle.clear();
 		tfAuthor.clear();
 		tfPublisher.clear();
-		tfAvaliable.clear();
 		cobShelf.getSelectionModel().clearSelection();
 		cobStatus.getSelectionModel().clearSelection();
 		cobCategory.getSelectionModel().clearSelection();
-		bookImage.setImage(new Image(getClass().getResourceAsStream("src/image/bookSection/addimg.png")));
+		bookImage.setImage(new Image(getClass().getResourceAsStream("../image/bookSection/addimg.png")));
 		
 	}
 

@@ -12,6 +12,7 @@ import entity.Staff;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -139,7 +140,9 @@ public class StaffMainController implements Initializable{
 		StaffHolder staffHolder = StaffHolder.getStaffInstance();
 		staffHolder.setStaff(staff);
         
-    	Stage primaryStage = new Stage();
+		Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        primaryStage.hide();
+        
 		Parent root = FXMLLoader.load(getClass().getResource("EditStaffUI.fxml"));
 		primaryStage.setTitle("Edit Staff Section");
 		primaryStage.setScene(new Scene(root));

@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -94,6 +95,16 @@ public class StaffBookController implements Initializable{
     void processView(MouseEvent event) throws IOException {
     	
     	 Book book = bookTable.getSelectionModel().getSelectedItem();
+    	 
+    	 if(book == null) {
+     		
+    		 Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+             alertIssue.setTitle("Warning!");
+             alertIssue.setHeaderText(null);
+             alertIssue.setContentText("Select Book to View");
+             alertIssue.showAndWait();
+             return;
+    	}
 
          BookHolder bookHolder = BookHolder.getBookHolder();
          bookHolder.setBook(book);

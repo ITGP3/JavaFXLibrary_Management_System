@@ -10,8 +10,11 @@ import entity.MemberHolder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -55,8 +58,11 @@ public class EditMemberController implements Initializable{
     @FXML
     void processBack(MouseEvent event) throws IOException {
     	
-    	Stage adminStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        adminStage.hide();
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        primaryStage.hide();
+        Parent root = FXMLLoader.load(getClass().getResource("../memberMainUI.fxml"));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
         
     }
     
@@ -80,6 +86,9 @@ public class EditMemberController implements Initializable{
     		alert.getConfirmAlert("Information Dialog", "Successfully Update!", "Update Member to DB");
     		Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			primaryStage.hide();
+			Parent root = FXMLLoader.load(getClass().getResource("../memberMainUI.fxml"));
+	        primaryStage.setScene(new Scene(root));
+	        primaryStage.show();
 						
 	  	}
 

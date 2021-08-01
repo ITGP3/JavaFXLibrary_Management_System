@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -65,7 +66,7 @@ public class StaffMemberController implements Initializable{
     private Label lblLoginMail;
     
     private final MemberUtility memberUtility = new MemberUtility();
-    
+      
     public void showTable(String sql) {
     	try {
 			memberTable.setItems(memberUtility.getAllMembers(sql));
@@ -77,7 +78,7 @@ public class StaffMemberController implements Initializable{
 
     @FXML
     void processRefresh(MouseEvent event) {
-    	
+    	    	
     	cobMemberCol.getSelectionModel().clearSelection();
         tfSearch.setText("");
         showTable("select * from member;");
@@ -97,6 +98,16 @@ public class StaffMemberController implements Initializable{
     void processView(MouseEvent event) throws IOException {
     	
     	Member member = memberTable.getSelectionModel().getSelectedItem();
+    	
+    	if(member == null) {
+    		
+    		 Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+             alertIssue.setTitle("Warning!");
+             alertIssue.setHeaderText(null);
+             alertIssue.setContentText("Select Member to View");
+             alertIssue.showAndWait();
+             return;
+    	}
     	
     	MemberHolder memberHolder = MemberHolder.getMemberInstance();
     	memberHolder.setMember(member);

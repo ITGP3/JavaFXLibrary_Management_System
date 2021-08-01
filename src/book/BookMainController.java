@@ -144,6 +144,15 @@ public class BookMainController implements Initializable{
     void processEdit(MouseEvent event) throws IOException {
 
         Book book = bookTable.getSelectionModel().getSelectedItem();
+        
+        if (book == null){
+            Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+            alertIssue.setTitle("Warning!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Select Book to Edit");
+            alertIssue.showAndWait();
+            return;
+        }
 
         BookHolder bookHolder = BookHolder.getBookHolder();
         bookHolder.setBook(book);
@@ -178,6 +187,15 @@ public class BookMainController implements Initializable{
     void processView(MouseEvent event) throws IOException {
 
         Book book = bookTable.getSelectionModel().getSelectedItem();
+        
+        if (book == null){
+            Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+            alertIssue.setTitle("Warning!");
+            alertIssue.setHeaderText(null);
+            alertIssue.setContentText("Select Book to View");
+            alertIssue.showAndWait();
+            return;
+        }
 
         BookHolder bookHolder = BookHolder.getBookHolder();
         bookHolder.setBook(book);
@@ -187,6 +205,7 @@ public class BookMainController implements Initializable{
         primaryStage.setTitle("VIEW BOOK SECTION");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        
     }
 
     public void showAllBook(String sql) {
