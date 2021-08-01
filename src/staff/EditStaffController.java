@@ -11,8 +11,11 @@ import entity.StaffHolder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -65,13 +68,16 @@ public class EditStaffController implements Initializable {
     @FXML
     void processBack(MouseEvent event) throws IOException {
     	
-    	Stage adminStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        adminStage.hide();
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        primaryStage.hide();
+        Parent root = FXMLLoader.load(getClass().getResource("staffMainUI.fxml"));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
         
     }
 
     @FXML
-    void processSave(MouseEvent event) throws SQLException {
+    void processSave(MouseEvent event) throws SQLException, IOException {
     	
     	String staffFirstName = tfFirstName.getText().trim();
 		String staffLastName = tfLastName.getText().trim();
@@ -96,8 +102,12 @@ public class EditStaffController implements Initializable {
                 alertIssue.setContentText("Staff Updated!");
                 alertIssue.showAndWait();
                 
-				Stage adminStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				adminStage.hide();
+				Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				primaryStage.hide();
+				
+				Parent root = FXMLLoader.load(getClass().getResource("staffMainUI.fxml"));
+		        primaryStage.setScene(new Scene(root));
+		        primaryStage.show();
 
 			}
 		} else {

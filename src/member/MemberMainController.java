@@ -12,6 +12,7 @@ import entity.UserHolder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -121,7 +122,9 @@ public class MemberMainController implements Initializable{
 
     @FXML
     void processEdit(MouseEvent event) throws IOException {
+    	
     	Member member = memberTable.getSelectionModel().getSelectedItem();
+    	
     	if (member == null){
             Alert alertIssue = new Alert(Alert.AlertType.ERROR);
             alertIssue.setTitle("Warning!");
@@ -133,7 +136,10 @@ public class MemberMainController implements Initializable{
     	
     	MemberHolder memberHolder = MemberHolder.getMemberInstance();
     	memberHolder.setMember(member);
-    	Stage primaryStage = new Stage();
+    	
+    	Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        primaryStage.hide();
+        
     	Parent root = FXMLLoader.load(getClass().getResource("editMember/EditMemberUI.fxml"));
         primaryStage.setTitle("Edit Member Section");
         primaryStage.setScene(new Scene(root));
