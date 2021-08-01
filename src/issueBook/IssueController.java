@@ -168,7 +168,7 @@ public class IssueController implements Initializable {
             IssueBook issueBook = new IssueBook(bookId, memberId);
 
             Book book = new Book(bookId);
-            String issueQuery = "update library.book set bookAvaliable=false where bookId='"+bookId+"';";
+            String issueQuery = "select * from library.book where bookAvaliable=false and bookId='"+bookId+"';";
             ResultSet resultSet = dbConnection.executeQuery(issueQuery);
             if (resultSet.next()){
 
