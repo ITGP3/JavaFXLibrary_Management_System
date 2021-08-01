@@ -130,7 +130,7 @@ public class EditBookController implements Initializable{
     void processImage(MouseEvent event) {
 
     	FileChooser imageChooser = new FileChooser();
-    	imageChooser.setInitialDirectory(new File("c://"));
+    	imageChooser.setInitialDirectory(new File("/Users/sitminhtet"));
     	imageChooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png","*.jpg","*.jpeg","*.ico"));
     	
     	File imageFile = imageChooser.showOpenDialog(null);

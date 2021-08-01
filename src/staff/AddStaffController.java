@@ -85,31 +85,41 @@ public class AddStaffController implements Initializable {
 		String staffPhone = tfPhone.getText().trim();
 		String staffAddress = tfAddress.getText().trim();
 		String staffStatus = cobStatus.getValue();
-		String staffDOB = dpDOB.getValue().toString();		
-	
-		Staff staff = new Staff(staffFirstName, staffLastName, staffEmail, staffPassword, staffPhone, staffStatus, staffDOB, staffAddress);
-		
-		Optional<ButtonType> result = alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Staff to DB");
-		
-		if (result.get() == ButtonType.OK) {
-			
-			Boolean isSaveOk = staffDataUtils.saveStaff(staff);
-			
-			if (!isSaveOk) {
+		String staffDOB = dpDOB.getValue().toString();
+
+
+		if (staffFirstName.isEmpty()||staffLastName.isEmpty()||staffEmail.isEmpty()||staffPassword.isEmpty()||staffPhone.isEmpty()||staffAddress.isEmpty()||staffStatus.isEmpty()||staffDOB.isEmpty()){
+			Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+			alertIssue.setTitle("Fail!!!");
+			alertIssue.setHeaderText(null);
+			alertIssue.setContentText("Fill all fields");
+			alertIssue.showAndWait();
+		}
+		else {
+			Staff staff = new Staff(staffFirstName, staffLastName, staffEmail, staffPassword, staffPhone, staffStatus, staffDOB, staffAddress);
+
+			Optional<ButtonType> result = alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Staff to DB");
+
+			if (result.get() == ButtonType.OK) {
+
+				Boolean isSaveOk = staffDataUtils.saveStaff(staff);
+
+				if (!isSaveOk) {
+					Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+					alertIssue.setTitle("Success!!!");
+					alertIssue.setHeaderText(null);
+					alertIssue.setContentText("Staff Saved");
+					alertIssue.showAndWait();
+
+					clearAllField();
+				}
+			} else {
 				Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
-                alertIssue.setTitle("Success!!!");
-                alertIssue.setHeaderText(null);
-                alertIssue.setContentText("Staff Saved");
-                alertIssue.showAndWait();
-                
-				clearAllField();
+				alertIssue.setTitle("Fail!!!");
+				alertIssue.setHeaderText(null);
+				alertIssue.setContentText("Staff Save Fail");
+				alertIssue.showAndWait();
 			}
-		} else {
-			Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
-            alertIssue.setTitle("Fail!!!");
-            alertIssue.setHeaderText(null);
-            alertIssue.setContentText("Staff Save Fail");
-            alertIssue.showAndWait();
 		}
 	}
 

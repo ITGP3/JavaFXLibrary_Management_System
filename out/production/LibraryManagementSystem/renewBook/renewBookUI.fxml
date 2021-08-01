@@ -110,7 +110,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="lblRenewDay" alignment="CENTER" prefHeight="17.0" prefWidth="188.0" text="Renew Day">
+                  <Label fx:id="lblRenewDay" alignment="CENTER" prefHeight="17.0" prefWidth="188.0" text="Renew Count">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>

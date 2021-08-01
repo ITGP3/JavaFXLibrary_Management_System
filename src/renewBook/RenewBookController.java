@@ -112,12 +112,14 @@ public class RenewBookController {
             Long day = TimeUnit.DAYS.convert(time,TimeUnit.MILLISECONDS);
             lblNoOfDays.setText(day.toString()+" day(s)");
             
-
-
+            /*
             Timestamp timestamp2 = new Timestamp(System.currentTimeMillis());
             Date date1 = new Date(timestamp2.getTime());
             lblRenewDay.setText(date1.toString());
 
+             */
+
+            lblRenewDay.setText(resultSet.getString("renewCount"));
             isSubmissionBook = true;
         }
         else {

@@ -45,6 +45,7 @@ public class MainController implements Initializable {
         String password = tfPassword.getText();
         String role = cob.getSelectionModel().getSelectedItem().toString().toLowerCase();
         String loginType = "Email";
+        //String status = "Active";
 
         if (checkUserCredential.isUserValid(email,password,role,loginType)){
 

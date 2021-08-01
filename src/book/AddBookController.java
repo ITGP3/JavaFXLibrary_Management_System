@@ -15,6 +15,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -75,11 +76,10 @@ public class AddBookController implements Initializable {
 		tfTitle.clear();
 		tfAuthor.clear();
 		tfPublisher.clear();
-		tfAvaliable.clear();
 		cobShelf.getSelectionModel().clearSelection();
 		cobStatus.getSelectionModel().clearSelection();
 		cobCategory.getSelectionModel().clearSelection();
-		bookImage.setImage(new Image(getClass().getResourceAsStream("src/image/bookSection/addimg.png")));
+		bookImage.setImage(new Image(getClass().getResourceAsStream("../image/bookSection/addimg.png")));
 		
 	}
 
@@ -97,21 +97,30 @@ public class AddBookController implements Initializable {
     	
     	int index = this.imageName.indexOf(".");
 		imageName = this.imageName.substring(0,index)+".jpg";
-    	
-    	Book book = new Book(bookId,bookTitle, bookAuthor, bookPublisher, bookAvaliable, bookShelf, bookCategory, bookStatus, imageName);
-    	Boolean isSaveOk = bookDataUtil.saveBook(book);
-    	if(!isSaveOk) {
-			
-    		alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Book to DB");
-    		
-			File imageFile = new File("src/image/bookSection/"+imageName);
-			
-			BufferedImage bufferedImage = SwingFXUtils.fromFXImage(this.bookImage.getImage(),null);
-			
-			ImageIO.write(bufferedImage,"jpg",imageFile);
-			
-			Stage primaryStage =  (Stage) ((Node)event.getSource()).getScene().getWindow();
-			primaryStage.hide();
+
+		if (bookId.isEmpty()||bookTitle.isEmpty()||bookAuthor.isEmpty()||bookPublisher.isEmpty()||bookShelf.isEmpty()||bookCategory.isEmpty()||bookStatus.isEmpty()){
+			Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+			alertIssue.setTitle("Fail!!!");
+			alertIssue.setHeaderText(null);
+			alertIssue.setContentText("Fill all Fields");
+			alertIssue.showAndWait();
+		}
+		else {
+			Book book = new Book(bookId,bookTitle, bookAuthor, bookPublisher, bookAvaliable, bookShelf, bookCategory, bookStatus, imageName);
+			Boolean isSaveOk = bookDataUtil.saveBook(book);
+			if(!isSaveOk) {
+
+				alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Book to DB");
+
+				File imageFile = new File("src/image/bookSection/"+imageName);
+
+				BufferedImage bufferedImage = SwingFXUtils.fromFXImage(this.bookImage.getImage(),null);
+
+				ImageIO.write(bufferedImage,"jpg",imageFile);
+
+				Stage primaryStage =  (Stage) ((Node)event.getSource()).getScene().getWindow();
+				primaryStage.hide();
+			}
 		}
     }
 
@@ -119,7 +128,7 @@ public class AddBookController implements Initializable {
     void processImage(MouseEvent event) {
 
     	FileChooser imageChooser = new FileChooser();
-    	imageChooser.setInitialDirectory(new File("c://"));
+    	imageChooser.setInitialDirectory(new File("/Users/sitminhtet"));
     	imageChooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png","*.jpg","*.jpeg","*.ico"));
     	
     	File imageFile = imageChooser.showOpenDialog(null);

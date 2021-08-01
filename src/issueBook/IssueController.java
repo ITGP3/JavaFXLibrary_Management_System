@@ -82,6 +82,9 @@ public class IssueController implements Initializable {
     private Label lblNoMember;
 
     @FXML
+    private Label lblStatus;
+
+    @FXML
     private AnchorPane rootPane;
 
     private final IssueBookUtility issueBookUtility = new IssueBookUtility();
@@ -101,6 +104,9 @@ public class IssueController implements Initializable {
             lblBookShelf.setText(resultSet.getString("bookShelf"));
             String status = (resultSet.getBoolean("bookAvaliable"))?"Avaliable":"Not Avaliable";
             lblBookStatus.setText(String.valueOf(status));
+            lblStatus.setText(resultSet.getString("bookStatus"));
+
+
 
             isSearchOK = true;
         }

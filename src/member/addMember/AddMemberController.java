@@ -73,7 +73,7 @@ public class AddMemberController implements Initializable{
 
     @FXML
     void processAdd(MouseEvent event) throws SQLException {
-    	
+        dpDOB.setValue(LocalDate.now());
     	String memberId = tfId.getText().trim();
     	String memberName = tfMemberName.getText().trim();
     	String memberEmail = tfMemberEmail.getText().trim();
@@ -82,28 +82,39 @@ public class AddMemberController implements Initializable{
     	String memberFee = cobMemberFee.getValue();
     	String memberDOB = dpDOB.getValue().toString();
     	
-        Member member = new Member(memberId, memberName, memberEmail, memberPhone, memberAddress, memberFee, memberDOB);
-       
-        Optional<ButtonType> result = alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Member to DB");
-		if(result.get() == ButtonType.OK)
-		{
-        Boolean isSaveOk = memberUtility.saveMember(member);
-    	if(!isSaveOk) {
-    		Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
-            alertIssue.setTitle("Success!!!");
-            alertIssue.setHeaderText(null);
-            alertIssue.setContentText("Member Saved");
-            alertIssue.showAndWait();
-            
-			clearAllField();
-    	}
-      } else {
-			Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+        if(memberId.isEmpty()||memberName.isEmpty()||memberEmail.isEmpty()||memberPhone.isEmpty()||memberAddress.isEmpty()||memberFee.isEmpty()||memberDOB.isEmpty()){
+            Alert alertIssue = new Alert(Alert.AlertType.ERROR
+            );
             alertIssue.setTitle("Fail!!!");
             alertIssue.setHeaderText(null);
-            alertIssue.setContentText("Member Save Fail");
+            alertIssue.setContentText("Please fill all fields");
             alertIssue.showAndWait();
-		}
+        }
+        else {
+
+            Member member = new Member(memberId, memberName, memberEmail, memberPhone, memberAddress, memberFee, memberDOB);
+
+            Optional<ButtonType> result = alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Member to DB");
+            if(result.get() == ButtonType.OK)
+            {
+                Boolean isSaveOk = memberUtility.saveMember(member);
+                if(!isSaveOk) {
+                    Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+                    alertIssue.setTitle("Success!!!");
+                    alertIssue.setHeaderText(null);
+                    alertIssue.setContentText("Member Saved");
+                    alertIssue.showAndWait();
+
+                    clearAllField();
+                }
+            } else {
+                Alert alertIssue = new Alert(Alert.AlertType.INFORMATION);
+                alertIssue.setTitle("Fail!!!");
+                alertIssue.setHeaderText(null);
+                alertIssue.setContentText("Member Save Fail");
+                alertIssue.showAndWait();
+            }
+        }
     }
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
