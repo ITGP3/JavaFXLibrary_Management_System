@@ -73,6 +73,9 @@ public class StaffIssueController implements Initializable {
     @FXML
     private Label lblNoMember;
     
+    @FXML
+    private Label lblStatus;
+    
     private Boolean isSearchOk = false;
     
     private final DBConnection dbConnection = new DBConnection();
@@ -140,11 +143,13 @@ public class StaffIssueController implements Initializable {
     	ResultSet resultSet = dbConnection.executeQuery(query);
     	
     	if(resultSet.next()) {
+    		 lblNoBook.setText("");
     		 lblBookName.setText(resultSet.getString("bookTitle"));
              lblBookAuthor.setText(resultSet.getString("bookAuthor"));
              lblBookShelf.setText(resultSet.getString("bookShelf"));
              String status = (resultSet.getBoolean("bookAvaliable"))?"Avaliable":"Not Avaliable";
              lblBookStatus.setText(String.valueOf(status));
+             lblStatus.setText(resultSet.getString("bookStatus"));
 
              isSearchOk = true;
     	}
@@ -155,6 +160,7 @@ public class StaffIssueController implements Initializable {
              lblBookAuthor.setText("");
              lblBookShelf.setText("");
              lblBookStatus.setText("");
+             lblStatus.setText("");
          }
     }
 
@@ -166,6 +172,7 @@ public class StaffIssueController implements Initializable {
     	ResultSet resultSet = dbConnection.executeQuery(query);
     	
     	if(resultSet.next()) {
+    		 lblNoMember.setText("");
     		 lblMemberName.setText(resultSet.getString("memberName"));
              lblMemberEmail.setText(resultSet.getString("memberEmail"));
              lblMemberPhone.setText(resultSet.getString("memberPhone"));

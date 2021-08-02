@@ -85,6 +85,8 @@ public class AddStaffController implements Initializable {
 		String staffPhone = tfPhone.getText().trim();
 		String staffAddress = tfAddress.getText().trim();
 		String staffStatus = cobStatus.getValue();
+
+		String staffDOB = dpDOB.getValue().toString();
 		
 		if (staffFirstName.isEmpty()||staffLastName.isEmpty()||staffEmail.isEmpty()||staffPassword.isEmpty()||staffPhone.isEmpty()||staffAddress.isEmpty()||staffStatus.isEmpty()||dpDOB.getValue().toString().isEmpty()){
 			Alert alertIssue = new Alert(Alert.AlertType.ERROR);
@@ -93,11 +95,64 @@ public class AddStaffController implements Initializable {
 			alertIssue.setContentText("Fill all fields");
 			alertIssue.showAndWait();
 		}
-		else {
+		else {	
 			
-			String staffDOB = dpDOB.getValue().toString();
 			Staff staff = new Staff(staffFirstName, staffLastName, staffEmail, staffPassword, staffPhone, staffStatus, staffDOB, staffAddress);
 
+			if(!staff.getStaffFirstName().matches("^([a-zA-Z]+\\s)*[a-zA-Z]+$")) {
+				Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+				alertIssue.setTitle("Validate First Name Fail!!!");
+				alertIssue.setHeaderText(null);
+				alertIssue.setContentText("Please Enter Valid First Name.");
+				alertIssue.showAndWait();			
+				return;
+			}
+			
+			if(!staff.getStaffLastName().matches("^([a-zA-Z]+\\s)*[a-zA-Z]+$")) {
+				Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+				alertIssue.setTitle("Validate Last Name Fail!!!");
+				alertIssue.setHeaderText(null);
+				alertIssue.setContentText("Please Enter Valid Last Name.");
+				alertIssue.showAndWait();			
+				return;
+			}
+			
+			if(!staff.getStaffEmail().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+				Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+				alertIssue.setTitle("Validate Email Fail!!!");
+				alertIssue.setHeaderText(null);
+				alertIssue.setContentText("Please Enter Valid Email Address.");
+				alertIssue.showAndWait();			
+				return;
+			}
+			
+			if(!staff.getStaffPassword().matches("^(?=.*[0-9])(?=.*[a-z])(?=\\S+$).*[A-Za-z0-9]$")) {
+				Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+				alertIssue.setTitle("Validate Password Fail!!!");
+				alertIssue.setHeaderText(null);
+				alertIssue.setContentText("Please Enter Valid Password.");
+				alertIssue.showAndWait();			
+				return;
+			}
+			
+			if(!staff.getStaffPhone().matches("\\d{11}")) {
+				Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+				alertIssue.setTitle("Validate Phone Fail!!!");
+				alertIssue.setHeaderText(null);
+				alertIssue.setContentText("Please Enter Valid Phone No.");
+				alertIssue.showAndWait();			
+				return;
+			}
+			
+			if(!staff.getStaffAddress().matches("^[0-9a-zA-Z\\s,-._]+$")) {
+				Alert alertIssue = new Alert(Alert.AlertType.ERROR);
+				alertIssue.setTitle("Validate Address Fail!!!");
+				alertIssue.setHeaderText(null);
+				alertIssue.setContentText("Please Enter Valid Address.");
+				alertIssue.showAndWait();			
+				return;
+			}
+			
 			Optional<ButtonType> result = alert.getConfirmAlert("Information Dialog", "Successfully Saved!", "Saved Staff to DB");
 
 			if (result.get() == ButtonType.OK) {

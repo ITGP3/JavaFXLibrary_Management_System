@@ -99,6 +99,7 @@ public class IssueController implements Initializable {
         ResultSet resultSet = dbConnection.executeQuery(searchQuery);
 
         if (resultSet.next()){
+        	lblNoBook.setText("");
             lblBookName.setText(resultSet.getString("bookTitle"));
             lblBookAuthor.setText(resultSet.getString("bookAuthor"));
             lblBookShelf.setText(resultSet.getString("bookShelf"));
@@ -117,6 +118,7 @@ public class IssueController implements Initializable {
             lblBookAuthor.setText("");
             lblBookShelf.setText("");
             lblBookStatus.setText("");
+            lblStatus.setText("");
         }
 
     }
@@ -134,6 +136,7 @@ public class IssueController implements Initializable {
             String phone = resultSet.getString("memberPhone");
             String address = resultSet.getString("memberAddress");
 
+            lblNoMember.setText("");
             lblMemberName.setText(name);
             lblMemberEmail.setText(email);
             lblMemberPhone.setText(phone);
